@@ -235,11 +235,13 @@ export function GlobeCanvas() {
     // ── Country outlines ──────────────────────────────────────────
     fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
       .then(r => r.json())
-      .then((topo: any) => {
-        const countries = topojson.feature(topo, topo.objects.countries) as any;
+      .then((topo: Record<string, unknown>) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const countries = topojson.feature(topo as any, (topo.objects as any).countries) as any;
         const lineMat   = new THREE.LineBasicMaterial({ color: ACID, transparent: true, opacity: 0.4 });
 
-        countries.features.forEach((feat: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        countries.features.forEach((feat: Record<string, unknown>) => {
           const geom = feat.geometry;
           if (!geom) return;
           const polys = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
