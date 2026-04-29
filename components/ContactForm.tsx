@@ -127,6 +127,11 @@ export function ContactForm() {
               </div>
 
               <div className="form-group">
+                <label className="form-label">Phone Number (optional)</label>
+                <input className="form-input" type="tel" name="phone" placeholder="+1 (555) 000-0000" />
+              </div>
+
+              <div className="form-group">
                 <label className="form-label">Company / Business</label>
                 <input className="form-input" type="text" name="company" placeholder="Acme Corp" required />
               </div>
