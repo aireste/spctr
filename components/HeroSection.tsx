@@ -3,8 +3,7 @@
 export function HeroSection() {
   return (
     <section className="hero-section">
-      <div className="hero-grid-bg" />
-      <div className="hero-glow-bg" />
+
 
       <div className="bracket-tl" />
       <div className="bracket-br" />
