@@ -543,6 +543,13 @@
   align-items: center;
 }
 
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
 /* ── TABLET: 768px – 1023px ─────────────────────────── */
 @media (max-width: 1023px) {
   .nav-root        { padding: 0 32px; }
@@ -587,9 +594,11 @@
 
   /* Service cards */
   .svc-card    { padding: 20px 16px; }
+  .svc-cards-row { flex-direction: column; }
 
   /* About */
   .about-inner { grid-template-columns: 1fr; gap: 36px; }
+  .about-grid  { grid-template-columns: 1fr; gap: 36px; }
 
   /* Rate cards */
   .rate-card   { padding: 32px 24px; }

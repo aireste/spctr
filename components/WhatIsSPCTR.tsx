@@ -35,7 +35,7 @@ export function WhatIsSPCTR() {
 
       {/* Content above dots */}
       <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.8fr", gap: 80, alignItems: "start" }}>
+        <div className="about-grid">
 
           <div ref={leftRef} className="reveal">
             <div className="eyebrow ey-acid">{"//"} IDENT_FILE — What is SPCTR</div>

@@ -42,7 +42,7 @@ export function ServicesSection() {
             <p className="section-sub-serif" style={{ marginBottom: 20 }}>Intelligence-grade outreach, built for closing.</p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "row", gap: 16 }}>
+          <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>
             <div ref={card1Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">01</div>
               <div className="svc-name">WARM LEAD PACKAGES</div>
