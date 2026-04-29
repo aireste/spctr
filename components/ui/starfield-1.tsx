@@ -198,7 +198,6 @@ const Starfield: React.FC<StarfieldProps> = ({
   };
 
   const animate = () => {
-    resize();
     update();
     draw();
     animationFrameRef.current = requestAnimationFrame(animate);
@@ -233,15 +232,24 @@ const Starfield: React.FC<StarfieldProps> = ({
       }
     };
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const resizeHandler = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => resize(), 150);
+    };
+
     if (mouseAdjust) el?.addEventListener("mousemove", mouseHandler);
     if (tiltAdjust) window.addEventListener("deviceorientation", tiltHandler);
+    window.addEventListener("resize", resizeHandler);
 
     init();
 
     return () => {
       destroy();
+      clearTimeout(resizeTimer);
       if (mouseAdjust) el?.removeEventListener("mousemove", mouseHandler);
       if (tiltAdjust) window.removeEventListener("deviceorientation", tiltHandler);
+      window.removeEventListener("resize", resizeHandler);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
