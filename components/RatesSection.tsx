@@ -36,7 +36,7 @@ export function RatesSection() {
 
       {/* Content above dots */}
       <div style={{ position: "relative", zIndex: 1 }}>
-        <div className="eyebrow ey-pink">{"//"} ACCESS_TIERS — How It Works</div>
+        <div className="eyebrow ey-acid">{"//"} ACCESS_TIERS — How It Works</div>
         <h2 className="section-h2">SIMPLE,<br />FAIR PRICING.</h2>
         <p className="section-sub-serif">Two models. No surprises. No fine print.</p>
 
@@ -57,7 +57,7 @@ export function RatesSection() {
           </div>
 
           <div ref={card2Ref} className="rate-card rate-card-teal reveal">
-            <div className="rate-tag" style={{ color: "var(--acid)", borderColor: "var(--acid)" }}>
+            <div className="rate-tag" style={{ color: "#ff0d1a", borderColor: "#ff0d1a" }}>
               MONTHLY RETAINER
             </div>
             <div className="rate-title">Consistent Pipeline, Every Month</div>
@@ -67,7 +67,7 @@ export function RatesSection() {
               businesses ready to scale.
             </p>
             <div className="rate-best">
-              <span style={{ color: "var(--acid)" }}>{"//"} </span>
+              <span style={{ color: "#ff0d1a" }}>{"//"} </span>
               Best for businesses ready to commit to consistent growth.
             </div>
           </div>

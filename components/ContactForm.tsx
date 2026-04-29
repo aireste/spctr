@@ -66,7 +66,7 @@ export function ContactForm() {
       <div className="contact-inner">
         {/* Left */}
         <div ref={leftRef} className="reveal">
-          <div className="eyebrow ey-teal">{"//"} DEPLOY.INIT — Initiate Sequence</div>
+          <div className="eyebrow ey-acid">{"//"} DEPLOY.INIT — Initiate Sequence</div>
           <h2 className="section-h2">TIME TO<br />DEPLOY.</h2>
           <p className="contact-body">
             Tell us about your business and we&apos;ll put together a custom hunt
@@ -106,9 +106,8 @@ export function ContactForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div className="form-title">DEPLOY SPCTR</div>
-              <span className="form-subtitle">
-                {"//"} FORM_ID:0x9C3A — Start your recon today.
+<span className="form-subtitle">
+                {"//"} UPLINK:0x9C3A — TRANSMIT INTEL
               </span>
 
               <div className="form-row">

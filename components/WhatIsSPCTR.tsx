@@ -38,7 +38,7 @@ export function WhatIsSPCTR() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.8fr", gap: 80, alignItems: "start" }}>
 
           <div ref={leftRef} className="reveal">
-            <div className="eyebrow ey-blue">{"//"} IDENT_FILE — What is SPCTR</div>
+            <div className="eyebrow ey-acid">{"//"} IDENT_FILE — What is SPCTR</div>
             <h2 className="section-h2">NOT YOUR<br />TYPICAL<br />AGENCY.</h2>
           </div>
 
@@ -61,7 +61,7 @@ export function WhatIsSPCTR() {
                 <p className="pillar-desc">No massive retainers. No long-term lock-in. Start small, scale when you see results.</p>
               </div>
               <div className="pillar">
-                <div className="pillar-icon" style={{ color: "var(--blue)" }}>{"//"} 03</div>
+                <div className="pillar-icon" style={{ color: "#00d4aa" }}>{"//"} 03</div>
                 <div className="pillar-title">RELATIONSHIPS FIRST</div>
                 <p className="pillar-desc">We&apos;re not in it for a quick transaction. We build long-term partnerships with clients who want to grow.</p>
               </div>

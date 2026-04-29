@@ -283,7 +283,7 @@
     display: flex; flex-direction: column; min-height: 320px;
   }
   .svc-card:hover { background: var(--panel); }
-  .svc-card:nth-child(1)::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--acid); }
+  .svc-card:nth-child(1)::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #00d4aa; }
   .svc-card:nth-child(2)::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--teal); }
 
   .svc-num {
@@ -291,7 +291,7 @@
     font-weight: 900; font-size: 44px; line-height: 1;
     color: var(--dim); margin-bottom: 8px; transition: color 0.3s;
   }
-  .svc-card:nth-child(1):hover .svc-num { color: var(--acid); }
+  .svc-card:nth-child(1):hover .svc-num { color: #00d4aa; }
   .svc-card:nth-child(2):hover .svc-num { color: var(--teal); }
 
   .svc-name {
@@ -324,16 +324,9 @@
     position: relative; display: flex; flex-direction: column;
     border: 1px solid transparent;
   }
-  .card-grid:has(.rate-card:hover) .rate-card:not(:hover) {
-    opacity: 0.35;
-  }
-  .rate-card:hover { background: var(--panel); transform: translateY(-6px); }
   .rate-card.rate-card-acid { border-top: 2px solid var(--acid); }
-  .rate-card.rate-card-acid:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(192,252,4,0.18); border-color: rgba(192,252,4,0.25); }
   .rate-card.rate-card-orange { border-top: 2px solid var(--orange); }
-  .rate-card.rate-card-orange:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(255,85,0,0.18); border-color: rgba(255,85,0,0.25); }
-  .rate-card.rate-card-teal { border-top: 2px solid var(--acid); }
-  .rate-card.rate-card-teal:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(192,252,4,0.18); border-color: rgba(192,252,4,0.25); }
+  .rate-card.rate-card-teal { border-top: 2px solid #ff0d1a; }
 
   .rate-tag {
     font-family: var(--font-space-mono), 'Space Mono', monospace;
@@ -429,8 +422,8 @@
     letter-spacing: 3px; margin-bottom: 4px; color: var(--white-t);
   }
   .form-subtitle {
-    font-family: var(--font-playfair), 'Playfair Display', serif;
-    font-style: italic; font-size: 14px; color: #F2F2F8;
+    font-family: var(--font-space-mono), 'Space Mono', monospace;
+    font-size: 12px; color: #F2F2F8; line-height: 1.9;
     margin-bottom: 28px; display: block;
   }
   .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }

@@ -31,13 +31,13 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section className="section-base section-dark" id="what">
+    <section className="section-base" id="what" style={{ background: "rgba(5,5,10,0.2)", overflow: "hidden" }}>
       <div className="svc-layout">
 
         {/* Left — heading + cards */}
         <div>
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
-            <div className="eyebrow ey-purple">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
+            <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
             <p className="section-sub-serif" style={{ marginBottom: 20 }}>Intelligence-grade outreach, built for closing.</p>
           </div>
