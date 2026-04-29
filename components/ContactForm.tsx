@@ -136,17 +136,6 @@ export function ContactForm() {
                 <input className="form-input" type="text" name="company" placeholder="Acme Corp" required />
               </div>
 
-              <div className="form-group">
-                <label className="form-label">Target Industry</label>
-                <select className="form-input" name="industry" required defaultValue="">
-                  <option value="" disabled>Select your industry</option>
-                  <option>Home Services (Roofing, HVAC, Solar)</option>
-                  <option>B2B SaaS / Tech</option>
-                  <option>Med Spa / Healthcare</option>
-                  <option>Real Estate / Mortgage</option>
-                  <option>Other</option>
-                </select>
-              </div>
 
               <div className="form-group">
                 <label className="form-label">Monthly Lead Volume</label>
