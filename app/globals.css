@@ -538,9 +538,13 @@
 /* ── SERVICES LAYOUT (replaces inline grid) ─────────── */
 .svc-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   gap: 60px;
   align-items: center;
+}
+.svc-globe {
+  max-width: 500px;
+  margin-left: auto;
 }
 
 .about-grid {
