@@ -122,7 +122,7 @@ export function ContactForm() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Work Email</label>
+                <label className="form-label">Email</label>
                 <input className="form-input" type="email" name="email" placeholder="you@company.com" required />
               </div>
 
