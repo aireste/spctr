@@ -83,6 +83,7 @@ export default function Home() {
           <li><a href="#">Privacy</a></li>
           <li><a href="#">Terms</a></li>
           <li><a href="#">Contact</a></li>
+          <li><a href="https://www.linkedin.com/in/esteban-guerra-b3631415b/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
       </footer>
     </main>
