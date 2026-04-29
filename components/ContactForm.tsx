@@ -112,27 +112,27 @@ export function ContactForm() {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label className="form-label">[ FIELD_01 ] First Name</label>
+                  <label className="form-label">First Name</label>
                   <input className="form-input" type="text" name="first_name" placeholder="John" required />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">[ FIELD_02 ] Last Name</label>
+                  <label className="form-label">Last Name</label>
                   <input className="form-input" type="text" name="last_name" placeholder="Doe" required />
                 </div>
               </div>
 
               <div className="form-group">
-                <label className="form-label">[ FIELD_03 ] Work Email</label>
+                <label className="form-label">Work Email</label>
                 <input className="form-input" type="email" name="email" placeholder="you@company.com" required />
               </div>
 
               <div className="form-group">
-                <label className="form-label">[ FIELD_04 ] Company / Business</label>
+                <label className="form-label">Company / Business</label>
                 <input className="form-input" type="text" name="company" placeholder="Acme Corp" required />
               </div>
 
               <div className="form-group">
-                <label className="form-label">[ FIELD_05 ] Target Industry</label>
+                <label className="form-label">Target Industry</label>
                 <select className="form-input" name="industry" required defaultValue="">
                   <option value="" disabled>Select your industry</option>
                   <option>Home Services (Roofing, HVAC, Solar)</option>
@@ -144,7 +144,7 @@ export function ContactForm() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">[ FIELD_06 ] Monthly Lead Volume</label>
+                <label className="form-label">Monthly Lead Volume</label>
                 <select className="form-input" name="lead_volume" required defaultValue="">
                   <option value="" disabled>How many leads / month?</option>
                   <option>1–20 leads</option>
@@ -155,7 +155,7 @@ export function ContactForm() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">[ FIELD_07 ] Additional Intel (optional)</label>
+                <label className="form-label">Additional Intel (optional)</label>
                 <textarea
                   className="form-input form-textarea"
                   name="message"
