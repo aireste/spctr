@@ -38,7 +38,8 @@ const Starfield: React.FC<StarfieldProps> = ({
   mouseAdjust = false,
   tiltAdjust = false,
   easing = 1,
-  clickToWarp: _clickToWarp = false,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  clickToWarp = false,
   hyperspace = false,
   warpFactor = 10,
   opacity = 0.1,
