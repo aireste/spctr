@@ -39,30 +39,30 @@ export function ServicesSection() {
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
             <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
-            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Intelligence-grade outreach, built for closing.</p>
+            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Outsourced BDR. Accepted meetings. Fraction of the cost.</p>
           </div>
 
           <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>
             <div ref={card1Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">01</div>
-              <div className="svc-name">WARM LEAD PACKAGES</div>
-              <span className="svc-name-serif">Pre-qualified. Verified. Ready.</span>
+              <div className="svc-name">PAY PER MEETING</div>
+              <span className="svc-name-serif">Outreach done. Meeting accepted. You just show up.</span>
               <p className="svc-desc">
-                Every contact has already shown interest. No cold lists, no wasted dials
-                — just verified prospects ready to have a real conversation.
+                We handle prospecting, outreach, and qualification. You get a calendar
+                invite with a decision-maker who already said yes — nothing else to chase.
               </p>
-              <div className="svc-tag">{"//"} LEAD.PKG — PAY PER LEAD</div>
+              <div className="svc-tag">{"//"} MTG.PKG — PAY PER MEETING</div>
             </div>
 
             <div ref={card2Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">02</div>
-              <div className="svc-name">FULL PIPELINE OPS</div>
-              <span className="svc-name-serif">End-to-end. Hands off.</span>
+              <div className="svc-name">BDR OUTSOURCING</div>
+              <span className="svc-name-serif">Your full BDR function. Monthly. Hands off.</span>
               <p className="svc-desc">
-                We handle everything from first touch to handoff. No research, no chasing
-                — just a ready pipeline, built and run for you.
+                A junior BDR costs $60–80K/year before ramp. We deliver the same
+                output — consistent booked meetings, every month — for a fraction of that.
               </p>
-              <div className="svc-tag">{"//"} PIPELINE.OPS — RETAINER</div>
+              <div className="svc-tag">{"//"} BDR.OPS — RETAINER</div>
             </div>
           </div>
         </div>

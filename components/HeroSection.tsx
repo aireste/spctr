@@ -15,18 +15,19 @@ export function HeroSection() {
 
       <h1 className="hero-h1">
         <span className="h1-white glitch" data-text="YOUR NEXT">YOUR NEXT</span>
-        <span className="h1-hollow">CLIENT IS</span>
-        <span className="h1-serif">already out there.</span>
-        <span className="h1-acid glitch glitch-acid" data-text="SPCTR FINDS THEM.">
-          SPCTR FINDS THEM.
+        <span className="h1-hollow">MEETING IS</span>
+        <span className="h1-serif">already booked.</span>
+        <span className="h1-acid glitch glitch-acid" data-text="SPCTR BOOKS IT.">
+          SPCTR BOOKS IT.
         </span>
       </h1>
 
       <div className="hero-bottom">
         <p className="hero-sub">
-          SPCTR deploys precision outreach to locate, qualify, and deliver leads
-          directly into your pipeline.{" "}
-          <strong style={{ color: "var(--acid)", fontWeight: 900 }}>Targeted. Verified. Ready to intercept.</strong>
+          SPCTR handles the full BDR workflow — prospecting, outreach, qualification —
+          and delivers <strong style={{ color: "var(--acid)", fontWeight: 900 }}>accepted meetings</strong> directly
+          to your calendar. No ramp time. No overhead.{" "}
+          <strong style={{ color: "var(--acid)", fontWeight: 900 }}>Just pipeline.</strong>
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
           <a href="#deploy" className="btn-acid btn-red">DEPLOY SPCTR</a>

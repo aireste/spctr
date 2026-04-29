@@ -40,9 +40,9 @@ export function WhatIsSPCTR() {
           <div className="eyebrow ey-acid">{"//"} IDENT_FILE — What is SPCTR</div>
           <h2 className="section-h2" style={{ whiteSpace: "nowrap" }}>NOT YOUR TYPICAL AGENCY.</h2>
           <p className="about-body" style={{ marginTop: 24, maxWidth: 720 }}>
-            SPCTR runs <span style={{ color: "var(--acid)" }}>lean by design.</span> No account managers, no handoffs — just a{" "}
-            <span style={{ color: "var(--acid)" }}>direct line to the person doing the work.</span> Every client is a{" "}
-            <span style={{ color: "var(--acid)" }}>relationship, not a contract.</span> That&apos;s not a pitch. That&apos;s how this operates.
+            SPCTR runs <span style={{ color: "var(--acid)" }}>lean by design.</span> No account managers, no handoffs, no brief getting lost in a chain of people who never talked to you. You get a{" "}
+            <span style={{ color: "var(--acid)" }}>direct line to the strategist running your campaign</span> — someone who knows your ICP, knows your goals, and is{" "}
+            <span style={{ color: "var(--acid)" }}>personally invested in your results.</span> That&apos;s not a limitation. That&apos;s the advantage.
           </p>
         </div>
 
@@ -51,17 +51,17 @@ export function WhatIsSPCTR() {
           <div className="pillar">
             <div className="pillar-icon" style={{ color: "var(--acid)" }}>{"//"} 01</div>
             <div className="pillar-title">BOUTIQUE BY DESIGN</div>
-            <p className="pillar-desc">Quality over volume. Every client gets direct access, full attention, and a partner invested in their results.</p>
+            <p className="pillar-desc">Small roster. Full attention. You&apos;re not account #47 — every campaign gets the focus it deserves, from the person actually running it.</p>
           </div>
           <div className="pillar">
             <div className="pillar-icon" style={{ color: "var(--orange)" }}>{"//"} 02</div>
             <div className="pillar-title">LOW BARRIER TO ENTRY</div>
-            <p className="pillar-desc">No massive retainers. No long-term lock-in. Start small, scale when you see results.</p>
+            <p className="pillar-desc">No massive retainers. No long-term lock-in. Start with one campaign, see real results, then decide.</p>
           </div>
           <div className="pillar">
             <div className="pillar-icon" style={{ color: "#00d4aa" }}>{"//"} 03</div>
             <div className="pillar-title">RELATIONSHIPS FIRST</div>
-            <p className="pillar-desc">We&apos;re not in it for a quick transaction. We build long-term partnerships with clients who want to grow.</p>
+            <p className="pillar-desc">Every client SPCTR takes on is a partnership, not a transaction. Your pipeline is treated like it matters — because it does.</p>
           </div>
         </div>
 

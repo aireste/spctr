@@ -69,14 +69,14 @@ export function ContactForm() {
           <div className="eyebrow ey-acid">{"//"} DEPLOY.INIT — Initiate Sequence</div>
           <h2 className="section-h2">TIME TO<br />DEPLOY.</h2>
           <p className="contact-body">
-            Tell us about your business and we&apos;ll put together a custom hunt
-            strategy — the right targets, the right approach, the right volume.{" "}
+            Tell us about your business and we&apos;ll scope a meeting pipeline built
+            around your ICP — the right targets, the right outreach, the right volume.{" "}
             <strong>No obligation. No boilerplate pitch.</strong>
           </p>
           <ul className="expect-list">
             <li><span className="expect-arrow">→</span> Response within 24 hours</li>
-            <li><span className="expect-arrow">→</span> Custom strategy call, no sales script</li>
-            <li><span className="expect-arrow">→</span> Pay only for leads that meet your criteria</li>
+            <li><span className="expect-arrow">→</span> Custom strategy call — no sales script</li>
+            <li><span className="expect-arrow">→</span> Pay only for accepted meetings that meet your criteria</li>
             <li><span className="expect-arrow">→</span> Cancel any time — no lock-in contracts</li>
           </ul>
         </div>
@@ -138,12 +138,12 @@ export function ContactForm() {
 
 
               <div className="form-group">
-                <label className="form-label">Monthly Lead Volume</label>
+                <label className="form-label">Monthly Meeting Target</label>
                 <select className="form-input" name="lead_volume" required defaultValue="">
-                  <option value="" disabled>How many leads / month?</option>
-                  <option>1–20 leads</option>
-                  <option>20–60 leads</option>
-                  <option>60+ leads</option>
+                  <option value="" disabled>How many meetings / month?</option>
+                  <option>1–10 meetings</option>
+                  <option>10–30 meetings</option>
+                  <option>30+ meetings</option>
                   <option>Not sure yet</option>
                 </select>
               </div>

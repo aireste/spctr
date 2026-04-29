@@ -43,32 +43,32 @@ export function RatesSection() {
         <div className="card-grid grid-col-2">
           <div ref={card1Ref} className="rate-card rate-card-orange reveal">
             <div className="rate-tag" style={{ color: "var(--orange)", borderColor: "var(--orange)" }}>
-              PAY PER LEAD
+              PAY PER MEETING
             </div>
-            <div className="rate-title">Only Pay For Results</div>
+            <div className="rate-title">Only Pay For Accepted Meetings</div>
             <p className="rate-desc">
-              You pay a flat fee for each warm lead delivered. No interest, no charge. As
-              low-risk as it gets.
+              Flat fee per booked meeting with a qualified decision-maker. No meeting,
+              no charge. The lowest-risk way to see what SPCTR delivers before scaling.
             </p>
             <div className="rate-best">
               <span style={{ color: "var(--orange)" }}>{"//"} </span>
-              Best for businesses testing the waters or with a tighter budget.
+              Best for businesses testing the model or running targeted campaigns.
             </div>
           </div>
 
           <div ref={card2Ref} className="rate-card rate-card-teal reveal">
             <div className="rate-tag" style={{ color: "#ff0d1a", borderColor: "#ff0d1a" }}>
-              MONTHLY RETAINER
+              BDR RETAINER
             </div>
-            <div className="rate-title">Consistent Pipeline, Every Month</div>
+            <div className="rate-title">Your Outsourced BDR. Every Month.</div>
             <p className="rate-desc">
-              A fixed monthly fee for an agreed volume of warm leads delivered on a
-              regular cadence. Predictable cost, predictable output. Best value for
-              businesses ready to scale.
+              Fixed monthly fee. Agreed meeting volume. We run your full outbound
+              function — infrastructure, outreach, qualification, booking — so your
+              team only talks to people who already said yes.
             </p>
             <div className="rate-best">
               <span style={{ color: "#ff0d1a" }}>{"//"} </span>
-              Best for businesses ready to commit to consistent growth.
+              Best for teams ready to replace or supplement an in-house BDR.
             </div>
           </div>
         </div>
