@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import * as topojson from "topojson-client";
 
-const ACID = 0xc0fc04;
+const ACID    = 0xc0fc04;
+const ARC_SEGS = 80;
 
 function latLon(lat: number, lon: number, r = 1): THREE.Vector3 {
   const phi   = (90 - lat)  * (Math.PI / 180);
@@ -16,182 +17,120 @@ function latLon(lat: number, lon: number, r = 1): THREE.Vector3 {
   );
 }
 
-// Arc endpoint cities (indexed by ARC_PAIRS)
+function eio(t: number): number {
+  return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+}
+
 const CITIES: [number, number][] = [
-  [40.71,  -74.01],  // 0  New York
-  [51.51,   -0.13],  // 1  London
-  [35.68,  139.65],  // 2  Tokyo
-  [37.77, -122.42],  // 3  San Francisco
-  [ 1.35,  103.82],  // 4  Singapore
-  [-33.87, 151.21],  // 5  Sydney
-  [25.20,   55.27],  // 6  Dubai
-  [-23.55, -46.63],  // 7  São Paulo
-  [19.08,   72.88],  // 8  Mumbai
-  [48.86,    2.35],  // 9  Paris
+  [40.71,  -74.01],  //  0  New York
+  [51.51,   -0.13],  //  1  London
+  [35.68,  139.65],  //  2  Tokyo
+  [37.77, -122.42],  //  3  San Francisco
+  [ 1.35,  103.82],  //  4  Singapore
+  [-33.87, 151.21],  //  5  Sydney
+  [25.20,   55.27],  //  6  Dubai
+  [-23.55, -46.63],  //  7  São Paulo
+  [19.08,   72.88],  //  8  Mumbai
+  [48.86,    2.35],  //  9  Paris
+  [55.75,   37.62],  // 10  Moscow
+  [41.88,  -87.63],  // 11  Chicago
+  [43.65,  -79.38],  // 12  Toronto
+  [19.43,  -99.13],  // 13  Mexico City
+  [-34.61, -58.38],  // 14  Buenos Aires
+  [37.57,  126.98],  // 15  Seoul
+  [39.91,  116.39],  // 16  Beijing
+  [31.23,  121.47],  // 17  Shanghai
+  [52.37,    4.90],  // 18  Amsterdam
+  [ 6.45,    3.39],  // 19  Lagos
+  [30.06,   31.25],  // 20  Cairo
+  [-26.20,  28.04],  // 21  Johannesburg
+  [34.05, -118.24],  // 22  Los Angeles
+  [52.52,   13.40],  // 23  Berlin
 ];
 
 const ARC_PAIRS: [number, number][] = [
+  // original backbone
   [0, 1], [1, 9], [0, 7], [2, 4], [4, 5], [1, 6],
   [6, 8], [3, 4], [0, 9], [1, 2], [0, 2], [3, 7],
   [5, 6], [1, 8], [2, 5], [0, 6], [7, 9], [3, 6],
   [8, 4], [9, 6],
+  // extended network
+  [0, 10], [1, 10], [9, 10], [10, 6], [10, 16],
+  [0, 11], [11, 3], [11, 12], [0, 12], [12, 1],
+  [13, 0], [13, 3], [13, 7], [14, 7], [14, 0],
+  [15, 2], [15, 17], [16, 17], [16, 2], [17, 4],
+  [18, 1], [18, 23], [23, 9], [23, 10], [18, 9],
+  [19, 1], [19, 20], [20, 6], [20, 21], [21, 5],
+  [21, 19], [6, 20], [8, 20], [19, 7], [14, 21],
+  [22, 3], [22, 13], [22, 4], [22, 7], [0, 22],
+  [15, 6], [16, 6], [17, 8], [15, 4], [5, 4],
 ];
 
-// Population density: [lat, lon, density 0–1]
-// density drives dot size tier and glow intensity
 const POPULATION: [number, number, number][] = [
   // East Asia
-  [31.23, 121.47, 1.00], // Shanghai
-  [39.91, 116.39, 0.95], // Beijing
-  [35.68, 139.69, 0.95], // Tokyo
-  [22.54, 114.06, 0.90], // Shenzhen
-  [23.13, 113.26, 0.90], // Guangzhou
-  [37.57, 126.98, 0.88], // Seoul
-  [22.28, 114.16, 0.85], // Hong Kong
-  [34.69, 135.50, 0.82], // Osaka
-  [30.59, 114.31, 0.80], // Wuhan
-  [29.56, 106.55, 0.78], // Chongqing
-  [30.66, 104.07, 0.75], // Chengdu
-  [30.27, 120.15, 0.75], // Hangzhou
-  [32.06, 118.79, 0.72], // Nanjing
-  [34.27, 108.95, 0.68], // Xi'an
-  [36.06, 120.38, 0.65], // Qingdao
-  [41.80, 123.43, 0.62], // Shenyang
-  [26.07, 119.30, 0.65], // Fuzhou
+  [31.23, 121.47, 1.00], [39.91, 116.39, 0.95], [35.68, 139.69, 0.95],
+  [22.54, 114.06, 0.90], [23.13, 113.26, 0.90], [37.57, 126.98, 0.88],
+  [22.28, 114.16, 0.85], [34.69, 135.50, 0.82], [30.59, 114.31, 0.80],
+  [29.56, 106.55, 0.78], [30.66, 104.07, 0.75], [30.27, 120.15, 0.75],
+  [32.06, 118.79, 0.72], [34.27, 108.95, 0.68], [36.06, 120.38, 0.65],
+  [41.80, 123.43, 0.62], [26.07, 119.30, 0.65],
   // South Asia
-  [28.61,  77.23, 0.95], // Delhi
-  [19.08,  72.88, 0.92], // Mumbai
-  [22.57,  88.36, 0.88], // Kolkata
-  [23.73,  90.40, 0.88], // Dhaka
-  [24.86,  67.01, 0.82], // Karachi
-  [12.97,  77.59, 0.80], // Bangalore
-  [13.08,  80.27, 0.75], // Chennai
-  [17.38,  78.49, 0.74], // Hyderabad
-  [31.55,  74.34, 0.70], // Lahore
-  [27.70,  85.31, 0.60], // Kathmandu
+  [28.61,  77.23, 0.95], [19.08,  72.88, 0.92], [22.57,  88.36, 0.88],
+  [23.73,  90.40, 0.88], [24.86,  67.01, 0.82], [12.97,  77.59, 0.80],
+  [13.08,  80.27, 0.75], [17.38,  78.49, 0.74], [31.55,  74.34, 0.70],
+  [27.70,  85.31, 0.60],
   // Southeast Asia
-  [-6.21, 106.85, 0.85], // Jakarta
-  [14.60, 120.98, 0.80], // Manila
-  [13.75, 100.52, 0.76], // Bangkok
-  [10.82, 106.63, 0.74], // Ho Chi Minh
-  [ 1.35, 103.82, 0.80], // Singapore
-  [21.03, 105.85, 0.68], // Hanoi
-  [ 3.14, 101.69, 0.65], // Kuala Lumpur
-  [16.87,  96.19, 0.60], // Yangon
+  [-6.21, 106.85, 0.85], [14.60, 120.98, 0.80], [13.75, 100.52, 0.76],
+  [10.82, 106.63, 0.74], [ 1.35, 103.82, 0.80], [21.03, 105.85, 0.68],
+  [ 3.14, 101.69, 0.65], [16.87,  96.19, 0.60],
   // Europe
-  [51.51,  -0.13, 0.85], // London
-  [55.75,  37.62, 0.82], // Moscow
-  [48.86,   2.35, 0.80], // Paris
-  [41.01,  28.95, 0.78], // Istanbul
-  [52.52,  13.40, 0.75], // Berlin
-  [41.90,  12.50, 0.70], // Rome
-  [40.42,  -3.70, 0.70], // Madrid
-  [52.37,   4.90, 0.68], // Amsterdam
-  [59.95,  30.32, 0.66], // St. Petersburg
-  [50.85,   4.35, 0.65], // Brussels
-  [48.14,  11.58, 0.65], // Munich
-  [52.23,  21.01, 0.64], // Warsaw
-  [47.38,   8.54, 0.60], // Zurich
-  [48.21,  16.37, 0.60], // Vienna
-  [37.98,  23.73, 0.60], // Athens
+  [51.51,  -0.13, 0.85], [55.75,  37.62, 0.82], [48.86,   2.35, 0.80],
+  [41.01,  28.95, 0.78], [52.52,  13.40, 0.75], [41.90,  12.50, 0.70],
+  [40.42,  -3.70, 0.70], [52.37,   4.90, 0.68], [59.95,  30.32, 0.66],
+  [50.85,   4.35, 0.65], [48.14,  11.58, 0.65], [52.23,  21.01, 0.64],
+  [47.38,   8.54, 0.60], [48.21,  16.37, 0.60], [37.98,  23.73, 0.60],
   // North America — US Northeast corridor
-  [40.71,  -74.01, 0.92], // New York
-  [42.36,  -71.06, 0.78], // Boston
-  [39.95,  -75.17, 0.76], // Philadelphia
-  [38.91,  -77.04, 0.74], // Washington DC
-  [39.30,  -76.61, 0.66], // Baltimore
-  [40.44,  -79.99, 0.64], // Pittsburgh
-  [41.50,  -81.69, 0.63], // Cleveland
-  [42.89,  -78.87, 0.60], // Buffalo
-  [41.76,  -72.68, 0.58], // Hartford
-  [41.82,  -71.41, 0.57], // Providence
-  [37.54,  -77.43, 0.60], // Richmond
+  [40.71,  -74.01, 0.92], [42.36,  -71.06, 0.78], [39.95,  -75.17, 0.76],
+  [38.91,  -77.04, 0.74], [39.30,  -76.61, 0.66], [40.44,  -79.99, 0.64],
+  [41.50,  -81.69, 0.63], [42.89,  -78.87, 0.60], [41.76,  -72.68, 0.58],
+  [41.82,  -71.41, 0.57], [37.54,  -77.43, 0.60],
   // US Southeast
-  [33.75,  -84.39, 0.76], // Atlanta
-  [25.77,  -80.19, 0.70], // Miami
-  [35.23,  -80.84, 0.65], // Charlotte
-  [35.78,  -78.64, 0.62], // Raleigh
-  [36.17,  -86.78, 0.62], // Nashville
-  [30.33,  -81.66, 0.60], // Jacksonville
-  [27.95,  -82.46, 0.62], // Tampa
-  [28.54,  -81.38, 0.60], // Orlando
-  [29.95,  -90.07, 0.62], // New Orleans
-  [32.36,  -86.30, 0.56], // Montgomery
-  [35.15,  -90.05, 0.57], // Memphis
-  [33.52,  -86.80, 0.60], // Birmingham
+  [33.75,  -84.39, 0.76], [25.77,  -80.19, 0.70], [35.23,  -80.84, 0.65],
+  [35.78,  -78.64, 0.62], [36.17,  -86.78, 0.62], [30.33,  -81.66, 0.60],
+  [27.95,  -82.46, 0.62], [28.54,  -81.38, 0.60], [29.95,  -90.07, 0.62],
+  [32.36,  -86.30, 0.56], [35.15,  -90.05, 0.57], [33.52,  -86.80, 0.60],
   // US Midwest
-  [41.88,  -87.63, 0.84], // Chicago
-  [39.10,  -94.58, 0.64], // Kansas City
-  [38.63,  -90.20, 0.64], // St. Louis
-  [39.96,  -82.99, 0.63], // Columbus
-  [39.77,  -86.16, 0.62], // Indianapolis
-  [42.33,  -83.05, 0.66], // Detroit
-  [43.05,  -76.15, 0.58], // Syracuse
-  [44.98,  -93.27, 0.64], // Minneapolis
-  [43.04,  -87.91, 0.60], // Milwaukee
-  [41.25,  -95.93, 0.58], // Omaha
+  [41.88,  -87.63, 0.84], [39.10,  -94.58, 0.64], [38.63,  -90.20, 0.64],
+  [39.96,  -82.99, 0.63], [39.77,  -86.16, 0.62], [42.33,  -83.05, 0.66],
+  [43.05,  -76.15, 0.58], [44.98,  -93.27, 0.64], [43.04,  -87.91, 0.60],
+  [41.25,  -95.93, 0.58],
   // US South / Texas
-  [29.76,  -95.37, 0.80], // Houston
-  [32.78,  -96.80, 0.74], // Dallas
-  [29.42, -98.49, 0.66],  // San Antonio
-  [30.27,  -97.74, 0.68], // Austin
-  [35.47, -97.51, 0.60],  // Oklahoma City
-  [32.45, -99.73, 0.55],  // Abilene area
-  [31.75, -106.49, 0.56], // El Paso
-  [20.97,  -89.62, 0.64], // Mérida
-  [20.67, -103.35, 0.68], // Guadalajara
-  [25.67, -100.31, 0.66], // Monterrey
-  [19.43,  -99.13, 0.88], // Mexico City
+  [29.76,  -95.37, 0.80], [32.78,  -96.80, 0.74], [29.42, -98.49, 0.66],
+  [30.27,  -97.74, 0.68], [35.47, -97.51, 0.60],  [32.45, -99.73, 0.55],
+  [31.75, -106.49, 0.56], [20.97,  -89.62, 0.64], [20.67, -103.35, 0.68],
+  [25.67, -100.31, 0.66], [19.43,  -99.13, 0.88],
   // US West
-  [37.77, -122.42, 0.78], // San Francisco
-  [34.05, -118.24, 0.88], // Los Angeles
-  [32.72, -117.16, 0.70], // San Diego
-  [33.45, -112.07, 0.66], // Phoenix
-  [36.17, -115.14, 0.64], // Las Vegas
-  [36.75, -119.77, 0.62], // Fresno
-  [38.58, -121.49, 0.62], // Sacramento
-  [47.61, -122.33, 0.68], // Seattle
-  [45.52, -122.68, 0.64], // Portland
-  [40.76, -111.89, 0.60], // Salt Lake City
-  [39.74, -104.98, 0.62], // Denver
-  [35.08, -106.65, 0.57], // Albuquerque
-  [43.61, -116.20, 0.55], // Boise
+  [37.77, -122.42, 0.78], [34.05, -118.24, 0.88], [32.72, -117.16, 0.70],
+  [33.45, -112.07, 0.66], [36.17, -115.14, 0.64], [36.75, -119.77, 0.62],
+  [38.58, -121.49, 0.62], [47.61, -122.33, 0.68], [45.52, -122.68, 0.64],
+  [40.76, -111.89, 0.60], [39.74, -104.98, 0.62], [35.08, -106.65, 0.57],
+  [43.61, -116.20, 0.55],
   // Canada
-  [43.65,  -79.38, 0.74], // Toronto
-  [49.25, -123.12, 0.66], // Vancouver
-  [45.51,  -73.55, 0.66], // Montreal
-  [51.05, -114.07, 0.60], // Calgary
-  [53.55, -113.49, 0.58], // Edmonton
-  [45.42,  -75.70, 0.58], // Ottawa
-  [49.90,  -97.14, 0.54], // Winnipeg
-  [46.82,  -71.22, 0.54], // Quebec City
+  [43.65,  -79.38, 0.74], [49.25, -123.12, 0.66], [45.51,  -73.55, 0.66],
+  [51.05, -114.07, 0.60], [53.55, -113.49, 0.58], [45.42,  -75.70, 0.58],
+  [49.90,  -97.14, 0.54], [46.82,  -71.22, 0.54],
   // South America
-  [-23.55, -46.63, 0.86], // São Paulo
-  [-22.91, -43.17, 0.80], // Rio
-  [-34.61, -58.38, 0.80], // Buenos Aires
-  [  4.71, -74.07, 0.70], // Bogotá
-  [-12.05, -77.04, 0.65], // Lima
-  [-33.45, -70.67, 0.64], // Santiago
-  [-15.78, -47.93, 0.58], // Brasília
-  [ 10.48, -66.88, 0.58], // Caracas
+  [-23.55, -46.63, 0.86], [-22.91, -43.17, 0.80], [-34.61, -58.38, 0.80],
+  [  4.71, -74.07, 0.70], [-12.05, -77.04, 0.65], [-33.45, -70.67, 0.64],
+  [-15.78, -47.93, 0.58], [ 10.48, -66.88, 0.58],
   // Middle East / Africa
-  [30.06,  31.25, 0.80], // Cairo
-  [25.20,  55.27, 0.76], // Dubai
-  [35.69,  51.42, 0.72], // Tehran
-  [24.69,  46.72, 0.70], // Riyadh
-  [33.34,  44.40, 0.65], // Baghdad
-  [32.08,  34.78, 0.62], // Tel Aviv
-  [ 6.45,   3.39, 0.76], // Lagos
-  [-26.20,  28.04, 0.66], // Johannesburg
-  [ 9.02,  38.75, 0.60], // Addis Ababa
-  [-1.29,  36.82, 0.58], // Nairobi
-  [-4.32,  15.32, 0.58], // Kinshasa
-  [36.74,   3.06, 0.55], // Algiers
-  [-33.93,  18.42, 0.55], // Cape Town
+  [30.06,  31.25, 0.80], [25.20,  55.27, 0.76], [35.69,  51.42, 0.72],
+  [24.69,  46.72, 0.70], [33.34,  44.40, 0.65], [32.08,  34.78, 0.62],
+  [ 6.45,   3.39, 0.76], [-26.20,  28.04, 0.66], [ 9.02,  38.75, 0.60],
+  [-1.29,  36.82, 0.58], [-4.32,  15.32, 0.58], [36.74,   3.06, 0.55],
+  [-33.93,  18.42, 0.55],
   // Australia
-  [-33.87, 151.21, 0.70], // Sydney
-  [-37.81, 144.96, 0.66], // Melbourne
-  [-27.47, 153.03, 0.55], // Brisbane
+  [-33.87, 151.21, 0.70], [-37.81, 144.96, 0.66], [-27.47, 153.03, 0.55],
 ];
 
 export function GlobeCanvas() {
@@ -244,7 +183,7 @@ export function GlobeCanvas() {
         countries.features.forEach((feat: Record<string, unknown>) => {
           const geom = feat.geometry;
           if (!geom) return;
-          const polys = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
+          const polys = (geom as any).type === "Polygon" ? [(geom as any).coordinates] : (geom as any).coordinates;
           polys.forEach((poly: number[][][]) => {
             poly.forEach((ring: number[][]) => {
               const pts: THREE.Vector3[] = [];
@@ -267,7 +206,6 @@ export function GlobeCanvas() {
       count: number, spreadDeg: number
     ): [number, number, number][] {
       return Array.from({ length: count }, () => {
-        // Gaussian spread so dots cluster toward the center
         const u = Math.random() || 1e-10;
         const v = Math.random();
         const r = Math.sqrt(-2 * Math.log(u));
@@ -300,8 +238,8 @@ export function GlobeCanvas() {
       return new THREE.CanvasTexture(c);
     }
 
-    const coreTex = makeGlowTex(0.25);  // tight bright core
-    const glowTex = makeGlowTex(0.08);  // wide soft halo
+    const coreTex = makeGlowTex(0.25);
+    const glowTex = makeGlowTex(0.08);
 
     // ── Population density layer ───────────────────────────────────
     const mega = CLUSTERS.filter(d => d[2] >= 0.88);
@@ -320,12 +258,10 @@ export function GlobeCanvas() {
       }));
     }
 
-    // Cores — sharp circular dots
     globe.add(makePoints(high, 0.048, 1.00, coreTex));
     globe.add(makePoints(mid,  0.026, 0.85, coreTex));
     globe.add(makePoints(low,  0.014, 0.65, coreTex));
 
-    // Glow halos — soft circular bloom, additive so they stack
     const glowHigh = makePoints(high, 0.160, 0.18, glowTex, true);
     const glowMid  = makePoints(mid,  0.090, 0.12, glowTex, true);
     const glowMega = makePoints(mega, 0.280, 0.10, glowTex, true);
@@ -333,35 +269,65 @@ export function GlobeCanvas() {
     globe.add(glowMid);
     globe.add(glowMega);
 
-    // ── Arc connection cities ─────────────────────────────────────
+    // ── City vectors ─────────────────────────────────────────────
     const cityVecs = CITIES.map(([la, lo]) => latLon(la, lo, 1.009));
 
-    // ── Connection arcs ───────────────────────────────────────────
-    interface ArcState { curve: THREE.QuadraticBezierCurve3; t: number; speed: number; }
-    const arcs: ArcState[] = ARC_PAIRS.map(([a, b]) => {
+    // ── Animated arcs — draw → hold → fade → sleep cycle ─────────
+    type ArcPhase = 'sleep' | 'draw' | 'hold' | 'fade';
+    interface ArcState {
+      curve: THREE.QuadraticBezierCurve3;
+      line: THREE.Line;
+      mat: THREE.LineBasicMaterial;
+      geo: THREE.BufferGeometry;
+      comet: THREE.Mesh[];
+      cometMats: THREE.MeshBasicMaterial[];
+      phase: ArcPhase;
+      t: number;
+      drawDur: number;
+      holdDur: number;
+      fadeDur: number;
+      sleepDur: number;
+    }
+
+    const COMET_OFFSETS = [0, 0.05, 0.12];
+    const COMET_OPACITIES = [1.0, 0.5, 0.22];
+    const COMET_SIZES    = [0.013, 0.009, 0.006];
+
+    const arcs: ArcState[] = ARC_PAIRS.map(([a, b], i) => {
       const p1  = cityVecs[a].clone();
       const p2  = cityVecs[b].clone();
-      const mid = p1.clone().add(p2).normalize().multiplyScalar(1.18 + Math.random() * 0.06);
-      return { curve: new THREE.QuadraticBezierCurve3(p1, mid, p2), t: Math.random(), speed: 0.0018 + Math.random() * 0.001 };
+      const midP = p1.clone().add(p2).normalize().multiplyScalar(1.18 + Math.random() * 0.06);
+      const curve = new THREE.QuadraticBezierCurve3(p1, midP, p2);
+
+      const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(ARC_SEGS));
+      geo.setDrawRange(0, 0);
+      const mat = new THREE.LineBasicMaterial({ color: ACID, transparent: true, opacity: 0 });
+      const line = new THREE.Line(geo, mat);
+      globe.add(line);
+
+      const cometMats = COMET_SIZES.map(() =>
+        new THREE.MeshBasicMaterial({ color: ACID, transparent: true, opacity: 0, depthWrite: false })
+      );
+      const comet = COMET_SIZES.map((r, j) => {
+        const dot = new THREE.Mesh(new THREE.SphereGeometry(r, 8, 8), cometMats[j]);
+        dot.visible = false;
+        globe.add(dot);
+        return dot;
+      });
+
+      return {
+        curve, line, mat, geo, comet, cometMats,
+        phase: 'sleep' as ArcPhase,
+        t: Math.random() * 8.0, // fully random initial offset so nothing fires in sync
+        drawDur: 2.2 + Math.random() * 1.8,
+        holdDur: 0.6 + Math.random() * 0.5,
+        fadeDur: 0.8 + Math.random() * 0.4,
+        sleepDur: 1.5 + Math.random() * 4.0,
+      };
     });
 
-    arcs.forEach(({ curve }) => {
-      globe.add(new THREE.Line(
-        new THREE.BufferGeometry().setFromPoints(curve.getPoints(60)),
-        new THREE.LineBasicMaterial({ color: ACID, transparent: true, opacity: 0.18 }),
-      ));
-    });
-
-    const dotGeo  = new THREE.SphereGeometry(0.012, 8, 8);
-    const arcDots = arcs.map(() => {
-      const dot = new THREE.Mesh(dotGeo, new THREE.MeshBasicMaterial({ color: ACID }));
-      globe.add(dot);
-      return dot;
-    });
 
     // ── Initial orientation ───────────────────────────────────────
-    // Center lon = -90 - (rotation.y × 57.3°).
-    // -1.2 → center ≈ lon -21° (South Atlantic, SA left / Africa right).
     globe.rotation.y = -1.2;
     globe.rotation.x = 0.18;
 
@@ -369,11 +335,10 @@ export function GlobeCanvas() {
     const MAX_TILT = Math.PI / 2.2;
     let isDragging = false;
     let prevX = 0, prevY = 0;
-    let autoRotate = false; // stays false until section scrolls into view
+    let autoRotate = false;
     let hasActivated = false;
     let velX = 0, velY = 0;
 
-    // Start spinning once the globe section enters the viewport
     const scrollObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasActivated) {
@@ -405,26 +370,82 @@ export function GlobeCanvas() {
     window.addEventListener("pointermove", onPointerMove);
 
     // ── Animate ───────────────────────────────────────────────────
+    const clock = new THREE.Clock();
     let frameId: number;
     let glowT = 0;
 
     const tick = () => {
       frameId = requestAnimationFrame(tick);
+      const dt = Math.min(clock.getDelta(), 0.05);
 
       if (autoRotate) globe.rotation.y += 0.0018;
       globe.rotation.y += velX;
       globe.rotation.x  = Math.max(-MAX_TILT, Math.min(MAX_TILT, globe.rotation.x + velY));
       velX *= 0.88; velY *= 0.88;
 
-      // Breathe the glow halos
+      // Breathe glow halos
       glowT += 0.018;
       (glowMega.material as THREE.PointsMaterial).opacity = 0.08 + Math.sin(glowT)        * 0.06;
       (glowHigh.material as THREE.PointsMaterial).opacity = 0.14 + Math.sin(glowT + 0.6)  * 0.08;
       (glowMid.material  as THREE.PointsMaterial).opacity = 0.09 + Math.sin(glowT + 1.4)  * 0.05;
 
-      arcs.forEach((arc, i) => {
-        arc.t = (arc.t + arc.speed) % 1;
-        arcDots[i].position.copy(arc.curve.getPoint(arc.t));
+      // Arc state machine
+      arcs.forEach((arc) => {
+        arc.t += dt;
+        switch (arc.phase) {
+          case 'sleep':
+            if (arc.t >= arc.sleepDur) { arc.phase = 'draw'; arc.t = 0; }
+            break;
+
+          case 'draw': {
+            const raw = Math.min(arc.t / arc.drawDur, 1);
+            const p   = eio(raw);
+            // Fade line in quickly then hold at full opacity
+            arc.mat.opacity = 0.7 * Math.min(raw * 4, 1);
+            arc.geo.setDrawRange(0, Math.floor(p * ARC_SEGS) + 1);
+            // Comet tip with trailing dots
+            arc.comet.forEach((dot, i) => {
+              const cometT = Math.max(0, p - COMET_OFFSETS[i]);
+              dot.visible = cometT > 0.001;
+              if (dot.visible) {
+                dot.position.copy(arc.curve.getPoint(Math.min(cometT, 1)));
+                arc.cometMats[i].opacity = COMET_OPACITIES[i] * Math.min(raw * 5, 1);
+              }
+            });
+            if (raw >= 1) { arc.phase = 'hold'; arc.t = 0; }
+            break;
+          }
+
+          case 'hold': {
+            arc.mat.opacity = 0.7;
+            arc.geo.setDrawRange(0, ARC_SEGS + 1);
+            // Comet dissolves at the end city during hold
+            const holdP = Math.min(arc.t / arc.holdDur, 1);
+            arc.comet.forEach((dot, i) => {
+              dot.visible = i === 0 && holdP < 0.8;
+              if (dot.visible) {
+                dot.position.copy(arc.curve.getPoint(1));
+                arc.cometMats[0].opacity = COMET_OPACITIES[0] * (1 - holdP / 0.8);
+              }
+            });
+            if (arc.t >= arc.holdDur) { arc.phase = 'fade'; arc.t = 0; }
+            break;
+          }
+
+          case 'fade': {
+            const p = Math.min(arc.t / arc.fadeDur, 1);
+            arc.mat.opacity = 0.7 * eio(1 - p);
+            arc.comet.forEach(dot => { dot.visible = false; });
+            if (p >= 1) {
+              arc.mat.opacity = 0;
+              arc.geo.setDrawRange(0, 0);
+              arc.phase = 'sleep';
+              arc.t = 0;
+              arc.sleepDur = 1.5 + Math.random() * 4.0;
+            }
+            break;
+          }
+        }
       });
 
       renderer.render(scene, camera);
