@@ -23,6 +23,7 @@ const config: Config = {
         barlow: ["var(--font-barlow)", "sans-serif"],
         mono: ["var(--font-space-mono)", "monospace"],
         playfair: ["var(--font-playfair)", "serif"],
+        kh: ["var(--font-kh)", "sans-serif"],
       },
       animation: {
         glitch: "glitch 4s steps(1) infinite",
