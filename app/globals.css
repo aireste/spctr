@@ -407,9 +407,9 @@
     font-family: var(--font-space-mono), 'Space Mono', monospace;
     font-size: 10px; letter-spacing: 1px; color: #F2F2F8;
     display: flex; align-items: flex-start; gap: 10px;
-    padding: 12px 16px; border-left: 2px solid var(--border); transition: all 0.2s;
+    padding: 12px 16px; transition: all 0.2s;
   }
-  .expect-list li:hover { border-left-color: var(--acid); color: var(--white-t); }
+  .expect-list li:hover { color: var(--white-t); background: rgba(192,252,4,0.03); }
   .expect-arrow { color: var(--acid); flex-shrink: 0; }
 
   /* ── FORM ──────────────────────────── */
