@@ -287,7 +287,7 @@
   .svc-card:nth-child(2)::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--teal); }
 
   .svc-num {
-    font-family: var(--font-barlow), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-space-mono), 'IBM Plex Mono', monospace;
     font-weight: 900; font-size: 44px; line-height: 1;
     color: var(--dim); margin-bottom: 8px; transition: color 0.3s;
   }
@@ -295,7 +295,7 @@
   .svc-card:nth-child(2):hover .svc-num { color: var(--teal); }
 
   .svc-name {
-    font-family: var(--font-barlow), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-space-mono), 'IBM Plex Mono', monospace;
     font-weight: 700; font-size: 20px; text-transform: uppercase;
     letter-spacing: 2px; margin-bottom: 6px; color: var(--white-t);
   }
@@ -334,7 +334,7 @@
     border: 1px solid; display: inline-block; padding: 5px 12px; margin-bottom: 20px;
   }
   .rate-title {
-    font-family: var(--font-barlow), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-space-mono), 'IBM Plex Mono', monospace;
     font-weight: 700; font-size: 30px; text-transform: uppercase;
     letter-spacing: 1px; color: var(--white-t); margin-bottom: 16px; line-height: 1.1;
   }
@@ -376,11 +376,11 @@
     border-color: rgba(192,252,4,0.35);
   }
   .pillar-icon {
-    font-family: var(--font-space-mono), 'Space Mono', monospace;
+    font-family: var(--font-space-mono), 'IBM Plex Mono', monospace;
     font-size: 9px; letter-spacing: 3px; margin-bottom: 10px;
   }
   .pillar-title {
-    font-family: var(--font-barlow), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-space-mono), 'IBM Plex Mono', monospace;
     font-weight: 700; font-size: 20px; text-transform: uppercase;
     letter-spacing: 1px; color: var(--white-t); margin-bottom: 8px;
   }
