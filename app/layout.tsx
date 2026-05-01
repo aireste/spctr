@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Space_Mono, Playfair_Display } from "next/font/google";
+import { Barlow_Condensed, IBM_Plex_Mono, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ScanlineOverlay } from "@/components/ScanlineOverlay";
 
@@ -10,9 +11,10 @@ const barlow = Barlow_Condensed({
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
+  style: ["normal", "italic"],
   variable: "--font-space-mono",
   display: "swap",
 });
@@ -22,6 +24,16 @@ const playfair = Playfair_Display({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   variable: "--font-playfair",
+  display: "swap",
+});
+
+const khInterference = localFont({
+  src: [
+    { path: "../public/fonts/KHInterferenceTRIAL-Light.woff2",   weight: "300" },
+    { path: "../public/fonts/KHInterferenceTRIAL-Regular.woff2", weight: "400" },
+    { path: "../public/fonts/KHInterferenceTRIAL-Bold.woff2",    weight: "700" },
+  ],
+  variable: "--font-kh",
   display: "swap",
 });
 
@@ -43,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${barlow.variable} ${spaceMono.variable} ${playfair.variable} antialiased bg-background`}
+        className={`${barlow.variable} ${ibmPlexMono.variable} ${playfair.variable} ${khInterference.variable} antialiased bg-background`}
       >
         <ScanlineOverlay />
         {children}
