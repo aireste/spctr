@@ -69,12 +69,17 @@ export function ServicesSection() {
 
         {/* Right — interactive globe */}
         <div className="svc-globe" style={{ position: "relative", width: "100%" }}>
-          <div style={{
-            position: "absolute", inset: 0, borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(170,255,0,0.07) 0%, transparent 65%)",
-            pointerEvents: "none", zIndex: 0,
-          }} />
-          <div style={{ borderRadius: "50%", overflow: "hidden", width: "100%", aspectRatio: "1 / 1" }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "1 / 1" }}>
+            {/* Corner vignette — soft edge fade, no circular clip */}
+            <div style={{
+              position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
+              background: "radial-gradient(ellipse 82% 82% at 50% 50%, transparent 52%, rgba(0,0,0,0.8) 78%, #000 100%)",
+            }} />
+            {/* Corner brackets */}
+            <div style={{ position: "absolute", top: 0, left: 0, width: 20, height: 20, borderTop: "1px solid rgba(192,252,4,0.3)", borderLeft: "1px solid rgba(192,252,4,0.3)", zIndex: 3, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", top: 0, right: 0, width: 20, height: 20, borderTop: "1px solid rgba(192,252,4,0.3)", borderRight: "1px solid rgba(192,252,4,0.3)", zIndex: 3, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, width: 20, height: 20, borderBottom: "1px solid rgba(192,252,4,0.3)", borderLeft: "1px solid rgba(192,252,4,0.3)", zIndex: 3, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: 0, right: 0, width: 20, height: 20, borderBottom: "1px solid rgba(192,252,4,0.3)", borderRight: "1px solid rgba(192,252,4,0.3)", zIndex: 3, pointerEvents: "none" }} />
             <GlobeCanvas />
           </div>
         </div>
