@@ -132,7 +132,7 @@ export function ContactForm() {
 
               <div className="form-group">
                 <label className="form-label">Company / Business</label>
-                <input className="form-input" type="text" name="company" placeholder="Acme Corp" required />
+                <input className="form-input" type="text" name="company" placeholder="Apple Inc" required />
               </div>
 
 
