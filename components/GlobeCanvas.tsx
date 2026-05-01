@@ -134,7 +134,8 @@ const POPULATION: [number, number, number][] = [
 ];
 
 export function GlobeCanvas() {
-  const mountRef = useRef<HTMLDivElement>(null);
+  const mountRef   = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -448,6 +449,11 @@ export function GlobeCanvas() {
         }
       });
 
+      if (counterRef.current) {
+        counterRef.current.textContent = String(
+          arcs.filter(a => a.phase === "draw" || a.phase === "hold").length
+        ).padStart(2, "0");
+      }
       renderer.render(scene, camera);
     };
     tick();
@@ -463,5 +469,17 @@ export function GlobeCanvas() {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100%", height: "100%" }} />;
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <div ref={mountRef} style={{ width: "100%", height: "100%" }} />
+      <div style={{
+        position: "absolute", bottom: 16, left: 16, zIndex: 10, pointerEvents: "none",
+        fontFamily: "var(--font-space-mono), 'Space Mono', monospace",
+        fontSize: "9px", letterSpacing: "3px", textTransform: "uppercase",
+        color: "rgba(192,252,4,0.55)",
+      }}>
+        ACTIVE NODES: <span ref={counterRef}>00</span>
+      </div>
+    </div>
+  );
 }

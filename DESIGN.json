@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-01T00:00:00Z",
+  "title": "Design System: SPCTR",
+  "extensions": {
+    "colorMeta": {
+      "signal-green":    { "role": "primary",   "displayName": "Signal Green",    "canonical": "oklch(94% 0.29 130)", "tonalRamp": ["oklch(12% 0.04 130)", "oklch(22% 0.08 130)", "oklch(35% 0.13 130)", "oklch(48% 0.18 130)", "oklch(62% 0.23 130)", "oklch(74% 0.27 130)", "oklch(84% 0.28 130)", "oklch(94% 0.29 130)"] },
+      "alarm-red":       { "role": "secondary",  "displayName": "Alarm Red",       "canonical": "oklch(59% 0.25 25)",  "tonalRamp": ["oklch(12% 0.04 25)",  "oklch(22% 0.08 25)",  "oklch(33% 0.13 25)",  "oklch(43% 0.18 25)",  "oklch(52% 0.22 25)",  "oklch(59% 0.25 25)",  "oklch(72% 0.18 25)",  "oklch(86% 0.09 25)"] },
+      "burn-orange":     { "role": "secondary",  "displayName": "Burn Orange",     "canonical": "oklch(65% 0.22 38)",  "tonalRamp": ["oklch(12% 0.04 38)",  "oklch(24% 0.08 38)",  "oklch(36% 0.12 38)",  "oklch(48% 0.17 38)",  "oklch(57% 0.20 38)",  "oklch(65% 0.22 38)",  "oklch(77% 0.16 38)",  "oklch(89% 0.08 38)"] },
+      "magenta-pulse":   { "role": "tertiary",   "displayName": "Magenta Pulse",   "canonical": "oklch(51% 0.27 332)", "tonalRamp": ["oklch(12% 0.04 332)", "oklch(22% 0.09 332)", "oklch(32% 0.15 332)", "oklch(41% 0.21 332)", "oklch(51% 0.27 332)", "oklch(62% 0.22 332)", "oklch(74% 0.15 332)", "oklch(87% 0.07 332)"] },
+      "electric-violet": { "role": "tertiary",   "displayName": "Electric Violet", "canonical": "oklch(38% 0.28 265)", "tonalRamp": ["oklch(10% 0.05 265)", "oklch(18% 0.10 265)", "oklch(26% 0.16 265)", "oklch(33% 0.22 265)", "oklch(38% 0.28 265)", "oklch(50% 0.22 265)", "oklch(65% 0.15 265)", "oklch(82% 0.07 265)"] },
+      "cold-cyan":       { "role": "tertiary",   "displayName": "Cold Cyan",       "canonical": "oklch(93% 0.14 195)", "tonalRamp": ["oklch(12% 0.03 195)", "oklch(25% 0.05 195)", "oklch(40% 0.08 195)", "oklch(56% 0.11 195)", "oklch(70% 0.13 195)", "oklch(80% 0.14 195)", "oklch(88% 0.14 195)", "oklch(93% 0.14 195)"] },
+      "field-olive":     { "role": "tertiary",   "displayName": "Field Olive",     "canonical": "oklch(67% 0.17 135)", "tonalRamp": ["oklch(12% 0.03 135)", "oklch(25% 0.07 135)", "oklch(38% 0.10 135)", "oklch(50% 0.13 135)", "oklch(60% 0.16 135)", "oklch(67% 0.17 135)", "oklch(76% 0.13 135)", "oklch(87% 0.07 135)"] },
+      "void-black":      { "role": "neutral",    "displayName": "Void Black",      "canonical": "oklch(0% 0 0)",       "tonalRamp": ["oklch(0% 0 0)",       "oklch(3% 0.003 264)",  "oklch(6% 0.005 264)",  "oklch(10% 0.005 264)", "oklch(16% 0.005 264)", "oklch(25% 0.005 264)", "oklch(45% 0.003 264)", "oklch(70% 0.003 264)"] },
+      "near-void":       { "role": "neutral",    "displayName": "Near Void",       "canonical": "oklch(6% 0.005 264)", "tonalRamp": ["oklch(0% 0 0)",       "oklch(3% 0.003 264)",  "oklch(6% 0.005 264)",  "oklch(10% 0.005 264)", "oklch(16% 0.005 264)", "oklch(25% 0.005 264)", "oklch(45% 0.003 264)", "oklch(70% 0.003 264)"] },
+      "panel-surface":   { "role": "neutral",    "displayName": "Panel Surface",   "canonical": "oklch(10% 0.005 264)","tonalRamp": ["oklch(0% 0 0)",       "oklch(6% 0.005 264)",  "oklch(10% 0.005 264)", "oklch(16% 0.005 264)", "oklch(25% 0.005 264)", "oklch(40% 0.005 264)", "oklch(60% 0.003 264)", "oklch(80% 0.002 264)"] },
+      "boundary-line":   { "role": "neutral",    "displayName": "Boundary Line",   "canonical": "oklch(16% 0.005 264)","tonalRamp": ["oklch(0% 0 0)",       "oklch(6% 0.005 264)",  "oklch(10% 0.005 264)", "oklch(16% 0.005 264)", "oklch(25% 0.005 264)", "oklch(40% 0.005 264)", "oklch(60% 0.003 264)", "oklch(80% 0.002 264)"] },
+      "deep-dim":        { "role": "neutral",    "displayName": "Deep Dim",        "canonical": "oklch(20% 0.01 264)", "tonalRamp": ["oklch(0% 0 0)",       "oklch(8% 0.007 264)",  "oklch(14% 0.009 264)", "oklch(20% 0.01 264)",  "oklch(30% 0.008 264)", "oklch(45% 0.007 264)", "oklch(62% 0.005 264)", "oklch(80% 0.003 264)"] },
+      "indigo-depth":    { "role": "neutral",    "displayName": "Indigo Depth",    "canonical": "oklch(25% 0.05 264)", "tonalRamp": ["oklch(8% 0.02 264)",  "oklch(14% 0.03 264)",  "oklch(20% 0.04 264)",  "oklch(25% 0.05 264)",  "oklch(35% 0.05 264)",  "oklch(48% 0.05 264)",  "oklch(64% 0.04 264)",  "oklch(80% 0.02 264)"] },
+      "bone-static":     { "role": "neutral",    "displayName": "Bone Static",     "canonical": "oklch(95% 0.005 100)","tonalRamp": ["oklch(30% 0.003 100)", "oklch(45% 0.004 100)", "oklch(58% 0.004 100)", "oklch(68% 0.004 100)", "oklch(77% 0.005 100)", "oklch(85% 0.005 100)", "oklch(91% 0.005 100)", "oklch(95% 0.005 100)"] },
+      "muted-signal":    { "role": "neutral",    "displayName": "Muted Signal",    "canonical": "oklch(86% 0.007 270)","tonalRamp": ["oklch(30% 0.003 270)", "oklch(45% 0.004 270)", "oklch(58% 0.005 270)", "oklch(68% 0.006 270)", "oklch(76% 0.006 270)", "oklch(82% 0.007 270)", "oklch(86% 0.007 270)", "oklch(92% 0.005 270)"] }
+    },
+    "typographyMeta": {
+      "display":      { "displayName": "Display",      "purpose": "Hero headline only. Uppercase. Hollow-stroke and acid-fill variants." },
+      "headline":     { "displayName": "Headline",     "purpose": "Section h2 titles. Uppercase, tight leading." },
+      "title":        { "displayName": "Title",        "purpose": "Card names, panel headings, rate titles." },
+      "body":         { "displayName": "Body",         "purpose": "Section copy, card descriptions. Max 65–70ch." },
+      "label":        { "displayName": "Label",        "purpose": "Eyebrows, nav links, button text, form labels, tags. Most-used role." },
+      "serif-accent": { "displayName": "Serif Accent", "purpose": "One italic line per section below the headline. Tonal counterpoint only." }
+    },
+    "shadows": [
+      { "name": "hover-lift",   "value": "0 16px 40px rgba(0,0,0,0.6), 0 0 24px rgba(192,252,4,0.12)", "purpose": "Pillar card hover. Combines depth lift with diffuse acid glow." },
+      { "name": "button-glow",  "value": "0 0 30px rgba(192,252,4,0.2)",                                "purpose": "Acid-fill button hover only. Soft halo, 20% opacity. Never at rest." }
+    ],
+    "motion": [
+      { "name": "ease-out-standard", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default easing for all state transitions and enter animations." },
+      { "name": "rise-in",           "value": "opacity 0s → 1, translateY(24px) → 0, duration 0.7s, ease-out-standard", "purpose": "Hero and section entrance. Staggered 0.2s per element." },
+      { "name": "glitch-cycle",      "value": "5s steps(1) cycle, active 76%–98% window", "purpose": "Periodic glitch on display text. One element per viewport maximum." },
+      { "name": "ticker",            "value": "translateX(0) → translateX(-50%), 28s linear infinite", "purpose": "Marquee strip. Two copies concatenated." },
+      { "name": "blink",             "value": "opacity 1 → 0.15 → 1, 2s ease-in-out infinite", "purpose": "Ping dot. Signal-alive indicator." },
+      { "name": "scan-line",         "value": "top: -5% → 105%, 6s linear infinite", "purpose": "Scanline bar sweep on section overlays." }
+    ],
+    "breakpoints": [
+      { "name": "mobile",  "value": "767px",  "notes": "Nav links hidden, single-column layout, globe hidden in services." },
+      { "name": "tablet",  "value": "1023px", "notes": "Reduced padding, compressed gaps, two-column layouts preserved." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button Primary (Acid)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA. Parallelogram clip-path, Signal Green fill. Used for positive activation actions.",
+      "html": "<button class=\"ds-btn-primary\">DEPLOY SPCTR</button>",
+      "css": ".ds-btn-primary { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #000000; background: #c0fc04; border: none; padding: 18px 40px; cursor: crosshair; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); transition: background 0.2s, transform 0.2s, box-shadow 0.2s; display: inline-block; text-decoration: none; } .ds-btn-primary:hover { background: #eeeee6; transform: translateY(-2px); box-shadow: 0 0 30px rgba(192,252,4,0.2); } .ds-btn-primary:focus-visible { outline: 1px solid #c0fc04; outline-offset: 3px; }"
+    },
+    {
+      "name": "Button Red (Deploy)",
+      "kind": "button",
+      "refersTo": "button-red",
+      "description": "High-urgency CTA. Alarm Red fill, 6px parallelogram cut. Used for nav deploy button and irreversible actions.",
+      "html": "<button class=\"ds-btn-red\">DEPLOY SPCTR</button>",
+      "css": ".ds-btn-red { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #ffffff; background: #ff1a1a; border: none; padding: 10px 24px; cursor: crosshair; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); transition: background 0.2s, color 0.2s; display: inline-block; } .ds-btn-red:hover { background: #eeeee6; color: #000000; } .ds-btn-red:focus-visible { outline: 1px solid #ff1a1a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Button Ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action. Transparent, no clip-path. Hover shifts to Signal Green with acid glow.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">See how it works →</a>",
+      "css": ".ds-btn-ghost { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: #f2f2f8; background: transparent; border: none; cursor: crosshair; text-decoration: none; display: inline-block; transition: color 0.2s, text-shadow 0.2s; } .ds-btn-ghost:hover { color: #c0fc04; text-shadow: 0 0 12px rgba(192,252,4,0.6); } .ds-btn-ghost:focus-visible { outline: 1px solid #c0fc04; outline-offset: 3px; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Section identifier. Horizontal rule + uppercase label in the section's assigned accent color. One accent per section.",
+      "html": "<div class=\"ds-eyebrow ds-ey-acid\">// SERVICES</div>",
+      "css": ".ds-eyebrow { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 5px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; } .ds-eyebrow::before { content: ''; width: 20px; height: 1px; background: currentColor; flex-shrink: 0; } .ds-ey-acid { color: #c0fc04; } .ds-ey-red { color: #ff1a1a; } .ds-ey-orange { color: #ff5500; } .ds-ey-magenta { color: #ea027e; } .ds-ey-violet { color: #3601fb; } .ds-ey-cyan { color: #01ffff; } .ds-ey-olive { color: #59b41d; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Service offering card. Gap-1px grid member. Large muted numeral that activates on hover.",
+      "html": "<div class=\"ds-svc-card\"><div class=\"ds-svc-num\">01</div><div class=\"ds-svc-name\">BDR RETAINER</div><span class=\"ds-svc-name-serif\">Full outbound, handled.</span><p class=\"ds-svc-desc\">SPCTR runs the full BDR workflow and delivers accepted meetings directly to your calendar.</p><span class=\"ds-svc-tag\">LEARN MORE →</span></div>",
+      "css": ".ds-svc-card { background: #0a0a0a; padding: 24px; position: relative; transition: background 0.3s; display: flex; flex-direction: column; min-height: 280px; border-top: 2px solid #c0fc04; } .ds-svc-card:hover { background: #111111; } .ds-svc-num { font-family: 'Space Mono', monospace; font-weight: 900; font-size: 44px; line-height: 1; color: #222230; margin-bottom: 8px; transition: color 0.3s; } .ds-svc-card:hover .ds-svc-num { color: #c0fc04; } .ds-svc-name { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; color: #eeeee6; } .ds-svc-name-serif { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 13px; color: #f2f2f8; margin-bottom: 10px; display: block; font-weight: 400; } .ds-svc-desc { font-size: 12px; line-height: 1.85; color: #f2f2f8; font-family: 'Space Mono', monospace; flex: 1; } .ds-svc-tag { margin-top: 16px; padding: 5px 10px; align-self: flex-start; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; border: 1px solid #1c1c1c; color: #222230; transition: all 0.3s; } .ds-svc-card:hover .ds-svc-tag { color: #f2f2f8; border-color: #f2f2f8; }"
+    },
+    {
+      "name": "Rate Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Pricing tier card. Colored top border per tier. Hover lifts with translateY.",
+      "html": "<div class=\"ds-rate-card\"><span class=\"ds-rate-tag\" style=\"color:#c0fc04;border-color:#c0fc04;\">PAY PER MEETING</span><div class=\"ds-rate-title\">PPM</div><p class=\"ds-rate-desc\">$2,500 setup + $1,500/meeting. 90-day minimum.</p><div class=\"ds-rate-best\">Best for: IT resellers who want results before committing to a retainer.</div></div>",
+      "css": ".ds-rate-card { background: #0a0a0a; padding: 48px 44px; transition: transform 0.3s, background 0.3s; position: relative; display: flex; flex-direction: column; border: 1px solid transparent; border-top: 2px solid #c0fc04; } .ds-rate-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 4px; text-transform: uppercase; border: 1px solid; display: inline-block; padding: 5px 12px; margin-bottom: 20px; } .ds-rate-title { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 30px; text-transform: uppercase; letter-spacing: 1px; color: #eeeee6; margin-bottom: 16px; line-height: 1.1; } .ds-rate-desc { font-family: 'Space Mono', monospace; font-size: 11px; line-height: 1.9; color: #f2f2f8; margin-bottom: 24px; flex: 1; } .ds-rate-best { font-family: 'Space Mono', monospace; font-size: 10px; line-height: 1.7; color: #f2f2f8; padding-top: 16px; border-top: 1px solid #1c1c1c; } .ds-rate-card:hover { background: #111111; transform: translateY(-4px); }"
+    },
+    {
+      "name": "Form Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Text input field. Square corners, Boundary Line border, Signal Green focus. Crosshair cursor.",
+      "html": "<div class=\"ds-form-group\"><label class=\"ds-form-label\">COMPANY</label><input class=\"ds-form-input\" type=\"text\" placeholder=\"ACME CORP\" /></div>",
+      "css": ".ds-form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; } .ds-form-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #f2f2f8; } .ds-form-input { background: #000000; border: 1px solid #1c1c1c; color: #eeeee6; font-family: 'Space Mono', monospace; font-size: 12px; padding: 12px 16px; outline: none; transition: border-color 0.2s; width: 100%; letter-spacing: 1px; cursor: crosshair; border-radius: 0; } .ds-form-input::placeholder { color: #f2f2f8; } .ds-form-input:focus { border-color: #c0fc04; }"
+    },
+    {
+      "name": "Nav Bar",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed top nav. Frosted dark background, scroll-activated acid border, KH Interference logo with Signal Green period.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-logo\">SPCTR<em>.</em></div><ul class=\"ds-nav-links\"><li><a href=\"#\">What is SPCTR</a></li><li><a href=\"#\">Services</a></li><li><a href=\"#\">Rates</a></li></ul><button class=\"ds-nav-btn\">Deploy SPCTR</button></nav>",
+      "css": ".ds-nav { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 64px; border-bottom: 1px solid #1c1c1c; background: rgba(5,5,10,0.92); backdrop-filter: blur(16px); } .ds-nav-logo { font-family: 'KH Interference', 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: 12px; color: #eeeee6; text-transform: uppercase; } .ds-nav-logo em { color: #c0fc04; font-style: normal; } .ds-nav-links { display: flex; gap: 36px; list-style: none; margin: 0; padding: 0; } .ds-nav-links a { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #f2f2f8; text-decoration: none; transition: color 0.2s; } .ds-nav-links a:hover { color: #c0fc04; } .ds-nav-btn { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #ffffff; background: #ff1a1a; border: none; padding: 10px 24px; cursor: crosshair; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); transition: background 0.2s, color 0.2s; } .ds-nav-btn:hover { background: #eeeee6; color: #000000; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signal from the Black",
+    "overview": "SPCTR's design system is an operational surface — a dark intelligence brief that surfaces only what needs to be seen. The visual language is borrowed from classified infrastructure: narrow-channel text, hard geometric type, earned color signals. Nothing decorates. Everything informs.\n\nThe palette is unusually wide for a brand site — seven named accent colors — but the system holds through strict rationing. Accent colors appear as eyebrow markers, card distinguishers, and glitch channels, never as fills or backgrounds. Signal Green is the lone exception: it marks confirmation, activation, and primary action at no more than 15% of any surface. The ground stays void-black. The signal earns its moment.\n\nTypography pairs heavy geometric uppercase display (KH Interference) against Space Mono for all UI text, with Playfair Display italic appearing once per section as a deliberate tonal break — the single moment of curve in an otherwise hard-edged system.",
+    "keyCharacteristics": [
+      "Deep void-black ground with tonal surface layering (void → near-void → panel surface)",
+      "One primary accent (Signal Green) plus six supporting chromatic channels, all strictly rationed",
+      "Parallelogram clip-path buttons: the signature shape, non-negotiable",
+      "Monospaced UI throughout — no humanist sans anywhere in the interface",
+      "Glitch, scanlines, and crosshair cursor as earned operational texture",
+      "KH Interference + Playfair italic as the type system's defining tension"
+    ],
+    "rules": [
+      { "name": "The Rationed Signal Rule",   "body": "Signal Green and all six accent colors are state markers and section identifiers, not fill colors. Any screen where accent colors collectively exceed 15% of visible surface area has broken the system.",                   "section": "colors" },
+      { "name": "The Seven-Channel Rule",     "body": "Each section is assigned one eyebrow color. That color appears nowhere else in that section. The variety in the palette exists to give each section its own operational frequency, not to create a rainbow.",      "section": "colors" },
+      { "name": "The Mono-First Rule",        "body": "Every UI string — buttons, labels, nav, form fields, metadata — runs in Space Mono. No humanist or geometric sans enters the interface. Fall back to system monospace, never to a sans-serif.",                   "section": "typography" },
+      { "name": "The One Serif Rule",         "body": "Playfair Display appears at most once per visible section: one italic line below the headline. Never inside cards, never on buttons, never repeated.",                                                             "section": "typography" },
+      { "name": "The Flat-by-Default Rule",   "body": "Surfaces never carry ambient shadows at rest. Shadow is a hover state, not a resting aesthetic. Use tonal surface shifts and 1px Boundary Line borders for resting depth.",                                        "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the parallelogram clip-path on all primary buttons.",
+      "Do assign exactly one eyebrow accent color per section.",
+      "Do keep all UI text in Space Mono.",
+      "Do limit Playfair Display to one italic line per section.",
+      "Do introduce surface depth with tonal background shifts before reaching for shadows.",
+      "Do support prefers-reduced-motion — all animations are cosmetic.",
+      "Do keep Void Black as the absolute background ground."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text with a gradient).",
+      "Don't use glassmorphism decoratively — the nav blur is the only permitted exception.",
+      "Don't let Signal Green fill more than 15% of any screen.",
+      "Don't use bubbly SaaS optimism: rounded cards, pastel gradients, friendly illustrations.",
+      "Don't build hero-metric templates (large number, gradient accent, supporting stats).",
+      "Don't add border-radius to any interactive component.",
+      "Don't stack multiple glitch text elements in the same viewport.",
+      "Don't increase the scanline overlay opacity above 8%.",
+      "Don't use bright or saturated backgrounds — accent colors are signals, never grounds."
+    ]
+  }
+}
