@@ -38,7 +38,7 @@ export function WhatIsSPCTR() {
         {/* Top: headline + paragraph stacked */}
         <div ref={topRef} className="reveal" style={{ marginBottom: 52 }}>
           <div className="eyebrow ey-acid">{"//"} IDENT_FILE — What is SPCTR</div>
-          <h2 className="section-h2" style={{ whiteSpace: "nowrap" }}>NOT YOUR TYPICAL AGENCY.</h2>
+          <h2 className="section-h2">NOT YOUR TYPICAL<br />AGENCY.</h2>
           <p className="about-body" style={{ marginTop: 24, maxWidth: 720 }}>
             SPCTR runs <span style={{ color: "var(--acid)" }}>lean by design.</span> No account managers, no handoffs, no brief getting lost in a chain of people who never talked to you. You get a{" "}
             <span style={{ color: "var(--acid)" }}>direct line to the strategist running your campaign</span> — someone who knows your ICP, knows your goals, and is{" "}
