@@ -60,8 +60,8 @@ export function WhatIsSPCTR() {
           </div>
           <div className="pillar">
             <div className="pillar-icon" style={{ color: "#00d4aa" }}>{"//"} 03</div>
-            <div className="pillar-title">RELATIONSHIPS FIRST</div>
-            <p className="pillar-desc">Every client SPCTR takes on is a partnership, not a transaction. Your pipeline is treated like it matters — because it does.</p>
+            <div className="pillar-title">YOU KNOW WHO'S RUNNING IT</div>
+            <p className="pillar-desc">No mystery team. No &apos;your account manager will follow up.&apos; The person you talk to is the person pulling your list, writing your sequences, and watching your inbox. That&apos;s it.</p>
           </div>
         </div>
 

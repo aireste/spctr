@@ -69,8 +69,7 @@ export function ContactForm() {
           <div className="eyebrow ey-acid">{"//"} DEPLOY.INIT — Initiate Sequence</div>
           <h2 className="section-h2">TIME TO<br />DEPLOY.</h2>
           <p className="contact-body">
-            Tell us about your business and we&apos;ll scope a meeting pipeline built
-            around your ICP — the right targets, the right outreach, the right volume.{" "}
+            Tell us about your business and we&apos;ll map out who we&apos;re going after, how we&apos;re reaching them, and what a realistic meeting volume looks like for your market.{" "}
             <strong>No obligation. No boilerplate pitch.</strong>
           </p>
           <ul className="expect-list">
