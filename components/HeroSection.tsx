@@ -24,10 +24,7 @@ export function HeroSection() {
 
       <div className="hero-bottom">
         <p className="hero-sub">
-          SPCTR handles the full BDR workflow — prospecting, outreach, qualification —
-          and delivers <strong style={{ color: "var(--acid)", fontWeight: 900 }}>accepted meetings</strong> directly
-          to your calendar. No ramp time. No overhead.{" "}
-          <strong style={{ color: "var(--acid)", fontWeight: 900 }}>Just pipeline.</strong>
+          SPCTR books <strong style={{ color: "var(--acid)", fontWeight: 900 }}>qualified meetings</strong> with decision-makers who <strong style={{ color: "var(--acid)", fontWeight: 900 }}>already said yes.</strong> We run the full BDR operation — prospecting, outreach, qualification — and deliver straight to your calendar. <strong style={{ color: "var(--acid)", fontWeight: 900 }}>No ramp time. No overhead.</strong>
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
           <a href="#deploy" className="btn-acid btn-red">DEPLOY SPCTR</a>
