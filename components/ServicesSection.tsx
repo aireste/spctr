@@ -39,7 +39,7 @@ export function ServicesSection() {
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
             <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
-            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Outsourced BDR. Accepted meetings. Fraction of the cost.</p>
+            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Accepted meetings. Outsourced BDR. You choose.</p>
           </div>
 
           <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>
