@@ -58,9 +58,9 @@ export function RatesSection() {
 
           <div ref={card2Ref} className="rate-card rate-card-teal reveal">
             <div className="rate-tag" style={{ color: "#ff0d1a", borderColor: "#ff0d1a" }}>
-              BDR RETAINER
+              MONTHLY RETAINER
             </div>
-            <div className="rate-title">YOUR OUTSOURCED BDR. EVERY MONTH.</div>
+            <div className="rate-title">YOUR FULL OUTBOUND FUNCTION. EVERY MONTH.</div>
             <p className="rate-desc">
               Fixed monthly fee. Agreed meeting volume. We run your full outbound
               function — infrastructure, outreach, qualification, booking — so your
@@ -68,7 +68,7 @@ export function RatesSection() {
             </p>
             <div className="rate-best">
               <span style={{ color: "#ff0d1a" }}>{"//"} </span>
-              Best for teams ready to replace or supplement an in-house BDR.
+              Best for teams ready to scale outbound without hiring a sales rep.
             </div>
           </div>
         </div>
