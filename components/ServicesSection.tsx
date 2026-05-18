@@ -39,7 +39,7 @@ export function ServicesSection() {
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
             <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
-            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Accepted meetings. Outsourced BDR. You choose.</p>
+            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Full-cycle outbound. We book the meeting, you close the deal.</p>
           </div>
 
           <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>
@@ -56,13 +56,13 @@ export function ServicesSection() {
 
             <div ref={card2Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">02</div>
-              <div className="svc-name">BDR OUTSOURCING</div>
-              <span className="svc-name-serif">Your full BDR function. Monthly. Hands off.</span>
+              <div className="svc-name">FULL PIPELINE OPS</div>
+              <span className="svc-name-serif">Your full outbound function. Monthly. Hands off.</span>
               <p className="svc-desc">
-                A junior BDR costs $60–80K/year before ramp. We deliver the same
+                A junior sales hire costs $60–80K/year before ramp. We deliver the same
                 output — consistent booked meetings, every month — for a fraction of that.
               </p>
-              <div className="svc-tag">{"//"} BDR.OPS — RETAINER</div>
+              <div className="svc-tag">{"//"} OBD.OPS — RETAINER</div>
             </div>
           </div>
         </div>
