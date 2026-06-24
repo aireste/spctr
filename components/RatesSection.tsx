@@ -37,8 +37,8 @@ export function RatesSection() {
       {/* Content above dots */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <div className="eyebrow ey-acid">{"//"} ACCESS_TIERS — How It Works</div>
-        <h2 className="section-h2">SIMPLE,<br />FAIR PRICING.</h2>
-        <p className="section-sub-serif">Two models. No surprises. No fine print.</p>
+        <h2 className="section-h2">YOU ONLY PAY<br />FOR RESULTS.</h2>
+        <p className="section-sub-serif">Two models. Both built around one principle: we win when you win.</p>
 
         <div className="card-grid grid-col-2">
           <div ref={card1Ref} className="rate-card rate-card-orange reveal">
@@ -48,7 +48,7 @@ export function RatesSection() {
             <div className="rate-title">ONLY PAY FOR ACCEPTED MEETINGS</div>
             <p className="rate-desc">
               Flat fee per booked meeting with a qualified decision-maker. No meeting,
-              no charge. The lowest-risk way to see what SPCTR delivers before scaling.
+              no charge. If we don&apos;t deliver, you don&apos;t pay. That&apos;s not a guarantee — it&apos;s the model.
             </p>
             <div className="rate-best">
               <span style={{ color: "var(--orange)" }}>{"//"} </span>
@@ -62,9 +62,9 @@ export function RatesSection() {
             </div>
             <div className="rate-title">YOUR FULL OUTBOUND FUNCTION. EVERY MONTH.</div>
             <p className="rate-desc">
-              Fixed monthly fee. Agreed meeting volume. We run your full outbound
-              function — infrastructure, outreach, qualification, booking — so your
-              team only talks to people who already said yes.
+              Fixed monthly fee. Agreed meeting targets built into every contract — you
+              always know what you&apos;re paying for. We run your full outbound function so
+              your team only talks to people who already said yes.
             </p>
             <div className="rate-best">
               <span style={{ color: "#ff0d1a" }}>{"//"} </span>
