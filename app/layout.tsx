@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, IBM_Plex_Mono, Playfair_Display } from "next/font/google";
+import { Barlow_Condensed, IBM_Plex_Mono, Martian_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ScanlineOverlay } from "@/components/ScanlineOverlay";
@@ -19,11 +19,10 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const martianMono = Martian_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "700"],
+  variable: "--font-martian",
   display: "swap",
 });
 
@@ -55,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${barlow.variable} ${ibmPlexMono.variable} ${playfair.variable} ${khInterference.variable} antialiased bg-background`}
+        className={`${barlow.variable} ${ibmPlexMono.variable} ${martianMono.variable} ${khInterference.variable} antialiased bg-background`}
       >
         <ScanlineOverlay />
         {children}
