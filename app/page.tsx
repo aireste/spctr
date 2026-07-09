@@ -120,6 +120,7 @@ export default function Home() {
         </div>
         <div className="footer-copy">© 2026 SPCTR — v1.0.0 — All Rights Reserved</div>
         <ul className="footer-links">
+          <li><a href="https://estejg.vercel.app" target="_blank" rel="noopener noreferrer">About Me</a></li>
           <li><a href="https://www.linkedin.com/in/esteban-guerra-b3631415b/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
         </ul>
