@@ -221,11 +221,27 @@
     position: relative; z-index: 1;
   }
 
+  .hero-sub-group {
+    display: flex; flex-direction: column; gap: 18px;
+  }
+
+  .hero-lead {
+    font-size: 17px; line-height: 1.55; color: #FFFFFF;
+    font-family: var(--font-space-mono), 'Space Mono', monospace;
+    font-weight: 700;
+  }
+
   .hero-sub {
     font-size: 13px; line-height: 1.9; color: #F2F2F8;
     font-family: var(--font-space-mono), 'Space Mono', monospace;
   }
   .hero-sub strong { color: var(--white-t); }
+
+  .svc-intro {
+    font-size: 13px; line-height: 1.9; color: #F2F2F8;
+    font-family: var(--font-space-mono), 'Space Mono', monospace;
+    max-width: 620px;
+  }
 
   /* ── BUTTONS ───────────────────────── */
   .btn-acid {

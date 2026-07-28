@@ -23,11 +23,10 @@ export function HeroSection() {
       </h1>
 
       <div className="hero-bottom">
-        <p className="hero-sub">
-          SPCTR <strong style={{ color: "var(--acid)", fontWeight: 900 }}>books you meetings with buyers who need what you sell.</strong> We handle the finding, the outreach, the qualification. You get a calendar invite with a decision-maker who <strong style={{ color: "var(--acid)", fontWeight: 900 }}>already said yes.</strong> <strong style={{ color: "var(--acid)", fontWeight: 900 }}>No ramp time. No overhead.</strong>
+        <p className="hero-lead">
+          SPCTR <strong style={{ color: "var(--acid)", fontWeight: 900 }}>books you meetings with buyers who need what you sell.</strong>
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
-          <a href="#deploy" className="btn-acid btn-red">DEPLOY SPCTR</a>
           <a href="#what" className="btn-ghost">See how it works →</a>
         </div>
       </div>
