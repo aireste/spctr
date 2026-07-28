@@ -39,17 +39,16 @@ export function ServicesSection() {
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
             <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
-            <p className="section-sub-serif" style={{ marginBottom: 20 }}>We find who needs you, and put the meeting on your calendar. You close the deal.</p>
+            <p className="svc-intro" style={{ marginBottom: 20 }}>We handle the finding, the outreach, the qualification. You get a calendar invite with a decision-maker who <strong style={{ color: "var(--acid)" }}>already said yes.</strong> <strong style={{ color: "var(--acid)" }}>No ramp time. No overhead.</strong></p>
           </div>
 
           <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>
             <div ref={card1Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">01</div>
               <div className="svc-name">PAY PER MEETING</div>
-              <span className="svc-name-serif">Outreach done. Meeting accepted. You just show up.</span>
               <p className="svc-desc">
-                We handle prospecting, outreach, and qualification. You get a calendar
-                invite with a decision-maker who already said yes — nothing else to chase.
+                You only pay when a meeting actually lands on your calendar. No retainer,
+                no risk — if we don&apos;t book it, you don&apos;t owe us a cent.
               </p>
               <div className="svc-tag">{"//"} MTG.PKG — PAY PER MEETING</div>
             </div>
@@ -57,7 +56,6 @@ export function ServicesSection() {
             <div ref={card2Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
               <div className="svc-num">02</div>
               <div className="svc-name">FULL PIPELINE OPS</div>
-              <span className="svc-name-serif">Your full outbound function. Monthly. Hands off.</span>
               <p className="svc-desc">
                 A junior sales hire costs $60–80K/year before ramp. We deliver the same
                 output — consistent booked meetings, every month — for a fraction of that.
