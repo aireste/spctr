@@ -39,7 +39,7 @@ export function ServicesSection() {
           <div ref={headRef} className="reveal" style={{ marginBottom: 20 }}>
             <div className="eyebrow ey-acid">{"//"} CAP_MODULE_v3.1 — Capabilities</div>
             <h2 className="section-h2">WHAT SPCTR<br />DELIVERS</h2>
-            <p className="section-sub-serif" style={{ marginBottom: 20 }}>Full-cycle outbound. We book the meeting, you close the deal.</p>
+            <p className="section-sub-serif" style={{ marginBottom: 20 }}>We find who needs you, and put the meeting on your calendar. You close the deal.</p>
           </div>
 
           <div className="svc-cards-row" style={{ display: "flex", flexDirection: "row", gap: 16 }}>

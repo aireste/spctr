@@ -24,7 +24,7 @@ export function HeroSection() {
 
       <div className="hero-bottom">
         <p className="hero-sub">
-          SPCTR books <strong style={{ color: "var(--acid)", fontWeight: 900 }}>qualified meetings</strong> with decision-makers who <strong style={{ color: "var(--acid)", fontWeight: 900 }}>already said yes.</strong> We run the full outbound operation — prospecting, outreach, qualification — and deliver straight to your calendar. <strong style={{ color: "var(--acid)", fontWeight: 900 }}>No ramp time. No overhead.</strong>
+          SPCTR <strong style={{ color: "var(--acid)", fontWeight: 900 }}>books you meetings with buyers who need what you sell.</strong> We handle the finding, the outreach, the qualification. You get a calendar invite with a decision-maker who <strong style={{ color: "var(--acid)", fontWeight: 900 }}>already said yes.</strong> <strong style={{ color: "var(--acid)", fontWeight: 900 }}>No ramp time. No overhead.</strong>
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
           <a href="#deploy" className="btn-acid btn-red">DEPLOY SPCTR</a>
