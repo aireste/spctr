@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPCTR // OPS REFERENCE — FOUNDATIONAL DOCS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Space+Mono:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acid:   #c0fc04;
+      --orange: #ff5500;
+      --pink:   #ea027e;
+      --blue:   #3601fb;
+      --teal:   #00d4aa;
+      --red:    #ff0d1a;
+      --white:  #f0f0f0;
+      --dim:    #666;
+      --border: #1a1a1a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000;
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 56px;
+      border-bottom: 1px solid var(--border);
+      page-break-after: always;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .sys-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cover-body {
+      padding: 80px 0 40px;
+    }
+
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--acid);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--acid);
+    }
+
+    h1.cover-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(72px, 10vw, 120px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .cover-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--dim);
+      max-width: 560px;
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .meta-item {
+      padding-right: 24px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta-value {
+      font-size: 13px;
+      color: var(--white);
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 56px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      margin-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+    }
+
+    h2.section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--dim);
+      max-width: 640px;
+    }
+
+    /* ── DOC GRID ── */
+    .doc-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    /* ── DOC CARD ── */
+    .doc-card {
+      border: 1px solid var(--border);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 80px 1fr 280px;
+      gap: 32px;
+      align-items: start;
+      transition: border-color 0.2s;
+    }
+
+    .doc-card:hover {
+      border-color: #2a2a2a;
+    }
+
+    /* accent top border per doc */
+    .doc-card.acid   { border-top: 2px solid var(--acid); }
+    .doc-card.orange { border-top: 2px solid var(--orange); }
+    .doc-card.teal   { border-top: 2px solid var(--teal); }
+    .doc-card.pink   { border-top: 2px solid var(--pink); }
+    .doc-card.blue   { border-top: 2px solid var(--blue); }
+    .doc-card.red    { border-top: 2px solid var(--red); }
+    .doc-card.white  { border-top: 2px solid #444; }
+
+    .doc-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 1;
+      color: #1e1e1e;
+      padding-top: 4px;
+    }
+
+    .doc-main {}
+
+    .doc-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid;
+    }
+
+    .tag-internal  { color: var(--acid);   border-color: var(--acid);   }
+    .tag-client    { color: var(--orange);  border-color: var(--orange);  }
+    .tag-legal     { color: var(--teal);    border-color: var(--teal);    }
+    .tag-shared    { color: var(--pink);    border-color: var(--pink);    }
+
+    .doc-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .doc-desc {
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .doc-side {}
+
+    .side-block {
+      margin-bottom: 20px;
+    }
+
+    .side-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+
+    .side-value {
+      font-size: 12px;
+      color: var(--white);
+      line-height: 1.55;
+    }
+
+    .trigger {
+      font-size: 12px;
+      color: var(--acid);
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── FLOW SECTION ── */
+    .flow-section {
+      margin-top: 80px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 40px;
+    }
+
+    .flow-card {
+      border: 1px solid var(--border);
+      padding: 28px 28px 28px;
+    }
+
+    .flow-step {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+      color: #1e1e1e;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .flow-action {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .flow-docs {
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    .flow-docs span {
+      color: var(--acid);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .f-left {
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    footer .f-right {
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #000; color: #f0f0f0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cover { page-break-after: always; min-height: 100vh; }
+      .doc-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <span class="sys-tag">// SYS:REF — CLASSIFIED</span>
+    <span class="sys-tag">OPS REFERENCE — V1.0</span>
+  </div>
+
+  <div class="cover-body">
+    <div class="eyebrow">FOUNDATIONAL DOCS</div>
+    <h1 class="cover-title">THE<br>FIELD<br>MANUAL.</h1>
+    <p class="cover-sub">Nine documents. Every campaign, every client, every close. Know what each one does and when to reach for it.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div class="meta-item">
+      <div class="meta-label">Document Type</div>
+      <div class="meta-value">Ops Reference</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Classification</div>
+      <div class="meta-value">Internal</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Version</div>
+      <div class="meta-value">V1.0 — 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Contact</div>
+      <div class="meta-value">spctr.run</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<div class="page">
+
+  <div class="section-header">
+    <div class="eyebrow">DOCUMENT REGISTRY</div>
+    <h2 class="section-title">NINE DOCS.<br>ONE OPERATION.</h2>
+    <p class="section-desc">Every SPCTR document has one job. This guide tells you what that job is, who it belongs to, and exactly when to deploy it. Read this once — then you won't have to guess.</p>
+  </div>
+
+  <div class="doc-grid">
+
+    <!-- 01 Service Overview -->
+    <div class="doc-card acid">
+      <div class="doc-num">01</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-client">Client-Facing</span>
+          <span class="tag tag-client">Sales</span>
+        </div>
+        <div class="doc-name">Service Overview</div>
+        <p class="doc-desc">Your pitch deck in document form. Eight pages covering who SPCTR is, the two engagement models, the delivery process, the fit profile, and how to get started. Polished, branded, and built to convert a skeptical prospect into a booked call. This is the first document a prospect ever sees.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Esteban (Founder)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Send to a warm lead before or immediately after a first conversation. Attach to outreach follow-ups. Drop in a LinkedIn DM when a prospect asks "what do you do?"</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Any qualified prospect who asks about SPCTR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Ops Brief -->
+    <div class="doc-card orange">
+      <div class="doc-num">02</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-internal">Internal</span>
+        </div>
+        <div class="doc-name">Ops Brief</div>
+        <p class="doc-desc">SPCTR's internal business operations and delivery plan. Covers the full model — mission, positioning, both offerings, the delivery workflow, tools, and expansion path. Not a client document. This is the north star that keeps every campaign decision consistent with how the business is supposed to run.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Esteban (Founder)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Reference when making positioning or pricing decisions. Re-read when onboarding a new type of client or expanding into a new niche. Keep it current as the model evolves.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Model decisions, pricing changes, expansion planning</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Client Intake & ICP Brief -->
+    <div class="doc-card teal">
+      <div class="doc-num">03</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-client">Client-Facing</span>
+          <span class="tag tag-shared">Collaborative</span>
+        </div>
+        <div class="doc-name">Client Intake &amp; ICP Brief</div>
+        <p class="doc-desc">The campaign's foundation document. Filled out collaboratively with the client — covers their company profile, engagement scope, ICP (titles, firmographics, geographies, disqualifiers), the value proposition SPCTR will lead with, and the meeting qualification bar. Nothing in the campaign builds until both parties have signed this. No signed brief = no work starts.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Esteban + Client (collaborative)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Completed on or immediately after the kickoff call. Must be signed before Apollo prospecting, domain setup, or any sequence work begins. Referenced throughout the campaign to keep targeting and messaging on-brief.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Client signs the MSA + first payment received</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Campaign Launch Checklist -->
+    <div class="doc-card acid">
+      <div class="doc-num">04</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-internal">Internal</span>
+          <span class="tag tag-internal">Ops</span>
+        </div>
+        <div class="doc-name">Campaign Launch Checklist</div>
+        <p class="doc-desc">The operational runbook for every SPCTR campaign — from signed intake brief to first send. Broken into phase-gated sections: pre-flight, Apollo prospecting, sending infrastructure, Instantly setup, warmup, list load, sequence build, and launch. Every phase has a gate that must be cleared before moving forward. This doc prevents the deliverability and quality failures that kill cold campaigns.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Esteban (Strategist)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Open this the moment the Intake Brief is signed and first payment is received. Work it top-to-bottom for every new campaign. Never skip a gate. One checklist per campaign — keep a copy in the client's Drive folder.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Intake Brief signed + payment confirmed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Meeting Qualification Rubric -->
+    <div class="doc-card pink">
+      <div class="doc-num">05</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-internal">Internal</span>
+          <span class="tag tag-internal">Triage</span>
+        </div>
+        <div class="doc-name">Meeting Qualification Rubric</div>
+        <p class="doc-desc">The reply triage guide. Every inbound reply gets scored across six dimensions: Authority, Vendor Fit, Partner Tier &amp; Profile, Pain or Pipeline Signal, Reply Tone, and Timing Intent. A reply must hit HOT on at least four of six (including Authority and Vendor Fit) to be classified HOT and booked. WARM replies enter a nurture branch. PASS replies get suppressed. This is the standard that keeps SPCTR from delivering junk meetings.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Esteban (Strategist)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Applied to every reply, every campaign, every client. Open it when a reply comes in and you're deciding whether to book. When in doubt, score all six dimensions before deciding — don't go by gut alone.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Any prospect reply during an active campaign</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 Meeting Delivery Template -->
+    <div class="doc-card teal">
+      <div class="doc-num">06</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-shared">Shared with Client</span>
+          <span class="tag tag-internal">Billing Source</span>
+        </div>
+        <div class="doc-name">Meeting Delivery Template</div>
+        <p class="doc-desc">A live Google Sheet shared with each client at campaign launch. One row per accepted meeting. SPCTR fills all prospect data within 24 hours of booking. Client fills the Outcome column within 48 hours of the meeting. Three tabs: Meetings (main log), Suppression (do-not-contact list), and Summary (read-only metrics). This sheet is the source of truth for billing — per-meeting invoices are reconciled directly against it.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">SPCTR (fills) + Client (statuses)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Created at campaign launch and shared with the client. Updated by SPCTR every time a meeting is booked. Client updates outcomes after each meeting. Reference during billing disputes — the sheet row is the invoice line item.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Campaign launches / every meeting booked</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 Client Service Agreement -->
+    <div class="doc-card blue">
+      <div class="doc-num">07</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-legal">Legal</span>
+          <span class="tag tag-client">Client-Facing</span>
+        </div>
+        <div class="doc-name">Client Service Agreement</div>
+        <p class="doc-desc">The master agreement — the legal foundation of every SPCTR client relationship. Covers scope of service, deliverables and timelines, fees and payment (Net 7, ACH/card), client responsibilities, confidentiality, IP ownership, limitation of liability, and termination (30 days' written notice). Month-to-month by default. Signed once per client. All SOWs attach under this document — if a SOW conflicts with the MSA, the SOW controls for that engagement only.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Both parties (Esteban + Client)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Sent to the client before any SOW is signed. Must be executed before any campaign work begins. Signed once — covers the full relationship. Every future SOW or engagement attaches under it without re-signing the MSA.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Client says yes — before any SOW or work begins</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 Per Meeting SOW -->
+    <div class="doc-card orange">
+      <div class="doc-num">08</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-legal">Legal</span>
+          <span class="tag tag-client">Client-Facing</span>
+        </div>
+        <div class="doc-name">Statement of Work — Pay Per Meeting</div>
+        <p class="doc-desc">The engagement contract for PPM clients. Attaches to the MSA. Locks in the ICP, scope, and performance-based pricing: $2,500 one-time setup fee (non-refundable) + $1,500 per accepted meeting. 90-day minimum engagement window so SPCTR can recoup infrastructure investment. No monthly volume guarantee — client pays only for what gets booked. After 90 days, converts to month-to-month.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Both parties (Esteban + Client)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Sent alongside or immediately after the MSA for any Pay Per Meeting engagement. Requires MSA to already be signed. Use this for first-time clients who want to test SPCTR before committing to a retainer.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Client chooses the PPM model + MSA is signed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 Monthly Retainer SOW -->
+    <div class="doc-card red">
+      <div class="doc-num">09</div>
+      <div class="doc-main">
+        <div class="doc-tags">
+          <span class="tag tag-legal">Legal</span>
+          <span class="tag tag-client">Client-Facing</span>
+        </div>
+        <div class="doc-name">Statement of Work — Monthly Retainer</div>
+        <p class="doc-desc">The engagement contract for Retainer clients. Attaches to the MSA. Covers dedicated outbound capacity at $7,500/month — setup included in month one. Target band: 8–12 accepted meetings/month at full ramp. Below 8: $500/meeting credit (capped $2,000). Above 12: $1,000/meeting overage. 3-month initial term, then month-to-month. One pause per quarter (up to 30 days, no charge). Ramp period is the first 45 days — credits don't apply during ramp.</p>
+      </div>
+      <div class="doc-side">
+        <div class="side-block">
+          <div class="side-label">Used By</div>
+          <div class="side-value">Both parties (Esteban + Client)</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Used When</div>
+          <div class="side-value">Sent alongside or after the MSA for any Monthly Retainer engagement. Use for clients who are committed to consistent pipeline and want the full outbound function managed end-to-end. Often the upgrade path after a successful PPM campaign.</div>
+        </div>
+        <div class="side-block">
+          <div class="side-label">Trigger</div>
+          <div class="trigger">→ Client chooses the Retainer model + MSA is signed</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /doc-grid -->
+
+  <!-- ═══════ OPERATIONAL FLOW ═══════ -->
+  <div class="flow-section">
+    <div class="eyebrow">DEPLOYMENT ORDER</div>
+    <h2 class="section-title">WHEN EACH<br>DOC FIRES.</h2>
+
+    <div class="flow-grid">
+
+      <div class="flow-card">
+        <div class="flow-step">01</div>
+        <div class="flow-action">Prospect Shows Interest</div>
+        <div class="flow-docs">
+          Send <span>Service Overview</span> immediately.<br>
+          Reference <span>Ops Brief</span> to answer positioning questions.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-step">02</div>
+        <div class="flow-action">Client Says Yes</div>
+        <div class="flow-docs">
+          Execute <span>Client Service Agreement</span>.<br>
+          Execute the relevant <span>SOW</span> (PPM or Retainer).<br>
+          Collect first payment before anything else.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-step">03</div>
+        <div class="flow-action">Kickoff Call</div>
+        <div class="flow-docs">
+          Fill <span>Client Intake &amp; ICP Brief</span> together.<br>
+          Get signatures from both parties.<br>
+          Open <span>Campaign Launch Checklist</span>.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-step">04</div>
+        <div class="flow-action">Campaign Builds</div>
+        <div class="flow-docs">
+          Work <span>Campaign Launch Checklist</span> phase by phase.<br>
+          Clear every gate before proceeding.<br>
+          Create client folder + <span>Meeting Delivery Tracker</span>.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-step">05</div>
+        <div class="flow-action">Replies Come In</div>
+        <div class="flow-docs">
+          Score every reply against <span>Meeting Qualification Rubric</span>.<br>
+          HOT → book and log in <span>Meeting Delivery Tracker</span>.<br>
+          WARM → nurture. PASS → suppress.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-step">06</div>
+        <div class="flow-action">Ongoing Delivery</div>
+        <div class="flow-docs">
+          Update <span>Meeting Delivery Tracker</span> within 24h of each booking.<br>
+          Client updates outcomes within 48h.<br>
+          Weekly report. Monthly review.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  <span class="f-left">SPCTR — CONFIDENTIAL // OPS REFERENCE V1.0</span>
+  <span class="f-right">gospctr.com // Nashville, TN // EST. 2026</span>
+</footer>
+
+</body>
+</html>

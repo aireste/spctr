@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPCTR — Service Overview V2.3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Space+Mono:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acid:   #c0fc04;
+      --orange: #ff5500;
+      --pink:   #ea027e;
+      --teal:   #00d4aa;
+      --blue:   #3601fb;
+      --white:  #f0f0f0;
+      --dim:    #555;
+      --dim2:   #888;
+      --border: #1c1c1c;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background: #000;
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE SHELL ── */
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+      position: relative;
+    }
+
+    /* ── NAV BAR ── */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-tag {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 30px;
+      width: auto;
+    }
+
+    .nav-doc {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim2);
+    }
+
+    /* ── PAGE FOOTER ── */
+    .pg-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .pg-footer .conf {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .pg-footer .num {
+      font-size: 10px;
+      color: var(--dim);
+    }
+
+    /* ── PAGE BODY ── */
+    .body {
+      flex: 1;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow-bar {
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--acid);
+    }
+
+    /* ── HEADLINES ── */
+    h1, h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--white);
+    }
+
+    /* ════════════════════════════════
+       PAGE 01 — COVER
+    ════════════════════════════════ */
+    .cover-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cover-ident {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #2a2a2a;
+      padding: 6px 14px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim2);
+      margin-bottom: 48px;
+    }
+
+    .cover-ident::before {
+      content: '//';
+      color: var(--acid);
+    }
+
+    .cover-wordmark {
+      width: 640px;
+      max-width: 90%;
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    .cover-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--dim2);
+      max-width: 600px;
+      line-height: 1.4;
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 60px;
+    }
+
+    .meta-col { padding-right: 20px; }
+
+    .meta-label {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+
+    .meta-val {
+      font-size: 12px;
+      color: var(--white);
+    }
+
+    /* ════════════════════════════════
+       PAGE 02 — WHO IS SPCTR
+    ════════════════════════════════ */
+    .ident-headline {
+      font-size: clamp(52px, 7vw, 80px);
+      margin-bottom: 16px;
+    }
+
+    .ident-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 40px;
+    }
+
+    .ident-body {
+      font-size: 13px;
+      color: var(--dim2);
+      max-width: 760px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .ident-body a-hl { color: var(--acid); }
+    .hl-acid   { color: var(--acid); }
+    .hl-orange { color: var(--orange); }
+    .hl-teal   { color: var(--teal); }
+
+    .three-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 36px;
+    }
+
+    .three-card {
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+
+    .three-card .card-num {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      margin-bottom: 14px;
+    }
+
+    .three-card.c1 .card-num { color: var(--acid); }
+    .three-card.c2 .card-num { color: var(--orange); }
+    .three-card.c3 .card-num { color: var(--teal); }
+
+    .three-card .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .three-card .card-body {
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.65;
+    }
+
+    .blockquote {
+      border-left: 2px solid var(--acid);
+      padding: 14px 20px;
+      margin-top: 4px;
+    }
+
+    .blockquote p {
+      font-size: 13px;
+      color: var(--dim2);
+      line-height: 1.65;
+    }
+
+    .blockquote .bq-hl { color: var(--acid); }
+
+    /* ════════════════════════════════
+       PAGE 03 — WHAT SPCTR DELIVERS
+    ════════════════════════════════ */
+    .delivers-headline {
+      font-size: clamp(52px, 7vw, 80px);
+      margin-bottom: 8px;
+    }
+
+    .delivers-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 40px;
+    }
+
+    .two-models {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .model-card {
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .model-card.m1 { border-top: 2px solid var(--acid); }
+    .model-card.m2 { border-top: 2px solid var(--orange); }
+
+    .model-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      color: #161616;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .model-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .model-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--dim2);
+      margin-bottom: 24px;
+    }
+
+    .model-desc {
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .model-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .model-bullets li {
+      font-size: 12px;
+      color: var(--dim2);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .model-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+
+    .model-tag {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid;
+      align-self: flex-start;
+    }
+
+    .m1 .model-tag { color: var(--acid);   border-color: var(--acid); }
+    .m2 .model-tag { color: var(--orange); border-color: var(--orange); }
+
+    /* ════════════════════════════════
+       PAGE 04 — WHAT LANDS IN CALENDAR
+    ════════════════════════════════ */
+    .deliver-headline {
+      font-size: clamp(52px, 7vw, 80px);
+      margin-bottom: 8px;
+    }
+
+    .deliver-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 40px;
+    }
+
+    .deliver-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+
+    .deliver-col {
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+    }
+
+    .col-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dc1 .col-label { color: var(--acid); border-color: #1e2800; }
+    .dc2 .col-label { color: var(--orange); border-color: #2a1200; }
+
+    .deliver-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .deliver-list li {
+      font-size: 12px;
+      color: var(--dim2);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .deliver-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+
+    .deliver-callout {
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      margin-top: 16px;
+    }
+
+    .dc1 .deliver-callout { border-left: 2px solid var(--acid); }
+    .dc2 .deliver-callout { border-left: 2px solid var(--orange); }
+
+    .deliver-callout p {
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.6;
+    }
+
+    .deliver-callout .chl { color: var(--orange); }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .stat-block {
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+    }
+
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-block:nth-child(1) .stat-num { color: var(--orange); }
+    .stat-block:nth-child(2) .stat-num { color: var(--orange); }
+    .stat-block:nth-child(3) .stat-num { color: var(--teal); }
+    .stat-block:nth-child(4) .stat-num { color: var(--white); }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      line-height: 1.4;
+    }
+
+    /* ════════════════════════════════
+       PAGE 05 — PRICING
+    ════════════════════════════════ */
+    .price-headline {
+      font-size: clamp(52px, 7vw, 80px);
+      margin-bottom: 8px;
+    }
+
+    .price-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 40px;
+    }
+
+    .price-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.p1 { border-top: 2px solid var(--acid); }
+    .price-card.p2 { border-top: 2px solid var(--orange); }
+
+    .price-card-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid;
+      display: inline-block;
+      margin-bottom: 24px;
+      align-self: flex-start;
+    }
+
+    .p1 .price-card-label { color: var(--acid);   border-color: var(--acid); }
+    .p2 .price-card-label { color: var(--orange); border-color: var(--orange); }
+
+    .price-card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .price-card-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--dim2);
+      margin-bottom: 24px;
+    }
+
+    .price-card-desc {
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .price-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .price-bullets li {
+      font-size: 12px;
+      color: var(--dim2);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .price-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+
+    .price-note {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .price-footer-note {
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      margin-top: 2px;
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.6;
+    }
+
+    .price-footer-note .pfn-hl { color: var(--acid); }
+
+    /* ════════════════════════════════
+       PAGE 06 — FIT PROFILE
+    ════════════════════════════════ */
+    .fit-headline {
+      font-size: clamp(52px, 7vw, 80px);
+      margin-bottom: 8px;
+    }
+
+    .fit-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 40px;
+    }
+
+    .fit-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .fit-col {
+      padding: 28px 28px 8px;
+      border: 1px solid var(--border);
+    }
+
+    .fit-col-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .dot-green  { background: var(--acid); }
+    .dot-orange { background: var(--orange); }
+
+    .fc-green .fit-col-label  { color: var(--acid); }
+    .fc-orange .fit-col-label { color: var(--orange); }
+
+    .fit-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+
+    .fit-item {
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .fit-item .dot { margin-top: 4px; }
+
+    .fit-cta {
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      font-size: 12px;
+      color: var(--dim2);
+      line-height: 1.65;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .fit-cta .dot { margin-top: 4px; flex-shrink: 0; }
+    .fit-cta .cta-hl { color: var(--acid); }
+
+    /* ════════════════════════════════
+       PAGE 07 — CTA
+    ════════════════════════════════ */
+    .cta-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 48px;
+    }
+
+    .cta-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim2);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cta-eyebrow::before, .cta-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h1.cta-title {
+      font-size: clamp(72px, 11vw, 128px);
+      line-height: 0.9;
+      margin-bottom: 20px;
+    }
+
+    h1.cta-title .cta-accent { color: var(--acid); }
+
+    .cta-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--dim2);
+      margin-bottom: 64px;
+    }
+
+    .cta-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 48px;
+    }
+
+    .cta-step {
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: left;
+    }
+
+    .cta-step-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      margin-bottom: 10px;
+    }
+
+    .cta-step:nth-child(1) .cta-step-label { color: var(--acid); }
+    .cta-step:nth-child(2) .cta-step-label { color: var(--orange); }
+    .cta-step:nth-child(3) .cta-step-label { color: var(--teal); }
+
+    .cta-step-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .cta-step-desc {
+      font-size: 11px;
+      color: var(--dim2);
+      line-height: 1.55;
+    }
+
+    .cta-url {
+      border: 1px solid #1e1e1e;
+      padding: 18px 60px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+
+    .copyright {
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 01 — COVER
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// SYS:BOOT — CLASSIFIED</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW — V2.3</span>
+  </div>
+
+  <div class="body cover-body">
+    <div>
+      <div class="cover-ident">IDENT_FILE — PROSPECTIVE CLIENT</div>
+      <img src="spctr-wordmark.png" alt="SPCTR" class="cover-wordmark" />
+      <p class="cover-sub">Done-for-you outbound. Accepted meetings. Fraction of the cost.</p>
+    </div>
+    <div class="cover-meta">
+      <div class="meta-col">
+        <div class="meta-label">Document Type</div>
+        <div class="meta-val">Service Overview</div>
+      </div>
+      <div class="meta-col">
+        <div class="meta-label">Classification</div>
+        <div class="meta-val">Prospective Client</div>
+      </div>
+      <div class="meta-col">
+        <div class="meta-label">Version</div>
+        <div class="meta-val">v2.3 — 2026</div>
+      </div>
+      <div class="meta-col">
+        <div class="meta-label">Contact</div>
+        <div class="meta-val">spctr.run</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">01 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 02 — WHO IS SPCTR
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// IDENT_FILE — WHAT IS SPCTR</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow"><span class="eyebrow-bar"></span>IDENT_FILE — V2.3</div>
+    <h2 class="ident-headline">NOT YOUR TYPICAL<br>AGENCY.</h2>
+    <p class="ident-sub">Lean by design. No middlemen. Just results.</p>
+
+    <p class="ident-body">
+      SPCTR runs <span class="hl-acid">lean by design.</span> No account managers, no handoffs, no brief getting lost in a chain of people who never talked to you. You get a <span class="hl-acid">direct line to the strategist running your campaign</span> — someone who knows your ICP, knows your goals, and is <span class="hl-acid">personally invested in your results.</span> That's not a limitation. That's the advantage.
+    </p>
+
+    <div class="three-cards">
+      <div class="three-card c1">
+        <div class="card-num">// 01</div>
+        <div class="card-title">Boutique<br>By Design</div>
+        <p class="card-body">Small roster. Full attention. You're not account #47 — every campaign gets the focus it deserves, from the person actually running it.</p>
+      </div>
+      <div class="three-card c2">
+        <div class="card-num">// 02</div>
+        <div class="card-title">Low Barrier<br>To Entry</div>
+        <p class="card-body">No massive retainers. No long-term lock-in. Start with one campaign, see real results, then decide.</p>
+      </div>
+      <div class="three-card c3">
+        <div class="card-num">// 03</div>
+        <div class="card-title">Relationships<br>First</div>
+        <p class="card-body">Every client SPCTR takes on is a partnership, not a transaction. Your pipeline is treated like it matters — because it does.</p>
+      </div>
+    </div>
+
+    <div class="blockquote">
+      <p>"You get a direct line to the strategist running your campaign. <span class="bq-hl">That's not a limitation. That's the advantage.</span>"</p>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">02 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 03 — WHAT SPCTR DELIVERS
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// CAP_MODULE_V3.1 — CAPABILITIES</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow"><span class="eyebrow-bar"></span>CAP_MODULE — CAPABILITIES</div>
+    <h2 class="delivers-headline">WHAT SPCTR<br>DELIVERS.</h2>
+    <p class="delivers-sub">Two models. One output: accepted meetings on your calendar.</p>
+
+    <div class="two-models">
+      <div class="model-card m1">
+        <div class="model-num">01</div>
+        <div class="model-name">Pay Per<br>Meeting</div>
+        <p class="model-tagline">Outreach done. Meeting accepted. You just show up.</p>
+        <p class="model-desc">We handle prospecting, outreach, and qualification. You get a calendar invite with a decision-maker who already said yes — nothing left to chase.</p>
+        <ul class="model-bullets">
+          <li>Targeted, verified prospect lists built to your ICP</li>
+          <li>Full sending infrastructure provisioned and warmed</li>
+          <li>Multi-step cold email sequence executed</li>
+          <li>No meeting accepted = no charge</li>
+        </ul>
+        <div class="model-tag">// MTG.PKG — PAY PER MEETING</div>
+      </div>
+      <div class="model-card m2">
+        <div class="model-num">02</div>
+        <div class="model-name">Full<br>Pipeline Ops</div>
+        <p class="model-tagline">Your full outbound function. Monthly. Hands off.</p>
+        <p class="model-desc">A junior sales hire fully loaded costs $60–80K/year. We deliver the same output — consistent booked meetings, every month — for a fraction of that. No ramp time. No management overhead.</p>
+        <ul class="model-bullets">
+          <li>ICP definition + list construction each cycle</li>
+          <li>Full sending infrastructure managed end-to-end</li>
+          <li>Agreed monthly meeting volume target</li>
+          <li>Weekly reports + monthly campaign review</li>
+        </ul>
+        <div class="model-tag">// OBD.OPS — RETAINER</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">03 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 04 — WHAT LANDS IN YOUR CALENDAR
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// DELIVER_SPEC — DELIVERABLES</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow"><span class="eyebrow-bar"></span>DELIVER_SPEC</div>
+    <h2 class="deliver-headline">WHAT LANDS<br>IN YOUR CALENDAR.</h2>
+    <p class="deliver-sub">Not a name and a number. Context to close.</p>
+
+    <div class="deliver-cols">
+      <div class="deliver-col dc1">
+        <div class="col-label">// PER MEETING — EVERY HANDOFF</div>
+        <ul class="deliver-list">
+          <li>Full name, title, company, email, phone where available</li>
+          <li>Calendar invite — meeting already accepted</li>
+          <li>Complete reply thread — never summarized</li>
+          <li>The exact email that triggered the response</li>
+          <li>One-line intent read (urgency level + context)</li>
+          <li>LinkedIn + company background where relevant</li>
+        </ul>
+        <div class="deliver-callout">
+          <p>You walk into every meeting already knowing who you're talking to and why they said yes.</p>
+        </div>
+      </div>
+      <div class="deliver-col dc2">
+        <div class="col-label">// ONGOING — RETAINER CLIENTS</div>
+        <ul class="deliver-list">
+          <li>Shared tracking sheet — every meeting logged and timestamped</li>
+          <li>Slack or email ping on every confirmed meeting</li>
+          <li>Weekly 1-page report: meetings booked, reply rate, sequence performance</li>
+          <li>Monthly campaign review + ICP refinement</li>
+          <li>List refresh and deduplication each cycle</li>
+          <li>Deliverability monitoring — bounce and spam alerts</li>
+        </ul>
+        <div class="deliver-callout">
+          <p><span class="chl">Speed matters.</span> Every confirmed meeting is forwarded the same day — never held overnight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-block">
+        <div class="stat-num">~4%</div>
+        <div class="stat-label">Avg Positive Reply Rate</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">&lt;24h</div>
+        <div class="stat-label">Meeting Handoff Target</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Verified Contacts Only</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">1pg</div>
+        <div class="stat-label">Weekly Reports, Always</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">04 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 05 — PRICING
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// RATE_CARD — PRICING</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow"><span class="eyebrow-bar"></span>RATE_CARD — PRICING</div>
+    <h2 class="price-headline">TRANSPARENT.<br>NO SURPRISES.</h2>
+    <p class="price-sub">Two models. Both built around one metric: accepted meetings.</p>
+
+    <div class="price-cards">
+      <div class="price-card p1">
+        <div class="price-card-label">// PAY PER MEETING</div>
+        <div class="price-card-name">Only Pay For<br>Accepted Meetings</div>
+        <p class="price-card-tagline">No meeting accepted = no charge.</p>
+        <p class="price-card-desc">Flat fee per confirmed meeting with a qualified decision-maker. Lowest-risk way to see what SPCTR delivers before scaling up.</p>
+        <ul class="price-bullets">
+          <li>Flat rate per confirmed booked meeting</li>
+          <li>Minimum package size applies</li>
+          <li>Meeting + full context delivered same day</li>
+          <li>Ideal for: first engagement, targeted campaigns</li>
+        </ul>
+        <div class="price-note">Pricing discussed on intake call — varies by niche, ICP complexity, and volume.</div>
+      </div>
+      <div class="price-card p2">
+        <div class="price-card-label">// MONTHLY RETAINER</div>
+        <div class="price-card-name">Your Full Outbound<br>Function. Every Month.</div>
+        <p class="price-card-tagline">Full function. Fixed cost. No overhead.</p>
+        <p class="price-card-desc">Fixed monthly fee. Agreed meeting volume. We run your entire outbound function so your team only ever talks to people who already said yes.</p>
+        <ul class="price-bullets">
+          <li>Fixed monthly investment</li>
+          <li>Agreed booked meeting target per cycle</li>
+          <li>Full infrastructure + ops included</li>
+          <li>Ideal for: scaling outbound without hiring a sales rep</li>
+        </ul>
+        <div class="price-note">Retainer scoped on intake call based on ICP and volume targets.</div>
+      </div>
+    </div>
+
+    <div class="price-footer-note">
+      <span>// NOTE —</span> Pricing is scoped after a short intake call. A number without knowing your ICP and volume target means nothing. Book at <span class="pfn-hl">spctr.run</span>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">05 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 06 — FIT PROFILE
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// FIT_PROFILE — CLIENT QUALIFICATION</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow"><span class="eyebrow-bar"></span>FIT_PROFILE</div>
+    <h2 class="fit-headline">WHO SPCTR<br>IS BUILT FOR.</h2>
+    <p class="fit-sub">We qualify our clients as carefully as we qualify your prospects.</p>
+
+    <div class="fit-cols">
+      <div class="fit-col fc-green">
+        <div class="fit-col-label"><span class="dot dot-green"></span>GREEN LIGHT — GREAT FIT</div>
+        <div class="fit-items">
+          <div class="fit-item"><span class="dot dot-green"></span>B2B company with a defined ICP and a sales team ready to work meetings</div>
+          <div class="fit-item"><span class="dot dot-green"></span>Average deal size $3K+ — cold email ROI needs room to breathe</div>
+          <div class="fit-item"><span class="dot dot-green"></span>Someone on your team who can follow up within hours, not days</div>
+          <div class="fit-item"><span class="dot dot-green"></span>Realistic timeline expectations — outbound is a 60–90 day game</div>
+          <div class="fit-item"><span class="dot dot-green"></span>Open to sharing what's worked (and what hasn't) in past sales cycles</div>
+        </div>
+      </div>
+      <div class="fit-col fc-orange">
+        <div class="fit-col-label"><span class="dot dot-orange"></span>YELLOW LIGHT — CONSIDER CAREFULLY</div>
+        <div class="fit-items">
+          <div class="fit-item"><span class="dot dot-orange"></span>B2C or very low-ticket — economics get thin below $1K deal size</div>
+          <div class="fit-item"><span class="dot dot-orange"></span>No defined ICP — we can help scope it, but it adds timeline</div>
+          <div class="fit-item"><span class="dot dot-orange"></span>Sales cycle longer than 12 months — attribution gets complex</div>
+          <div class="fit-item"><span class="dot dot-orange"></span>Highly regulated industries — compliance review needed before launch</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fit-cta">
+      <span class="dot dot-green" style="margin-top:4px;flex-shrink:0;"></span>
+      <span>Not sure if you're a fit? <span class="cta-hl">Just book the call.</span> The intake conversation is designed to figure that out together — no pressure either way.</span>
+    </div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">SPCTR — CONFIDENTIAL</span>
+    <span class="num">06 / 07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 07 — CTA
+═══════════════════════════════════════ -->
+<div class="page">
+  <div class="nav">
+    <span class="nav-tag">// DEPLOY — NEXT STEP</span>
+    <span class="nav-logo"><img src="spctr-02.svg" alt="SPCTR" /></span>
+    <span class="nav-doc">SERVICE OVERVIEW</span>
+  </div>
+
+  <div class="cta-body">
+    <div class="cta-eyebrow">// DEPLOY — READY TO INTERCEPT</div>
+    <h1 class="cta-title">READY TO<br><span class="cta-accent">INTERCEPT?</span></h1>
+    <p class="cta-sub">The first conversation costs nothing.</p>
+
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-label">// STEP 01</div>
+        <div class="cta-step-name">Book The Call</div>
+        <p class="cta-step-desc">15–20 min intake to see if it's a fit.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-label">// STEP 02</div>
+        <div class="cta-step-name">ICP Brief</div>
+        <p class="cta-step-desc">We define your ideal prospect and what "yes" looks like.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-label">// STEP 03</div>
+        <div class="cta-step-name">We Deploy</div>
+        <p class="cta-step-desc">Infrastructure up. Campaign live. Meetings incoming.</p>
+      </div>
+    </div>
+
+    <div class="cta-url">spctr.run</div>
+  </div>
+
+  <div class="pg-footer">
+    <span class="conf">© 2026 SPCTR — ALL RIGHTS RESERVED</span>
+    <span class="num">07 / 07</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -26,8 +26,8 @@ export function HeroSection() {
         <p className="hero-lead">
           SPCTR <strong style={{ color: "var(--acid)", fontWeight: 900 }}>books you meetings with buyers who need what you sell.</strong>
         </p>
-        <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
-          <a href="#what" className="btn-ghost">See how it works →</a>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
+          <a href="#deploy" className="btn-acid btn-red">Deploy SPCTR</a>
         </div>
       </div>
     </section>
