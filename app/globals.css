@@ -226,9 +226,12 @@
   }
 
   .hero-lead {
-    font-size: 17px; line-height: 1.55; color: #FFFFFF;
+    font-size: clamp(20px, 2.6vw, 30px); line-height: 1.4; color: #FFFFFF;
     font-family: var(--font-space-mono), 'Space Mono', monospace;
-    font-weight: 700;
+    font-weight: 700; letter-spacing: -0.5px;
+  }
+  .lead-mark {
+    color: var(--acid); font-weight: 900;
   }
 
   .hero-sub {
