@@ -21,7 +21,7 @@ export function HeroSection() {
 
       <div className="hero-bottom">
         <p className="hero-lead">
-          SPCTR books you meetings with <span className="lead-mark">buyers who need what you sell.</span>
+          SPCTR books you meetings with <span className="lead-mark">buyers ready to close.</span>
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
           <a href="#deploy" className="btn-acid btn-red">Deploy SPCTR</a>

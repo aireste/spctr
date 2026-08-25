@@ -61,7 +61,7 @@ export function WhatIsSPCTR() {
           <div className="pillar">
             <div className="pillar-icon" style={{ color: "#00d4aa" }}>{"//"} 03</div>
             <div className="pillar-title">YOU KNOW WHO'S RUNNING IT</div>
-            <p className="pillar-desc">No mystery team. No &apos;your account manager will follow up.&apos; The person you talk to is the person pulling your list, writing your sequences, and watching your inbox. That&apos;s it.</p>
+            <p className="pillar-desc">No mystery team. No &apos;your account manager will follow up.&apos; The person you talk to is the person pulling your list, writing your sequences, and watching your inbox. Built by someone who&apos;s lived inside a sales org, not a vendor guessing at what your pipeline needs.</p>
           </div>
         </div>
 
