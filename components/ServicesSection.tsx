@@ -10,11 +10,10 @@ const GlobeCanvas = dynamic(
 
 export function ServicesSection() {
   const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
   const headRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const els = [headRef.current, card1Ref.current, card2Ref.current].filter(Boolean) as HTMLDivElement[];
+    const els = [headRef.current, card1Ref.current].filter(Boolean) as HTMLDivElement[];
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e, i) => {
@@ -51,16 +50,6 @@ export function ServicesSection() {
                 no risk — if we don&apos;t book it, you don&apos;t owe us a cent.
               </p>
               <div className="svc-tag">{"//"} MTG.PKG — PAY PER MEETING</div>
-            </div>
-
-            <div ref={card2Ref} className="svc-card reveal" style={{ flex: 1, minWidth: 0 }}>
-              <div className="svc-num">02</div>
-              <div className="svc-name">FULL PIPELINE OPS</div>
-              <p className="svc-desc">
-                A junior sales hire costs $60–80K/year before ramp. We deliver the same
-                output — consistent booked meetings, every month — for a fraction of that.
-              </p>
-              <div className="svc-tag">{"//"} OBD.OPS — RETAINER</div>
             </div>
           </div>
         </div>

@@ -4,10 +4,9 @@ import { useEffect, useRef } from "react";
 
 export function RatesSection() {
   const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const els = [card1Ref.current, card2Ref.current].filter(Boolean) as HTMLDivElement[];
+    const els = [card1Ref.current].filter(Boolean) as HTMLDivElement[];
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e, i) => {
@@ -38,38 +37,32 @@ export function RatesSection() {
       <div style={{ position: "relative", zIndex: 1 }}>
         <div className="eyebrow ey-acid">{"//"} ACCESS_TIERS — How It Works</div>
         <h2 className="section-h2">YOU ONLY PAY<br />FOR RESULTS.</h2>
-        <p className="section-sub-serif">Two models. Both built around one principle: we win when you win.</p>
+        <p className="section-sub-serif">One model, built around one principle: we win when you win.</p>
 
-        <div className="card-grid grid-col-2">
-          <div ref={card1Ref} className="rate-card rate-card-orange reveal">
-            <div className="rate-tag" style={{ color: "var(--orange)", borderColor: "var(--orange)" }}>
-              PAY PER MEETING
+        <div ref={card1Ref} className="rate-card rate-card-orange reveal" style={{ width: "100%" }}>
+          <div className="rate-tag" style={{ color: "var(--orange)", borderColor: "var(--orange)" }}>
+            PAY PER MEETING
+          </div>
+
+          <div className="rate-feature-row">
+            <div className="rate-feature-main">
+              <div className="rate-title">ONLY PAY FOR ACCEPTED MEETINGS</div>
+              <p className="rate-desc">
+                Flat fee per booked meeting with a qualified decision-maker. No meeting,
+                no charge. If we don&apos;t deliver, you don&apos;t pay. That&apos;s not a guarantee — it&apos;s the model.
+              </p>
             </div>
-            <div className="rate-title">ONLY PAY FOR ACCEPTED MEETINGS</div>
-            <p className="rate-desc">
-              Flat fee per booked meeting with a qualified decision-maker. No meeting,
-              no charge. If we don&apos;t deliver, you don&apos;t pay. That&apos;s not a guarantee — it&apos;s the model.
-            </p>
-            <div className="rate-best">
-              <span style={{ color: "var(--orange)" }}>{"//"} </span>
-              Best for businesses testing the model or running targeted campaigns.
+
+            <div className="rate-chips">
+              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> NO RETAINER</div>
+              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> NO SETUP FEE</div>
+              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> CANCEL ANYTIME</div>
             </div>
           </div>
 
-          <div ref={card2Ref} className="rate-card rate-card-teal reveal">
-            <div className="rate-tag" style={{ color: "#ff0d1a", borderColor: "#ff0d1a" }}>
-              MONTHLY RETAINER
-            </div>
-            <div className="rate-title">YOUR FULL OUTBOUND FUNCTION. EVERY MONTH.</div>
-            <p className="rate-desc">
-              Fixed monthly fee. Agreed meeting targets built into every contract — you
-              always know what you&apos;re paying for. We run your full outbound function so
-              your team only talks to people who already said yes.
-            </p>
-            <div className="rate-best">
-              <span style={{ color: "#ff0d1a" }}>{"//"} </span>
-              Best for teams ready to scale outbound without hiring a sales rep.
-            </div>
+          <div className="rate-best">
+            <span style={{ color: "var(--orange)" }}>{"//"} </span>
+            Best for businesses testing the model or running targeted campaigns.
           </div>
         </div>
 
