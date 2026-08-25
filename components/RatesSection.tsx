@@ -44,21 +44,11 @@ export function RatesSection() {
             PAY PER MEETING
           </div>
 
-          <div className="rate-feature-row">
-            <div className="rate-feature-main">
-              <div className="rate-title">ONLY PAY FOR ACCEPTED MEETINGS</div>
-              <p className="rate-desc">
-                Flat fee per booked meeting with a qualified decision-maker. No meeting,
-                no charge. If we don&apos;t deliver, you don&apos;t pay. That&apos;s not a guarantee — it&apos;s the model.
-              </p>
-            </div>
-
-            <div className="rate-chips">
-              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> NO RETAINER</div>
-              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> NO SETUP FEE</div>
-              <div className="rate-chip"><span className="rate-chip-mark">{"//"}</span> CANCEL ANYTIME</div>
-            </div>
-          </div>
+          <div className="rate-title">ONLY PAY FOR ACCEPTED MEETINGS</div>
+          <p className="rate-desc">
+            Flat fee per booked meeting with a qualified decision-maker. No meeting,
+            no charge. If we don&apos;t deliver, you don&apos;t pay. That&apos;s not a guarantee — it&apos;s the model.
+          </p>
 
           <div className="rate-best">
             <span style={{ color: "var(--orange)" }}>{"//"} </span>
