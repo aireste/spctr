@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SPCTR
 
-## Getting Started
+**AI-powered B2B lead generation that books qualified meetings, not spam.**
 
-First, run the development server:
+Live site: **[spctr.run](https://spctr.run)**
+
+SPCTR is the marketing site for a done-for-you outbound service that finds the right buyers, runs the outreach, qualifies interest, and hands the client a calendar invite with a decision-maker who already said yes. The positioning is outcome-first and the business model is pay-per-meeting: the client only pays when a meeting actually lands, which structurally aligns incentives ("I only win when you win").
+
+Built and shipped by Esteban Guerra under Guerra Digital LLC.
+
+---
+
+## What this project demonstrates
+
+A production, deployed marketing site built from scratch, not a template. Highlights a reviewer can look at:
+
+- **Interactive 3D globe** (`components/GlobeCanvas.tsx`) built with Three.js: a sphere with topojson country outlines, ~80 population-center clusters with Gaussian scatter, pulsing halos, animated arc connections, drag-to-spin, and auto-spin driven by an IntersectionObserver so it only animates when in view. Hidden on mobile for performance.
+- **Custom animated starfield** background, resize-debounced so it stays smooth during mobile scroll rather than recalculating every frame.
+- **A hand-built design system**, not a UI kit drop-in: a dark tactical aesthetic on a pure-black base with a disciplined accent palette, consistent eyebrow labels, and typography pairing Barlow Condensed, Space Mono, and Playfair Display.
+- **Conversion-focused copy and layout**, sharpened through real iteration (hero, services, rates, and a lead-capture form).
+- **Responsive from the ground up**, with deliberate mobile fallbacks for the heavier visual elements.
+- **Live lead capture** wired to a form backend, deployed continuously to Vercel on every push to `main`.
+
+## Tech stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + a custom design system in `app/globals.css`
+- **3D / graphics:** Three.js (globe, starfield)
+- **Components:** shadcn/ui
+- **Forms:** Formspree
+- **Hosting / CI:** Vercel (auto-deploy on push to `main`)
+
+## Page structure
+
+1. **Hero** — headline, primary CTA, starfield background
+2. **Services** — what SPCTR delivers, paired with the interactive globe
+3. **What is SPCTR** — the model and philosophy, shared dotted-surface background
+4. **Rates** — pay-per-meeting pricing
+5. **Contact** — lead-capture form (`#deploy`)
+
+## Run it locally
 
 ```bash
+git clone git@github.com:aireste/spctr.git
+cd spctr
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  page.tsx          # composes the page sections
+  globals.css       # the full design system + section styling
+components/
+  GlobeCanvas.tsx   # Three.js interactive globe
+  ...               # Hero, Services, Rates, Contact, etc.
+public/             # static assets
+```
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
+- The site is intentionally copy-light and visual-forward: the goal is to sell an outcome, so the messaging leads with results and keeps the "how" quiet.
+- Deployment is continuous: a push to `main` ships to production at spctr.run via Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© Guerra Digital LLC. Code shared for portfolio and review purposes.
