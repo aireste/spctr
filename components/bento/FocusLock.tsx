@@ -26,11 +26,11 @@ export function FocusLock({ ink = "var(--ink)", pupil = "var(--lime)" }: { ink?:
     const disc = svg.querySelector<SVGGElement>(".fl-disc")!;
     const pup = svg.querySelector<SVGCircleElement>(".fl-pupil")!;
 
-    // stiff + light damping = snappy with overshoot
-    const angle = spring(0, 170, 11);   // ring rotation (deg)
-    const squeeze = spring(0, 420, 16); // ring pieces pulled inward
-    const pr = spring(1, 380, 13);      // pupil size
-    const ds = spring(1, 300, 12);      // eyeball size
+    // moderately soft springs, light damping = unhurried with a small overshoot
+    const angle = spring(0, 70, 7.5);   // ring rotation (deg)
+    const squeeze = spring(0, 200, 11); // ring pieces pulled inward
+    const pr = spring(1, 180, 9);       // pupil size
+    const ds = spring(1, 150, 8.5);     // eyeball size
     const all = [angle, squeeze, pr, ds];
 
     const timers: number[] = [];
@@ -39,15 +39,15 @@ export function FocusLock({ ink = "var(--ink)", pupil = "var(--lime)" }: { ink?:
 
     const lock = () => {
       squeeze.to = 1; pr.to = 0.35; ds.to = 1.07;
-      later(() => { squeeze.to = 0; pr.to = 1; ds.to = 1; }, 150);
+      later(() => { squeeze.to = 0; pr.to = 1; ds.to = 1; }, 280);
     };
     const cycle = () => {
       if (Math.random() < 0.25) dir = -dir;               // sometimes turn the other way
       angle.to += 90 * dir;
       const double = Math.random() < 0.25;                 // sometimes a quick double-scan
-      if (double) later(() => { angle.to += 90 * dir; }, 260);
-      later(lock, double ? 620 : 380);
-      later(cycle, 2300 + Math.random() * 1200);
+      if (double) later(() => { angle.to += 90 * dir; }, 500);
+      later(lock, double ? 1200 : 750);
+      later(cycle, 3200 + Math.random() * 1500);
     };
     later(cycle, 900);
 

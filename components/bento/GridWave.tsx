@@ -32,12 +32,12 @@ export function GridWave() {
       const dir = Math.random() < 0.5 ? 1 : -1;
       order.forEach((cell, k) =>
         cells[cell].animate([{ transform: "rotate(0)" }, { transform: `rotate(${360 * dir}deg)` }], {
-          duration: 900, delay: k * 85, easing: "cubic-bezier(.34,1.35,.64,1)",
+          duration: 1600, delay: k * 140, easing: "cubic-bezier(.34,1.35,.64,1)",
         }),
       );
     };
     const first = window.setTimeout(wave, 700);
-    const t = window.setInterval(wave, 3800);
+    const t = window.setInterval(wave, 5400);
     return () => { clearTimeout(first); clearInterval(t); };
   }, []);
   return null;
