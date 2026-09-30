@@ -128,7 +128,7 @@ export default function LeadGeneration() {
 
         <section className="sec contact" id="contact">
           <div>
-            <p className="eyebrow">Next step</p>
+            <p className="eyebrow">Get started</p>
             <h2>Let&apos;s fill your calendar.</h2>
             <p className="sub">Tell us what you sell and who you sell to. We&apos;ll reply within 24 hours with an honest read on whether we can help.</p>
           </div>

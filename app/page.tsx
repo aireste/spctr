@@ -26,7 +26,7 @@ export default function Home() {
         </section>
 
         <section className="sec" id="offerings">
-          <p className="eyebrow">Our offerings</p>
+          <p className="eyebrow">Offerings</p>
           <h2>Pick what you need. We handle the rest.</h2>
           <div className="offers">
             <article className="offer o1">
@@ -81,7 +81,7 @@ export default function Home() {
 
         <section className="sec contact" id="contact">
           <div>
-            <p className="eyebrow">Next step</p>
+            <p className="eyebrow">Get started</p>
             <h2>Tell us what you want booked, or built.</h2>
             <p className="sub">We&apos;ll get back to you fast. If we&apos;re not a fit, we&apos;ll say so.</p>
           </div>
