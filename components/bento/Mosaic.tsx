@@ -53,10 +53,15 @@ const defs = `<defs>
   <clipPath id="cC"><circle cx="500" cy="500" r="165"/></clipPath>
 </defs>`;
 
+/** Shared SVG defs (the mark + quadrant clips). Render once per page before any mark. */
+export function MarkDefs() {
+  return <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" dangerouslySetInnerHTML={{ __html: defs }} />;
+}
+
 export function Mosaic() {
   return (
     <>
-      <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" dangerouslySetInnerHTML={{ __html: defs }} />
+      <MarkDefs />
       <div className="mosaic" aria-hidden="true">
         {tiles.map(([cls, html]) => (
           <div key={cls} className={`t ${cls}`} dangerouslySetInnerHTML={{ __html: html }} />
@@ -67,6 +72,6 @@ export function Mosaic() {
 }
 
 /** A single multicolor mascot, used as a small badge outside the mosaic (relies on the defs Mosaic renders). */
-export function MarkBadge() {
-  return <div className="markbadge" aria-hidden="true" dangerouslySetInnerHTML={{ __html: mark(MULTI, { wrap: "spin" }) }} />;
+export function MarkBadge({ colors = MULTI, className = "markbadge" }: { colors?: Cols; className?: string }) {
+  return <div className={className} aria-hidden="true" dangerouslySetInnerHTML={{ __html: mark(colors, { wrap: "spin" }) }} />;
 }

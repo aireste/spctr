@@ -1,5 +1,5 @@
 import "./home.css";
-import { Letters } from "@/components/bento/Brand";
+import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
 import { MarkBadge } from "@/components/bento/Mosaic";
 import { Mosaic } from "@/components/bento/Mosaic";
 import { ContactForm } from "@/components/bento/ContactForm";
@@ -7,17 +7,7 @@ import { ContactForm } from "@/components/bento/ContactForm";
 export default function Home() {
   return (
     <>
-      <nav>
-        <div className="wrap">
-          <a href="#" className="brand" aria-label="SPCTR home"><Letters /></a>
-          <div className="links">
-            <a href="#offerings">Offerings</a>
-            <a href="#builds">Custom builds</a>
-            <a href="#start">How to start</a>
-          </div>
-          <a className="btn" href="#contact">Book a call</a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <main className="wrap">
         <section className="hero">
@@ -48,7 +38,7 @@ export default function Home() {
                 <dt>Risk</dt><dd>No meeting, no charge</dd>
                 <dt>First sends</dt><dd>About 2 to 3 weeks</dd>
               </dl>
-              <a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a>
+              <div className="obtns"><a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a><a className="btn ghost" href="/lead-generation">Know more</a></div>
             </article>
             <article className="offer o2" id="builds">
               <div className="otop"><span className="num">02</span><span className="badge">Scoped per project</span></div>
@@ -99,12 +89,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <div className="wrap">
-          <span className="brand"><Letters /></span>
-          <span>© 2026 <a href="https://estejg.com" target="_blank" rel="noopener noreferrer">Guerra Digital LLC</a> · Nashville, TN · <a href="/privacy">Privacy</a></span>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
