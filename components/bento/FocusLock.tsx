@@ -22,9 +22,14 @@ export function FocusLock({ ink = "var(--ink)", pupil = "var(--lime)" }: { ink?:
   useEffect(() => {
     const svg = ref.current;
     if (!svg || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const quads = Array.from(svg.querySelectorAll<SVGGElement>(".fl-q"));
-    const disc = svg.querySelector<SVGGElement>(".fl-disc")!;
-    const pup = svg.querySelector<SVGCircleElement>(".fl-pupil")!;
+    // re-find parts if React swapped the SVG's inner markup (otherwise it would freeze)
+    let quads: SVGGElement[] = [], disc!: SVGGElement, pup!: SVGCircleElement;
+    const grab = () => {
+      quads = Array.from(svg.querySelectorAll<SVGGElement>(".fl-q"));
+      disc = svg.querySelector<SVGGElement>(".fl-disc")!;
+      pup = svg.querySelector<SVGCircleElement>(".fl-pupil")!;
+    };
+    grab();
 
     // moderately soft springs, light damping = unhurried with a small overshoot
     const angle = spring(0, 70, 7.5);   // ring rotation (deg)
@@ -53,6 +58,7 @@ export function FocusLock({ ink = "var(--ink)", pupil = "var(--lime)" }: { ink?:
 
     let raf = 0, last = performance.now();
     const frame = (now: number) => {
+      if (!pup.isConnected) grab();
       const dt = Math.min(0.034, (now - last) / 1000); last = now;
       // semi-implicit Euler, a few substeps for stability at high stiffness
       for (let s = 0; s < 3; s++) {

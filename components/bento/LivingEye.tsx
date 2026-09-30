@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { memo, useEffect, useId, useRef } from "react";
 import { markInner } from "./Brand";
 
 // The SPCTR mark as a living eye. Geometry is in the mark's own coordinates
@@ -24,7 +24,7 @@ type Props = {
   steadyRing?: boolean; // keep the crosshair still: no ring burst, hops or tilts (the eye does all the acting)
 };
 
-export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false, steadyRing = false }: Props) {
+function LivingEyeImpl({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false, steadyRing = false }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const uid = useId().replace(/:/g, "");
   const ringColor = ring ?? ink;
@@ -32,10 +32,16 @@ export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
-    const all = svg.querySelector<SVGGElement>(".eye-all")!;
-    const pupil = svg.querySelector<SVGCircleElement>(".eye-pupil")!;
-    const lid = svg.querySelector<SVGGElement>(".eye-lid")!;
-    const quads = Array.from(svg.querySelectorAll<SVGGElement>(".eye-q"));
+    // The SVG's inner markup can be swapped by React on a re-render, so look the
+    // parts up again whenever they've been detached (otherwise the eye freezes).
+    let all!: SVGGElement, pupil!: SVGCircleElement, lid!: SVGGElement, quads: SVGGElement[] = [];
+    const grab = () => {
+      all = svg.querySelector<SVGGElement>(".eye-all")!;
+      pupil = svg.querySelector<SVGCircleElement>(".eye-pupil")!;
+      lid = svg.querySelector<SVGGElement>(".eye-lid")!;
+      quads = Array.from(svg.querySelectorAll<SVGGElement>(".eye-q"));
+    };
+    grab();
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     // current and target state, eased toward each other every frame
@@ -92,6 +98,7 @@ export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(
 
     let raf = 0;
     const frame = () => {
+      if (!pupil.isConnected) grab();
       (Object.keys(cur) as (keyof typeof cur)[]).forEach((k) => {
         cur[k] += (tgt[k] - cur[k]) * (k === "sy" ? 0.35 : k === "hy" ? 0.22 : 0.14);
       });
@@ -126,3 +133,6 @@ export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(
       style={{ overflow: "visible" }} dangerouslySetInnerHTML={{ __html: html }} />
   );
 }
+
+/** Memoized so parent re-renders (e.g. Glint hiding/showing) don't touch the eye. */
+export const LivingEye = memo(LivingEyeImpl);
