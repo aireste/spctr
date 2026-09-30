@@ -71,7 +71,7 @@ export function Mosaic() {
         ))}
         <div className="t t3"><AssemblyLine /></div>
         <div className="t t9"><DuoTile a={mark(MULTI)} b={mark(K)} c={mark(["orange", "orange", "orange", "orange", "ink"])} /></div>
-        <div className="t t5"><LivingEye lively ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
+        <div className="t t5"><LivingEye lively steadyRing ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
       </div>
     </>
   );

@@ -21,9 +21,10 @@ type Props = {
   ink?: string;   // eyeball (center disc) color
   bg?: string;    // pupil color (matches the tile behind it)
   lively?: boolean;
+  steadyRing?: boolean; // keep the crosshair still: no ring burst, hops or tilts (the eye does all the acting)
 };
 
-export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false }: Props) {
+export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false, steadyRing = false }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const uid = useId().replace(/:/g, "");
   const ringColor = ring ?? ink;
@@ -69,16 +70,18 @@ export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(
     };
 
     const moves: (() => void)[] = [
-      // surprised: ring pops out, eye widens, pupil shrinks
-      () => { tgt.burst = 1; tgt.s = 1.1; tgt.pr = 0.55; lookAt(0, 0); busy(850, () => { tgt.burst = 0; tgt.s = 1; tgt.pr = 1; }); },
+      // surprised: ring pops out (or, with a steady ring, just the eye widens), pupil shrinks
+      () => { if (!steadyRing) tgt.burst = 1; tgt.s = 1.1; tgt.pr = 0.55; lookAt(0, 0); busy(850, () => { tgt.burst = 0; tgt.s = 1; tgt.pr = 1; }); },
       // happy squint
       () => { tgt.sy = 0.45; lookAt(0, -10); busy(1000, () => { tgt.sy = 1; }); },
     ];
-    if (lively) moves.push(
+    if (lively && !steadyRing) moves.push(
       // little hop
       () => { tgt.hy = -26; tgt.sy = 1.06; busy(240, () => { tgt.hy = 0; tgt.sy = 1; }); },
       // curious head tilt while looking the same way
       () => { const side = Math.random() < 0.5 ? -1 : 1; tgt.rot = 10 * side; lookAt(LOOK * side, -12); busy(1100, () => { tgt.rot = 0; }); },
+    );
+    if (lively) moves.push(
       // double-take: look one way, snap to the other
       () => { lookAt(-LOOK, 0); busy(380, () => { lookAt(LOOK, 0); tgt.s = 1.06; later(() => { tgt.s = 1; }, 250); }); },
     );
@@ -104,7 +107,7 @@ export function LivingEye({ className = "", ring, ink = "var(--ink)", bg = "var(
     raf = requestAnimationFrame(frame);
     later(wander, 600); later(blink, 1600); later(act, lively ? 1800 : 4000);
     return () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); };
-  }, [lively]);
+  }, [lively, steadyRing]);
 
   // ring = the real mark with the center cut away, split into 4 quadrants so it can burst
   const m = `ring${uid}`;
