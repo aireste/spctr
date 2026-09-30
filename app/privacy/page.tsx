@@ -127,7 +127,7 @@ const policyHtml = `
 <div id="infominors" style="line-height: 1.5;"><strong><span data-custom-class="heading_1"><h2>7. DO WE COLLECT INFORMATION FROM MINORS?</h2></span></strong>
 <span data-custom-class="body_text"><strong><em>In Short:</em></strong><em> We do not knowingly collect data from or market to children under 18 years of age.</em></span></div>
 <div><br></div>
-<div style="line-height: 1.5;"><span data-custom-class="body_text">We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at <a data-custom-class="link" href="mailto:estebanjguerra@gmail.com">estebanjguerra@gmail.com</a>.</span></div>
+<div style="line-height: 1.5;"><span data-custom-class="body_text">We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at <a data-custom-class="link" href="mailto:estebanjguerra@spctr.run">estebanjguerra@spctr.run</a>.</span></div>
 <div><br></div>
 
 <div id="privacyrights" style="line-height: 1.5;"><strong><span data-custom-class="heading_1"><h2>8. WHAT ARE YOUR PRIVACY RIGHTS?</h2></span></strong>
@@ -255,7 +255,7 @@ const policyHtml = `
 <li data-custom-class="body_text"><strong>Right to opt out</strong> of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects</li>
 </ul>
 <div style="line-height: 1.5;"><strong><span data-custom-class="heading_2"><h3>How to Exercise Your Rights</h3></span></strong>
-<span data-custom-class="body_text">To exercise these rights, you can contact us by submitting a <a data-custom-class="link" href="https://app.termly.io/dsar/bec7e2f0-39c2-41d4-87ee-d1d57225ae57" target="_blank" rel="noopener noreferrer">data subject access request</a>, by emailing us at <a data-custom-class="link" href="mailto:estebanjguerra@gmail.com">estebanjguerra@gmail.com</a>, or by referring to the contact details at the bottom of this document.</span></div>
+<span data-custom-class="body_text">To exercise these rights, you can contact us by submitting a <a data-custom-class="link" href="https://app.termly.io/dsar/bec7e2f0-39c2-41d4-87ee-d1d57225ae57" target="_blank" rel="noopener noreferrer">data subject access request</a>, by emailing us at <a data-custom-class="link" href="mailto:estebanjguerra@spctr.run">estebanjguerra@spctr.run</a>, or by referring to the contact details at the bottom of this document.</span></div>
 <div><br></div>
 <div style="line-height: 1.5;"><span data-custom-class="body_text">Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.</span></div>
 <div><br></div>
@@ -265,7 +265,7 @@ const policyHtml = `
 <div style="line-height: 1.5;"><span data-custom-class="body_text">If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf.</span></div>
 <div><br></div>
 <div style="line-height: 1.5;"><strong><span data-custom-class="heading_2"><h3>Appeals</h3></span></strong>
-<span data-custom-class="body_text">Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <a data-custom-class="link" href="mailto:estebanjguerra@gmail.com">estebanjguerra@gmail.com</a>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</span></div>
+<span data-custom-class="body_text">Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <a data-custom-class="link" href="mailto:estebanjguerra@spctr.run">estebanjguerra@spctr.run</a>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</span></div>
 <div><br></div>
 <div style="line-height: 1.5;"><strong><span data-custom-class="heading_2"><h3>California "Shine The Light" Law</h3></span></strong>
 <span data-custom-class="body_text">California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section <a data-custom-class="link" href="#contact">"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?"</a></span></div>
@@ -305,9 +305,7 @@ const policyHtml = `
 <div><br></div>
 
 <div id="contact" style="line-height: 1.5;"><strong><span data-custom-class="heading_1"><h2>13. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2></span></strong>
-<span data-custom-class="body_text">If you have questions or comments about this notice, you may email us at <a data-custom-class="link" href="mailto:estebanjguerra@gmail.com">estebanjguerra@gmail.com</a> or contact us by post at:</span></div>
-<div><br></div>
-<div style="line-height: 1.5;"><span data-custom-class="body_text"><strong>SPCTR</strong></span></div>
+<span data-custom-class="body_text">If you have questions or comments about this notice, you may email us at <a data-custom-class="link" href="mailto:estebanjguerra@spctr.run">estebanjguerra@spctr.run</a>.</span></div>
 <div><br></div>
 
 <div id="request" style="line-height: 1.5;"><strong><span data-custom-class="heading_1"><h2>14. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2></span></strong>
