@@ -358,3 +358,24 @@ nav .links a[aria-current]::after{background:var(--teal)}
 input,textarea{transition:border-color .2s var(--ease),box-shadow .2s var(--ease),background-color .2s var(--ease)}
 input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 12 17 / .08);background:#fff}
 @media (prefers-reduced-motion:reduce){.steps li,.chips span,.chips span::before{transition:none;animation:none}.steps li:hover{transform:none}}
+
+/* ---------- Reveal: cards rise in once as they scroll into view ---------- */
+.js-reveal .rv:not(.rv-in){opacity:0}
+.js-reveal .rv.rv-in{animation:rise .7s var(--ease) backwards;animation-delay:var(--rv-delay,0ms)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+
+/* ---------- Hover: one consistent gentle lift for cards ---------- */
+.offer,.more,.who > div,.probs > div,.gets > div,.fit > div,.pterms li,.why > div{
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.offer:hover,.more:hover,.who > div:hover,.probs > div:hover,.gets > div:hover,.fit > div:hover,.pterms li:hover,.why > div:hover{
+  transform:translateY(-4px);box-shadow:0 14px 30px -18px rgb(12 12 17 / .35)}
+@media (prefers-reduced-motion:reduce){
+  .offer:hover,.more:hover,.who > div:hover,.probs > div:hover,.gets > div:hover,.fit > div:hover,.pterms li:hover,.why > div:hover{transform:none}
+}
+
+/* ---------- Mascot parked by the contact form ---------- */
+.lookout{margin-top:36px;display:flex;align-items:center;gap:18px}
+.lookout-tile{flex:none;width:96px;height:96px;border-radius:24px;background:var(--lime);display:grid;place-items:center}
+.lookout-tile .living-eye{width:74%;height:74%}
+.lookout-bubble{position:relative;background:#fff;border-radius:18px;padding:12px 16px;font-size:15px;line-height:1.4;max-width:30ch;box-shadow:0 10px 24px -18px rgb(12 12 17 / .5)}
+.lookout-bubble::before{content:"";position:absolute;left:-7px;top:50%;width:14px;height:14px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}

@@ -1,5 +1,6 @@
 import { Letters } from "./Brand";
 import { ScrollSpy } from "./ScrollSpy";
+import { Reveal } from "./Reveal";
 
 /** Site nav, shared by every page. Links are absolute so they work from subpages.
  *  Pages without their own contact form pass ctaHref="/#contact". */
@@ -16,6 +17,7 @@ export function SiteNav({ ctaHref = "#contact" }: { ctaHref?: string }) {
         <a className="btn" href={ctaHref}>Book a call</a>
       </div>
       <ScrollSpy />
+      <Reveal />
     </nav>
   );
 }
