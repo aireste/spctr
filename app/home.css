@@ -1,7 +1,10 @@
 /* SPCTR homepage (Bento). Source mockup: design-concepts/v2/h-bento.src.html */
 :root{
-  --magenta:#e832d9; --orange:#f07a45; --green:#62c87a; --violet:#4b4bf0; --lav:#c3bcfa; --blush:#f6cbc4; --lime:#c0fc04;
-  --ink:#0d0d14; --paper:#fffdfb; --ink-2:#5b5b6b; --line:#ece6e2;
+  /* Marathon-style: neutral bone + grays, near-black, sharp accents (SPCTR brand colors) */
+  --lime:#c0fc04; --orange:#ff5500; --magenta:#ea027e; --violet:#3601fb; --green:#00d4aa;
+  --ink:#0c0c11; --paper:#eeede7; --panel:#e2e1d9; --panel-2:#d7d6cd; --field:#f7f7f2;
+  --lav:var(--panel-2); --blush:var(--panel);
+  --ink-2:#55555f; --line:#cfcec5;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -210,3 +213,39 @@ footer .brand{display:inline-block}
 }
 .lg-eye{width:86%;height:86%;display:block;cursor:pointer}
 @media (max-width:900px){.gets{grid-template-columns:1fr}.gets .g1{grid-row:auto;min-height:220px}}
+
+/* ---------- Marathon palette pass ---------- */
+::selection{background:var(--lime);color:var(--ink)}
+.eyebrow{font-family:var(--font-mono),monospace;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--lime);border-radius:6px;padding:6px 10px}
+.eyebrow::before{content:"";display:inline-block;width:7px;height:7px;background:var(--lime);margin-right:8px;vertical-align:1px}
+.badge{font-family:var(--font-mono),monospace;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;background:rgb(12 12 17 / .08)}
+.badge.live{background:var(--ink);color:var(--lime)}
+.num{font-family:var(--font-mono),monospace;font-weight:600;font-size:14px}
+.spec dt{font-family:var(--font-mono),monospace;font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
+/* offers: lime + black pair */
+.o2{background:var(--ink);color:var(--paper)}
+.o2 .badge{background:rgb(255 255 255 / .12);color:var(--paper)}
+.o2 .ex span{background:rgb(255 255 255 / .1);color:var(--paper)}
+.o2 .btn.alt{background:var(--orange);color:var(--ink)}
+.o2 .btn.alt:hover{background:var(--lime)}
+.more .badge{background:rgb(12 12 17 / .08)}
+/* neutral panels with sharp color markers */
+.steps li,.steps li:nth-child(1),.steps li:nth-child(2),.steps li:nth-child(3){background:var(--panel)}
+.sn{border-radius:8px;font-family:var(--font-mono),monospace;font-size:18px}
+.steps li:nth-child(1) .sn{background:var(--ink);color:var(--lime)}
+.steps li:nth-child(2) .sn{background:var(--orange);color:var(--ink)}
+.steps li:nth-child(3) .sn{background:var(--violet);color:#fff}
+.probs div,.probs div:nth-child(1),.probs div:nth-child(2),.probs div:nth-child(3){background:var(--panel);position:relative}
+.probs div::before{content:"";display:block;width:28px;height:6px;border-radius:2px;background:var(--orange);margin-bottom:16px}
+.probs div:nth-child(2)::before{background:var(--magenta)}.probs div:nth-child(3)::before{background:var(--violet)}
+.gets > div,.gets > div:nth-child(2),.gets > div:nth-child(3),.gets > div:nth-child(4){background:var(--panel)}
+.gets > div:nth-child(5){background:transparent;border:2px solid var(--ink)}
+.gets .g1{background:var(--lime)}
+.gets .gi{border-radius:8px}
+.pterms li{background:var(--panel)}
+.who div{background:transparent}
+input,textarea,.invite{background:var(--field)}
+.t7{background:var(--field)}
+.t4{background:var(--panel-2)}
+footer{border-top-color:var(--ink)}
+.gets .g1 p,.offer.o1 .d{color:var(--ink)}
