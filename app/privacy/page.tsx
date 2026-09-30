@@ -1,4 +1,12 @@
-import "../globals.css";
+import type { Metadata } from "next";
+import "../home.css";
+import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
+
+export const metadata: Metadata = {
+  title: "Privacy notice · SPCTR",
+  description: "How SPCTR collects, uses and protects your personal information.",
+};
+
 const policyHtml = `
 <div data-custom-class="body">
 <div><strong><span style="font-size: 26px;"><span data-custom-class="title"><h1>PRIVACY NOTICE</h1></span></span></strong></div>
@@ -305,11 +313,6 @@ const policyHtml = `
 <div id="request" style="line-height: 1.5;"><strong><span data-custom-class="heading_1"><h2>14. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2></span></strong>
 <span data-custom-class="body_text">Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a <a data-custom-class="link" href="https://app.termly.io/dsar/bec7e2f0-39c2-41d4-87ee-d1d57225ae57" target="_blank" rel="noopener noreferrer">data subject access request</a>.</span></div>
 </div>
-<style>
-  .privacy-content ul { list-style-type: square; }
-  .privacy-content ul > li > ul { list-style-type: circle; }
-  .privacy-content ul > li > ul > li > ul { list-style-type: square; }
-</style>
 <br>
 <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);">
   <span data-custom-class="body_text" style="font-size: 12px; color: #606070;">This Privacy Policy was created using Termly's </span><a href="https://termly.io/products/privacy-policy-generator/" target="_blank" rel="noopener noreferrer" data-custom-class="link" style="font-size: 12px;">Privacy Policy Generator</a>
@@ -318,47 +321,26 @@ const policyHtml = `
 
 export default function PrivacyPage() {
   return (
-    <main style={{ background: "#05050a", minHeight: "100vh" }}>
-      <nav style={{
-        padding: "20px 40px",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}>
-        <a
-          href="/"
-          style={{
-            fontFamily: "'Barlow Condensed', 'Arial Narrow', Arial, sans-serif",
-            fontWeight: 900,
-            fontSize: 20,
-            color: "#ffffff",
-            textDecoration: "none",
-            letterSpacing: 2,
-          }}
-        >
-          SPCTR<em style={{ color: "#c0fc04", fontStyle: "normal" }}>.</em>
-        </a>
-        <a
-          href="/"
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: 11,
-            color: "#c0fc04",
-            textDecoration: "none",
-            letterSpacing: 1,
-          }}
-        >
-          ← BACK
-        </a>
-      </nav>
+    <>
+      <SiteNav ctaHref="/#contact" />
 
-      <div
-        className="privacy-content"
-        style={{ maxWidth: 860, margin: "0 auto", padding: "60px 24px 100px" }}
-        dangerouslySetInnerHTML={{ __html: policyHtml }}
-      />
+      <main className="wrap">
+        <header className="policy-head">
+          <span className="eyebrow">Legal</span>
+          <h1>Privacy <em>notice.</em></h1>
+          <p className="lead">
+            What we collect, why we collect it, and what you can ask us to do with it.
+            <span className="policy-date">Last updated April 28, 2026</span>
+          </p>
+        </header>
 
-    </main>
+        <article
+          className="policy"
+          dangerouslySetInnerHTML={{ __html: policyHtml }}
+        />
+      </main>
+
+      <SiteFooter />
+    </>
   );
 }

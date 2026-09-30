@@ -249,3 +249,33 @@ input,textarea,.invite{background:var(--field)}
 .t4{background:var(--panel-2)}
 footer{border-top-color:var(--ink)}
 .gets .g1 p,.offer.o1 .d{color:var(--ink)}
+
+/* ---------- Privacy notice (Termly HTML, restyled to the brand) ---------- */
+.policy-head{padding:clamp(32px,5vw,64px) 0 clamp(28px,4vw,48px)}
+.policy-head h1{margin-top:18px}
+.policy-date{display:block;margin-top:14px;font-family:var(--font-mono),monospace;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.policy{background:var(--panel);border-radius:28px;padding:clamp(24px,5vw,64px);margin-bottom:clamp(56px,8vw,100px);max-width:920px}
+/* Termly ships inline colors and sizes; neutralize them so the brand wins */
+.policy *{color:inherit !important;background:transparent !important;font-family:inherit !important;font-size:inherit !important}
+.policy{color:var(--ink-2);font-size:16px;line-height:1.65}
+.policy div{line-height:1.65 !important}
+.policy [data-custom-class='title'],.policy [data-custom-class='subtitle']{display:none}
+.policy h2{max-width:none;line-height:1.5;font-family:var(--font-mono),monospace !important;font-weight:600;font-size:14px !important;letter-spacing:.06em;text-transform:uppercase;color:var(--ink) !important;margin:44px 0 14px;padding-top:28px;border-top:2px solid var(--ink)}
+.policy h2::before{content:"";display:inline-block;width:8px;height:8px;background:var(--lime);box-shadow:0 0 0 1px var(--ink);margin-right:10px;vertical-align:1px}
+.policy h3{max-width:none;line-height:1.3;font-weight:800;font-size:19px !important;letter-spacing:-.02em;color:var(--ink) !important;margin:26px 0 8px}
+.policy strong,.policy b{color:var(--ink) !important}
+.policy a{color:var(--ink) !important;text-decoration:underline;text-decoration-color:var(--violet);text-decoration-thickness:2px;text-underline-offset:3px;transition:color .2s}
+.policy a:hover{color:var(--violet) !important}
+.policy ul{padding-left:22px;margin:12px 0;list-style-type:square}
+.policy ul > li > ul{list-style-type:circle}
+.policy li{margin-bottom:6px}
+.policy li::marker{color:var(--violet)}
+.policy table{border-collapse:collapse;width:100%;margin:20px 0}
+.policy th,.policy td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+.policy th{background:var(--panel-2) !important;color:var(--ink) !important}
+.policy [id]{scroll-margin-top:24px}
+/* Termly wraps headings in inline span/strong; make those wrappers blocks so headings get full width */
+.policy strong:has(h1,h2,h3),.policy span:has(h1,h2,h3){display:block}
+/* the first three nodes are Termly's title, subtitle and a spacer; our header replaces them */
+.policy [data-custom-class='body'] > div:nth-child(-n+3){display:none}
+.policy [data-custom-class='body'] > div:nth-child(4) h2{margin-top:0}

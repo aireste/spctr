@@ -1,7 +1,8 @@
 import { Letters } from "./Brand";
 
-/** Site nav, shared by every page. Links are absolute so they work from subpages. */
-export function SiteNav() {
+/** Site nav, shared by every page. Links are absolute so they work from subpages.
+ *  Pages without their own contact form pass ctaHref="/#contact". */
+export function SiteNav({ ctaHref = "#contact" }: { ctaHref?: string }) {
   return (
     <nav>
       <div className="wrap">
@@ -11,7 +12,7 @@ export function SiteNav() {
           <a href="/#builds">Custom builds</a>
           <a href="/#start">How to start</a>
         </div>
-        <a className="btn" href="#contact">Book a call</a>
+        <a className="btn" href={ctaHref}>Book a call</a>
       </div>
     </nav>
   );
