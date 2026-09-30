@@ -6,13 +6,13 @@ import { markInner } from "./Brand";
 // The SPCTR mark as a living eye. Geometry is in the mark's own coordinates
 // (viewBox 240 240 520 520): the ring comes from the real logo paths, and the
 // center disc + pupil are redrawn as circles so they can move.
-// It glances around on its own; hovering (or tapping) tickles it.
+// It glances around on its own and blinks; no hover behavior.
 const DISC = { x: 499, y: 491, r: 141 };
 const PUPIL_REST = { x: -37, y: -18 }; // where the pupil sits in the logo
 const PUPIL_R = 51;
 const LOOK = 58; // how far the pupil can travel from the disc center
 
-type Mood = "idle" | "blink" | "happy" | "surprised" | "tickle";
+type Mood = "idle" | "blink" | "happy" | "surprised";
 
 export function LivingEye({ className = "", ink = "var(--ink)", bg = "var(--lime)" }: { className?: string; ink?: string; bg?: string }) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -30,7 +30,6 @@ export function LivingEye({ className = "", ink = "var(--ink)", bg = "var(--lime
     const cur = { px: PUPIL_REST.x, py: PUPIL_REST.y, sy: 1, s: 1, burst: 0, pr: 1 };
     const tgt = { ...cur };
     let mood: Mood = "idle";
-    let tickled = false;
     const timers: number[] = [];
     const later = (fn: () => void, ms: number) => timers.push(window.setTimeout(fn, ms));
 
@@ -63,38 +62,24 @@ export function LivingEye({ className = "", ink = "var(--ink)", bg = "var(--lime
       later(act, 5000 + Math.random() * 5000);
     };
 
-    // tickle: pupil shrinks to a pinpoint, eye squints and giggles, ring jitters
-    const startTickle = () => { tickled = true; mood = "tickle"; tgt.pr = 0.32; tgt.sy = 0.62; tgt.burst = 0.18; lookAt(0, 0); };
-    const stopTickle = () => { tickled = false; tgt.pr = 1; tgt.sy = 1; tgt.burst = 0; tgt.s = 1; mood = "idle"; };
-    const onTap = () => { startTickle(); later(() => { if (tickled) stopTickle(); }, 1300); };
-
     let raf = 0;
-    const frame = (t: number) => {
+    const frame = () => {
       (Object.keys(cur) as (keyof typeof cur)[]).forEach((k) => { cur[k] += (tgt[k] - cur[k]) * (k === "sy" ? 0.35 : 0.14); });
-      const g = tickled ? Math.sin(t / 45) : 0; // giggle wave
-      const jx = tickled ? (Math.random() - 0.5) * 7 : 0, jy = tickled ? (Math.random() - 0.5) * 7 : 0;
-      pupil.setAttribute("cx", String(DISC.x + cur.px + g * 10));
+      pupil.setAttribute("cx", String(DISC.x + cur.px));
       pupil.setAttribute("cy", String(DISC.y + cur.py));
       pupil.setAttribute("r", String(PUPIL_R * cur.pr));
-      const sy = cur.sy * (1 + g * 0.06);
-      lid.setAttribute("transform", `translate(${DISC.x} ${DISC.y}) rotate(${g * 5}) scale(${cur.s} ${cur.s * sy}) translate(${-DISC.x} ${-DISC.y})`);
+      lid.setAttribute("transform", `translate(${DISC.x} ${DISC.y}) scale(${cur.s} ${cur.s * cur.sy}) translate(${-DISC.x} ${-DISC.y})`);
       const b = cur.burst * 34;
       quads.forEach((q, i) => {
-        const dx = (i % 2 ? b : -b) + jx * (i % 2 ? 1 : -1), dy = (i < 2 ? -b : b) + jy * (i < 2 ? -1 : 1);
+        const dx = i % 2 ? b : -b, dy = i < 2 ? -b : b;
         q.setAttribute("transform", `translate(${dx} ${dy})`);
       });
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
     later(wander, 800); later(blink, 2200); later(act, 4000);
-    svg.addEventListener("pointerenter", startTickle);
-    svg.addEventListener("pointerleave", stopTickle);
-    svg.addEventListener("pointerdown", onTap);
     return () => {
       cancelAnimationFrame(raf); timers.forEach(clearTimeout);
-      svg.removeEventListener("pointerenter", startTickle);
-      svg.removeEventListener("pointerleave", stopTickle);
-      svg.removeEventListener("pointerdown", onTap);
     };
   }, []);
 

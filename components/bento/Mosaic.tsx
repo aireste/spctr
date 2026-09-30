@@ -13,7 +13,7 @@ const C: Record<string, string> = {
 function mark(cols: Cols, { wrap = "", style = "" } = {}) {
   const [tl, tr, bl, br, c] = cols.map((k) => C[k] ?? k);
   const q = (id: string, col: string) =>
-    `<g class="q${id}" clip-path="url(#c${id})"><use href="#mk" style="--a:${col};--b:${col}"/></g>`;
+    `<g class="q${id}"><g clip-path="url(#c${id})" mask="url(#ringOnly)"><use href="#mk" style="--a:${col};--b:${col}"/></g></g>`;
   const inner = q("TL", tl) + q("TR", tr) + q("BL", bl) + q("BR", br) +
     `<g clip-path="url(#cC)"><use href="#mk" style="--a:${c};--b:${c}"/></g>`;
   const body = wrap ? `<g class="${wrap}" style="transform-origin:500px 500px">${inner}</g>` : inner;
@@ -51,6 +51,7 @@ const defs = `<defs>
   <clipPath id="cBL"><rect x="240" y="500" width="260" height="260"/></clipPath>
   <clipPath id="cBR"><rect x="500" y="500" width="260" height="260"/></clipPath>
   <clipPath id="cC"><circle cx="500" cy="500" r="165"/></clipPath>
+  <mask id="ringOnly" maskUnits="userSpaceOnUse" x="200" y="200" width="600" height="600"><rect x="200" y="200" width="600" height="600" fill="#fff"/><circle cx="500" cy="500" r="165" fill="#000"/></mask>
 </defs>`;
 
 /** Shared SVG defs (the mark + quadrant clips). Render once per page before any mark. */
