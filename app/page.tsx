@@ -56,12 +56,6 @@ export default function Home() {
               <div className="ex"><span>Leads answered in minutes</span><span>Reports that write themselves</span><span>Your tools talking to each other</span></div>
               <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem →</a>
             </article>
-            <article className="offer o3">
-              <div className="otop"><span className="num">03</span><span className="badge">Coming soon</span></div>
-              <h3>CRM Audit &amp; Cleanup</h3>
-              <p className="d">Find out what&apos;s broken in your CRM, then get it fixed. Duplicates merged, dead contacts flagged, stale deals surfaced.</p>
-              <a className="btn ghost" href="#contact" data-interest="crm-audit">Get early access →</a>
-            </article>
           </div>
         </section>
 

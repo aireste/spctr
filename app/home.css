@@ -71,7 +71,7 @@ h1 em{font-style:normal;color:var(--violet)}
 .sec{padding:clamp(72px,9vw,120px) 0 0}
 .eyebrow{display:inline-block;font-weight:700;font-size:14px;background:var(--blush);padding:6px 12px;border-radius:99px}
 h2{margin-top:14px;font-weight:900;font-size:clamp(36px,4.6vw,64px);letter-spacing:-.045em;line-height:.98;max-width:18ch}
-.offers{margin-top:36px;display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:14px}
+.offers{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .offer{border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;min-height:420px;position:relative;overflow:hidden}
 .o1{background:var(--lime)}
 .o2{background:var(--lav)}

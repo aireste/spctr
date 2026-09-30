@@ -7,7 +7,6 @@ type State = "idle" | "sending" | "sent" | "error";
 const INTERESTS = [
   { value: "lead-generation", label: "Lead generation" },
   { value: "custom-ai-build", label: "A custom AI build" },
-  { value: "crm-audit", label: "CRM audit & cleanup" },
 ];
 
 export function ContactForm() {
