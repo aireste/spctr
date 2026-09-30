@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LivingEye } from "./LivingEye";
 
 // Glint in the corner: a quick-answer helper, not an AI chat (yet).
+// The hello bubble only shows while hovering (or keyboard-focusing) Glint.
 // Every answer below is taken from what the site already promises, so it can't
 // say anything we haven't committed to. Upgrade path: swap `reply()` for a
 // Claude-backed API route, keeping these answers as its grounding.
@@ -34,7 +35,6 @@ const QA: { q: string; a: string; link?: { label: string; href: string } }[] = [
 
 type Msg = { from: "glint" | "you"; text: string; link?: { label: string; href: string } };
 const GREETING = "Hello, I'm Glint! Anything you want to know about SPCTR?";
-const SEEN_KEY = "glint-greeted";
 
 export function GlintHelper() {
   const [open, setOpen] = useState(false);
@@ -45,16 +45,6 @@ export function GlintHelper() {
   const [asked, setAsked] = useState<number[]>([]);
   const logRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-
-  // say hi once on desktop, a few seconds in
-  useEffect(() => {
-    let seen = false;
-    try { seen = localStorage.getItem(SEEN_KEY) === "1"; } catch {}
-    if (seen || matchMedia("(max-width: 900px)").matches) return;
-    const t = window.setTimeout(() => setHello(true), 4000);
-    return () => clearTimeout(t);
-  }, []);
-  const markSeen = () => { setHello(false); try { localStorage.setItem(SEEN_KEY, "1"); } catch {} };
 
   // tuck away while the contact section is on screen (Glint is already there)
   useEffect(() => {
@@ -93,7 +83,7 @@ export function GlintHelper() {
     }, 650);
   };
 
-  const toggle = () => { markSeen(); setOpen((o) => !o); };
+  const toggle = () => { setHello(false); setOpen((o) => !o); };
   const remaining = QA.map((qa, i) => ({ ...qa, i })).filter((x) => !asked.includes(x.i));
 
   return (
@@ -125,12 +115,13 @@ export function GlintHelper() {
 
       {hello && !open && (
         <div className="glint-hello" role="status">
-          <button className="glint-hello-body" onClick={toggle}>{GREETING}</button>
-          <button className="glint-x" onClick={markSeen} aria-label="Dismiss">×</button>
+          <button className="glint-hello-body" onClick={toggle} tabIndex={-1}>{GREETING}</button>
         </div>
       )}
 
-      <button className="glint-launch" onClick={toggle} aria-expanded={open} aria-label={open ? "Close Glint" : "Open Glint, SPCTR helper"}>
+      <button className="glint-launch" onClick={toggle}
+        onMouseEnter={() => setHello(true)} onMouseLeave={() => setHello(false)}
+        onFocus={() => setHello(true)} onBlur={() => setHello(false)} aria-expanded={open} aria-label={open ? "Close Glint" : "Open Glint, SPCTR helper"}>
         <LivingEye lively ink="var(--ink)" bg="var(--lime)" />
       </button>
     </div>

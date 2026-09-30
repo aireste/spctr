@@ -1,6 +1,7 @@
 import { markInner } from "./Brand";
 import { AssemblyLine } from "./AssemblyLine";
 import { LivingEye } from "./LivingEye";
+import { DuoTile } from "./DuoTile";
 
 // Every tile is the SPCTR mark. Each quadrant of the ring (and the center disc)
 // is clipped separately so it can take its own color.
@@ -41,9 +42,7 @@ const tiles: [string, string][] = [
   ["t6", mark(["orange", "bone", "bone", "orange", "bone"])],
   ["t7", mark(["bone", "lime", "lime", "bone", "lime"])],
   ["t8", mark(["ink", "bone", "bone", "ink", "bone"])],
-  // t9: two marks roll in, bump, say hi (little hops + a heart), then roll off together
-  ["t9", `<div class="duo"><div class="mv a"><div class="rl">${mark(MULTI)}</div></div>` +
-    `<div class="mv b"><div class="rl">${mark(K)}</div></div><span class="heart">♥</span></div>`],
+  // t9 = <DuoTile/> (rendered below): little scenes of marks playing together
 ];
 
 const defs = `<defs>
@@ -70,6 +69,7 @@ export function Mosaic() {
           <div key={cls} className={`t ${cls}`} dangerouslySetInnerHTML={{ __html: html }} />
         ))}
         <div className="t t3"><AssemblyLine /></div>
+        <div className="t t9"><DuoTile a={mark(MULTI)} b={mark(K)} c={mark(["orange", "orange", "orange", "orange", "ink"])} /></div>
         <div className="t t5"><LivingEye lively ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
       </div>
     </>

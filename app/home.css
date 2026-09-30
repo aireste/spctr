@@ -373,12 +373,6 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
   .offer:hover,.more:hover,.who > div:hover,.probs > div:hover,.gets > div:hover,.fit > div:hover,.pterms li:hover,.why > div:hover{transform:none}
 }
 
-/* ---------- Mascot parked by the contact form ---------- */
-.lookout{margin-top:36px;display:flex;align-items:center;gap:18px}
-.lookout-tile{flex:none;width:96px;height:96px;border-radius:24px;background:var(--lime);display:grid;place-items:center}
-.lookout-tile .living-eye{width:74%;height:74%}
-.lookout-bubble{position:relative;background:#fff;border-radius:18px;padding:12px 16px;font-size:15px;line-height:1.4;max-width:30ch;box-shadow:0 10px 24px -18px rgb(12 12 17 / .5)}
-.lookout-bubble::before{content:"";position:absolute;left:-7px;top:50%;width:14px;height:14px;background:#fff;transform:translateY(-50%) rotate(45deg);border-radius:2px}
 
 /* ---------- Glint, bottom-right helper ---------- */
 .glint{position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(12px,2vw,28px);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;
@@ -423,38 +417,97 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 @media (max-width:900px){.glint-launch{width:56px;height:56px;border-radius:18px}}
 @media (prefers-reduced-motion:reduce){.glint,.glint-panel,.glint-hello,.glint-msg{animation:none;transition:none}.glint-typing i{animation:none;opacity:.6}}
 
-/* ---------- t9: the meet-cute (two marks bump, say hi, roll off together) ---------- */
+/* ---------- t9: scenes of marks playing (bump / dance / trio), cycled by DuoTile ---------- */
 .t9{container-type:size;place-items:stretch}
-.t9 .duo{position:absolute;inset:0;--S:clamp(36px,4.4vw,64px)}
+.t9 .duo{position:absolute;inset:0;--S:clamp(36px,4.4vw,64px);--C:calc(var(--S) * .68)}
 .t9 .duo svg{position:static;margin:0;width:100%;height:100%;animation:none;display:block}
-.t9 .mv{position:absolute;left:0;top:50%;width:var(--S);height:var(--S);margin-top:calc(var(--S) / -2);animation:9s infinite}
-.t9 .rl{width:100%;height:100%;animation:9s infinite}
-.t9 .mv.a{animation-name:duoA;transform-origin:right center}
-.t9 .mv.b{animation-name:duoB;transform-origin:left center}
-.t9 .a .rl{animation-name:rollA}
-.t9 .b .rl{animation-name:rollB}
-@keyframes duoA{
-  0%{transform:translateX(calc(-1 * var(--S)))}
-  28%{transform:translateX(calc(50cqw - var(--S) - 1px))}
-  31%{transform:translateX(calc(50cqw - var(--S) + 2px)) scale(.82,1.1)}
-  37%,40%{transform:translateX(calc(50cqw - var(--S) - 12px))}
-  44%{transform:translateX(calc(50cqw - var(--S) - 12px)) translateY(-16px)}
-  48%,64%{transform:translateX(calc(50cqw - var(--S) - 12px))}
+.t9 .mv{position:absolute;left:0;top:50%;width:var(--S);height:var(--S);margin-top:calc(var(--S) / -2);animation-duration:7s;animation-fill-mode:both;animation-timing-function:ease-in-out}
+.t9 .mv.c{width:var(--C);height:var(--C);margin-top:calc(var(--C) / -2)}
+.t9 .rl{width:100%;height:100%;animation-duration:7s;animation-fill-mode:both;animation-timing-function:ease-in-out}
+.t9 .duo:not(.s3) .mv.c{display:none}
+
+/* scene 1 — bump: roll in, bump, bounce back, hop together, roll off together */
+.s1 .mv.a{animation-name:s1A;transform-origin:right center}
+.s1 .mv.b{animation-name:s1B;transform-origin:left center}
+.s1 .a .rl{animation-name:s1rA}.s1 .b .rl{animation-name:s1rB}
+@keyframes s1A{0%{transform:translateX(calc(-1 * var(--S)))}
+  30%{transform:translateX(calc(50cqw - var(--S) - 1px))}
+  33%{transform:translateX(calc(50cqw - var(--S) + 2px)) scale(.82,1.1)}
+  40%,50%{transform:translateX(calc(50cqw - var(--S) - 12px))}
+  55%{transform:translateX(calc(50cqw - var(--S) - 12px)) translateY(-14px)}
+  60%,64%{transform:translateX(calc(50cqw - var(--S) - 12px))}
   100%{transform:translateX(calc(100cqw + var(--S)))}}
-@keyframes duoB{
-  0%{transform:translateX(100cqw)}
-  28%{transform:translateX(calc(50cqw + 1px))}
-  31%{transform:translateX(calc(50cqw - 2px)) scale(.82,1.1)}
-  37%,48%{transform:translateX(calc(50cqw + 12px))}
-  52%{transform:translateX(calc(50cqw + 12px)) translateY(-16px)}
-  56%,64%{transform:translateX(calc(50cqw + 12px))}
+@keyframes s1B{0%{transform:translateX(100cqw)}
+  30%{transform:translateX(calc(50cqw + 1px))}
+  33%{transform:translateX(calc(50cqw - 2px)) scale(.82,1.1)}
+  40%,50%{transform:translateX(calc(50cqw + 12px))}
+  55%{transform:translateX(calc(50cqw + 12px)) translateY(-14px)}
+  60%,64%{transform:translateX(calc(50cqw + 12px))}
   100%{transform:translateX(calc(100cqw + 2 * var(--S) + 24px))}}
-@keyframes rollA{0%{transform:rotate(0)}28%{transform:rotate(360deg)}37%,64%{transform:rotate(330deg)}100%{transform:rotate(870deg)}}
-@keyframes rollB{0%{transform:rotate(0)}28%{transform:rotate(-360deg)}37%,64%{transform:rotate(-330deg)}100%{transform:rotate(210deg)}}
-.t9 .heart{position:absolute;left:50%;top:50%;translate:-50% calc(-100% - var(--S) * .42);color:var(--magenta);font-size:clamp(14px,1.4vw,22px);line-height:1;opacity:0;animation:heart 9s infinite}
-@keyframes heart{0%,44%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.1)}53%{transform:scale(1)}62%{opacity:1;transform:scale(1) translateY(-4px)}68%,100%{opacity:0;transform:scale(.9) translateY(-7px)}}
+@keyframes s1rA{0%{transform:rotate(0)}30%{transform:rotate(360deg)}40%,64%{transform:rotate(330deg)}100%{transform:rotate(870deg)}}
+@keyframes s1rB{0%{transform:rotate(0)}30%{transform:rotate(-360deg)}40%,64%{transform:rotate(-330deg)}100%{transform:rotate(210deg)}}
+
+/* scene 2 — dance: meet, call-and-response wiggles + hops, then bounce apart */
+.s2 .mv.a{animation-name:s2A}.s2 .mv.b{animation-name:s2B}
+.s2 .a .rl{animation-name:s2rA}.s2 .b .rl{animation-name:s2rB}
+@keyframes s2A{0%{transform:translateX(calc(-1 * var(--S)))}
+  26%,34%{transform:translateX(calc(50cqw - var(--S) - 10px))}
+  38%{transform:translateX(calc(50cqw - var(--S) - 10px)) translateY(-14px)}
+  42%,50%{transform:translateX(calc(50cqw - var(--S) - 10px))}
+  54%{transform:translateX(calc(50cqw - var(--S) - 10px)) translateY(-14px)}
+  58%,70%{transform:translateX(calc(50cqw - var(--S) - 10px))}
+  100%{transform:translateX(calc(-1.2 * var(--S)))}}
+@keyframes s2B{0%{transform:translateX(100cqw)}
+  26%,42%{transform:translateX(calc(50cqw + 10px))}
+  46%{transform:translateX(calc(50cqw + 10px)) translateY(-14px)}
+  50%,58%{transform:translateX(calc(50cqw + 10px))}
+  62%{transform:translateX(calc(50cqw + 10px)) translateY(-14px)}
+  66%,70%{transform:translateX(calc(50cqw + 10px))}
+  100%{transform:translateX(calc(100cqw + .2 * var(--S)))}}
+@keyframes s2rA{0%{transform:rotate(0)}26%{transform:rotate(330deg)}
+  36%{transform:rotate(355deg)}40%{transform:rotate(305deg)}44%{transform:rotate(330deg)}
+  52%{transform:rotate(355deg)}56%{transform:rotate(305deg)}60%,70%{transform:rotate(330deg)}100%{transform:rotate(-30deg)}}
+@keyframes s2rB{0%{transform:rotate(0)}26%{transform:rotate(-330deg)}
+  44%{transform:rotate(-305deg)}48%{transform:rotate(-355deg)}52%{transform:rotate(-330deg)}
+  60%{transform:rotate(-305deg)}64%{transform:rotate(-355deg)}68%,70%{transform:rotate(-330deg)}100%{transform:rotate(30deg)}}
+
+/* scene 3 — trio: a little orange one drops in, all three spin in sync, hop, roll off in a line */
+.s3 .mv.a{animation-name:s3A}.s3 .mv.b{animation-name:s3B}.s3 .mv.c{animation-name:s3C;transform-origin:center bottom}
+.s3 .a .rl{animation-name:s3rA}.s3 .b .rl{animation-name:s3rB}.s3 .c .rl{animation-name:s3rC}
+@keyframes s3A{0%{transform:translateX(calc(-1 * var(--S)))}
+  26%,64%{transform:translateX(calc(50cqw - var(--S) - var(--C) / 2 - 10px))}
+  68%{transform:translateX(calc(50cqw - var(--S) - var(--C) / 2 - 10px)) translateY(-14px)}
+  72%,74%{transform:translateX(calc(50cqw - var(--S) - var(--C) / 2 - 10px))}
+  100%{transform:translateX(calc(100cqw + var(--S) * .2))}}
+@keyframes s3B{0%{transform:translateX(100cqw)}
+  26%,64%{transform:translateX(calc(50cqw + var(--C) / 2 + 10px))}
+  68%{transform:translateX(calc(50cqw + var(--C) / 2 + 10px)) translateY(-14px)}
+  72%,74%{transform:translateX(calc(50cqw + var(--C) / 2 + 10px))}
+  100%{transform:translateX(calc(100cqw + var(--S) * 2 + var(--C) + 20px))}}
+@keyframes s3C{0%,32%{transform:translateX(calc(50cqw - var(--C) / 2)) translateY(-60cqh);opacity:0}
+  33%{opacity:1}
+  40%{transform:translateX(calc(50cqw - var(--C) / 2)) translateY(0)}
+  43%{transform:translateX(calc(50cqw - var(--C) / 2)) scale(1.18,.78)}
+  47%,64%{transform:translateX(calc(50cqw - var(--C) / 2))}
+  68%{transform:translateX(calc(50cqw - var(--C) / 2)) translateY(-14px)}
+  72%,74%{transform:translateX(calc(50cqw - var(--C) / 2))}
+  100%{transform:translateX(calc(100cqw + var(--S) + var(--C) / 2 + 10px))}}
+@keyframes s3rA{0%{transform:rotate(0)}26%,50%{transform:rotate(330deg)}62%,74%{transform:rotate(690deg)}100%{transform:rotate(1200deg)}}
+@keyframes s3rB{0%{transform:rotate(0)}26%,50%{transform:rotate(-330deg)}62%,74%{transform:rotate(30deg)}100%{transform:rotate(540deg)}}
+@keyframes s3rC{0%,50%{transform:rotate(0)}62%,74%{transform:rotate(360deg)}100%{transform:rotate(900deg)}}
+
 @media (prefers-reduced-motion:reduce){
-  .t9 .mv,.t9 .rl,.t9 .heart{animation:none}
+  .t9 .mv,.t9 .rl{animation:none!important}
   .t9 .mv.a{transform:translateX(calc(50cqw - var(--S) - 12px))}
   .t9 .mv.b{transform:translateX(calc(50cqw + 12px))}
 }
+
+/* 3x3 mini grid: evenly divided square so spacing matches top and bottom */
+.t4 .grid{width:80%;aspect-ratio:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:0;place-items:center}
+.t4 .grid svg{width:74%;height:auto;aspect-ratio:1}
+
+/* corner Glint = the same lime tile + lively eye the contact-section demo had */
+.glint-launch{width:88px;height:88px;border-radius:24px}
+.glint-launch .living-eye{width:74%;height:74%}
+.glint-hello{padding:12px 16px;pointer-events:none;animation:glintIn .25s var(--ease)}
+@media (max-width:900px){.glint-launch{width:64px;height:64px;border-radius:20px}}

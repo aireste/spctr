@@ -3,7 +3,6 @@ import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
 import { MarkBadge } from "@/components/bento/Mosaic";
 import { Mosaic } from "@/components/bento/Mosaic";
 import { ContactForm } from "@/components/bento/ContactForm";
-import { Lookout } from "@/components/bento/Lookout";
 
 export default function Home() {
   return (
@@ -85,7 +84,6 @@ export default function Home() {
             <p className="eyebrow">Get started</p>
             <h2>Tell us what you want booked, or built.</h2>
             <p className="sub">We&apos;ll get back to you fast. If we&apos;re not a fit, we&apos;ll say so.</p>
-            <Lookout line="Hi, I'm Glint! Everything you send here goes straight to a real person." />
           </div>
           <ContactForm />
         </section>
