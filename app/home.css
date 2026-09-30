@@ -536,3 +536,5 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 
 /* lime tile = FocusLock (spring physics, components/bento/FocusLock.tsx) */
 .t2 .focus-lock{width:74%;height:74%;display:block}
+/* 3x3 wave is driven by GridWave.tsx (order changes every wave) */
+.t4 .grid svg{animation:none!important}

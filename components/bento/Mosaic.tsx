@@ -3,6 +3,7 @@ import { AssemblyLine } from "./AssemblyLine";
 import { LivingEye } from "./LivingEye";
 import { DuoTile } from "./DuoTile";
 import { FocusLock } from "./FocusLock";
+import { GridWave } from "./GridWave";
 
 // Every tile is the SPCTR mark. Each quadrant of the ring (and the center disc)
 // is clipped separately so it can take its own color.
@@ -40,7 +41,7 @@ const tiles: [string, string][] = [
   ["t1", mark(MULTI, { wrap: "sweep" })],
   // t2 = <FocusLock/> (rendered below): spring-physics "scan and lock"
   // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
-  ["t4", `<div class="grid">${minis.map((c, i) => mark(c, { style: `animation-delay:${i * 0.35}s` })).join("")}</div>`],
+  ["t4", `<div class="grid">${minis.map((c) => mark(c)).join("")}</div>`],
   ["t6", mark(["orange", "bone", "bone", "orange", "bone"])],
   ["t7", mark(["bone", "lime", "lime", "bone", "lime"])],
   ["t8", mark(["ink", "bone", "bone", "ink", "bone"])],
@@ -72,6 +73,7 @@ export function Mosaic() {
         ))}
         <div className="t t3"><AssemblyLine /></div>
         <div className="t t2"><FocusLock /></div>
+        <GridWave />
         <div className="t t9"><DuoTile a={mark(MULTI)} b={mark(K)} c={mark(["orange", "orange", "orange", "orange", "ink"])} /></div>
         <div className="t t5"><LivingEye lively steadyRing ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
       </div>
