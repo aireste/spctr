@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "../home.css";
 import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
-import { MarkDefs, MarkBadge } from "@/components/bento/Mosaic";
+import { MarkDefs } from "@/components/bento/Mosaic";
+import { LivingEye } from "@/components/bento/LivingEye";
 import { ContactForm } from "@/components/bento/ContactForm";
 
 export const metadata: Metadata = {
@@ -26,7 +27,6 @@ export default function LeadGeneration() {
       <main className="wrap">
         <section className="lg-hero">
           <div>
-            <p className="eyebrow">Lead Generation Intelligence <span className="dot">● Live now</span></p>
             <h1>Your next meeting is <em>already booked.</em></h1>
             <p className="lead">
               <b>Sales outreach, done for you.</b> SPCTR books meetings with decision makers who need what you sell.
@@ -38,13 +38,7 @@ export default function LeadGeneration() {
             </div>
           </div>
           <div className="lg-art" aria-hidden="true">
-            <MarkBadge className="lg-mark" colors={["ink", "ink", "ink", "ink", "ink"]} />
-            <div className="invite">
-              <span className="k">New meeting</span>
-              <b>Intro call with a decision maker</b>
-              <span>Thu · 10:30 AM · 20 min</span>
-              <i>Accepted ✓</i>
-            </div>
+            <LivingEye className="lg-eye" />
           </div>
         </section>
 
@@ -61,13 +55,13 @@ export default function LeadGeneration() {
         <section className="sec">
           <p className="eyebrow">What you get</p>
           <h2>A calendar invite with a decision maker who already said yes.</h2>
-          <ul className="gets">
-            <li><b>Qualified meetings on your calendar</b><span>Real conversations with people who fit who you sell to.</span></li>
-            <li><b>Decision makers, not gatekeepers</b><span>Owners, founders, and the people who actually sign.</span></li>
-            <li><b>Outreach that sounds like you</b><span>You approve the message before anything goes out under your name.</span></li>
-            <li><b>The full thread before every call</b><span>You walk in knowing who they are and why they said yes.</span></li>
-            <li><b>Honest reporting</b><span>Good weeks and slow weeks, you see the numbers and what we&apos;re changing.</span></li>
-          </ul>
+          <div className="gets">
+            <div className="g1"><span className="gi">✓</span><b>Qualified meetings on your calendar</b><p>Real conversations with people who fit who you sell to. That&apos;s the whole point.</p></div>
+            <div><span className="gi">✓</span><b>Decision makers, not gatekeepers</b><p>Owners, founders, and the people who actually sign.</p></div>
+            <div><span className="gi">✓</span><b>Outreach that sounds like you</b><p>You approve the message before anything goes out under your name.</p></div>
+            <div><span className="gi">✓</span><b>The full thread before every call</b><p>You walk in knowing who they are and why they said yes.</p></div>
+            <div><span className="gi">✓</span><b>Honest reporting</b><p>Good weeks and slow weeks, you see the numbers and what we&apos;re changing.</p></div>
+          </div>
         </section>
 
         <section className="sec">
@@ -100,7 +94,6 @@ export default function LeadGeneration() {
           <h2>You only pay for results.</h2>
           <div className="price">
             <div className="pmain">
-              <span className="badge live">Pay per meeting</span>
               <h3>We win when you win.</h3>
               <p>A flat fee per booked meeting with a qualified decision maker. No meeting, no charge. That&apos;s not a guarantee, it&apos;s the model.</p>
               <a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a>
@@ -125,7 +118,7 @@ export default function LeadGeneration() {
         </section>
 
         <section className="sec">
-          <p className="eyebrow">Questions</p>
+          <p className="eyebrow">FAQ</p>
           <div className="faq">
             {FAQ.map(([q, a]) => (
               <details key={q}><summary>{q}</summary><p>{a}</p></details>
