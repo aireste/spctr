@@ -23,7 +23,6 @@ export default function Home() {
             </div>
           </div>
           <Mosaic />
-          <a className="scrollcue" href="#offerings" aria-label="Scroll to offerings">Scroll <span>↓</span></a>
         </section>
 
         <section className="sec" id="offerings">
