@@ -122,7 +122,7 @@ export function GlintHelper() {
       <button className="glint-launch" onClick={toggle}
         onMouseEnter={() => setHello(true)} onMouseLeave={() => setHello(false)}
         onFocus={() => setHello(true)} onBlur={() => setHello(false)} aria-expanded={open} aria-label={open ? "Close Glint" : "Open Glint, SPCTR helper"}>
-        <LivingEye lively ink="var(--ink)" bg="var(--lime)" />
+        <LivingEye lively ink="var(--ink)" bg="var(--paper)" />
       </button>
     </div>
   );
