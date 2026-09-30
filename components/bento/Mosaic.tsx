@@ -41,8 +41,9 @@ const tiles: [string, string][] = [
   ["t6", mark(["orange", "bone", "bone", "orange", "bone"])],
   ["t7", mark(["bone", "lime", "lime", "bone", "lime"])],
   ["t8", mark(["ink", "bone", "bone", "ink", "bone"])],
-  ["t9", [MULTI, K, ["orange", "lime", "violet", "magenta", "ink"] as Cols]
-    .map((c, i) => mark(c, { style: `animation-delay:-${i * 3}s` })).join("")],
+  // t9: two marks roll in, bump, say hi (little hops + a heart), then roll off together
+  ["t9", `<div class="duo"><div class="mv a"><div class="rl">${mark(MULTI)}</div></div>` +
+    `<div class="mv b"><div class="rl">${mark(K)}</div></div><span class="heart">♥</span></div>`],
 ];
 
 const defs = `<defs>

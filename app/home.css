@@ -422,3 +422,39 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 .glint-human:hover{text-decoration:underline;text-decoration-color:var(--teal);text-decoration-thickness:2px;text-underline-offset:3px}
 @media (max-width:900px){.glint-launch{width:56px;height:56px;border-radius:18px}}
 @media (prefers-reduced-motion:reduce){.glint,.glint-panel,.glint-hello,.glint-msg{animation:none;transition:none}.glint-typing i{animation:none;opacity:.6}}
+
+/* ---------- t9: the meet-cute (two marks bump, say hi, roll off together) ---------- */
+.t9{container-type:size;place-items:stretch}
+.t9 .duo{position:absolute;inset:0;--S:clamp(36px,4.4vw,64px)}
+.t9 .duo svg{position:static;margin:0;width:100%;height:100%;animation:none;display:block}
+.t9 .mv{position:absolute;left:0;top:50%;width:var(--S);height:var(--S);margin-top:calc(var(--S) / -2);animation:9s infinite}
+.t9 .rl{width:100%;height:100%;animation:9s infinite}
+.t9 .mv.a{animation-name:duoA;transform-origin:right center}
+.t9 .mv.b{animation-name:duoB;transform-origin:left center}
+.t9 .a .rl{animation-name:rollA}
+.t9 .b .rl{animation-name:rollB}
+@keyframes duoA{
+  0%{transform:translateX(calc(-1 * var(--S)))}
+  28%{transform:translateX(calc(50cqw - var(--S) - 1px))}
+  31%{transform:translateX(calc(50cqw - var(--S) + 2px)) scale(.82,1.1)}
+  37%,40%{transform:translateX(calc(50cqw - var(--S) - 12px))}
+  44%{transform:translateX(calc(50cqw - var(--S) - 12px)) translateY(-16px)}
+  48%,64%{transform:translateX(calc(50cqw - var(--S) - 12px))}
+  100%{transform:translateX(calc(100cqw + var(--S)))}}
+@keyframes duoB{
+  0%{transform:translateX(100cqw)}
+  28%{transform:translateX(calc(50cqw + 1px))}
+  31%{transform:translateX(calc(50cqw - 2px)) scale(.82,1.1)}
+  37%,48%{transform:translateX(calc(50cqw + 12px))}
+  52%{transform:translateX(calc(50cqw + 12px)) translateY(-16px)}
+  56%,64%{transform:translateX(calc(50cqw + 12px))}
+  100%{transform:translateX(calc(100cqw + 2 * var(--S) + 24px))}}
+@keyframes rollA{0%{transform:rotate(0)}28%{transform:rotate(360deg)}37%,64%{transform:rotate(330deg)}100%{transform:rotate(870deg)}}
+@keyframes rollB{0%{transform:rotate(0)}28%{transform:rotate(-360deg)}37%,64%{transform:rotate(-330deg)}100%{transform:rotate(210deg)}}
+.t9 .heart{position:absolute;left:50%;top:50%;translate:-50% calc(-100% - var(--S) * .42);color:var(--magenta);font-size:clamp(14px,1.4vw,22px);line-height:1;opacity:0;animation:heart 9s infinite}
+@keyframes heart{0%,44%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.1)}53%{transform:scale(1)}62%{opacity:1;transform:scale(1) translateY(-4px)}68%,100%{opacity:0;transform:scale(.9) translateY(-7px)}}
+@media (prefers-reduced-motion:reduce){
+  .t9 .mv,.t9 .rl,.t9 .heart{animation:none}
+  .t9 .mv.a{transform:translateX(calc(50cqw - var(--S) - 12px))}
+  .t9 .mv.b{transform:translateX(calc(50cqw + 12px))}
+}
