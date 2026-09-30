@@ -38,9 +38,9 @@ const tiles: [string, string][] = [
   ["t2", mark(K)],
   // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
   ["t4", `<div class="grid">${minis.map((c, i) => mark(c, { style: `animation-delay:${i * 0.35}s` })).join("")}</div>`],
-  ["t6", mark(W)],
-  ["t7", mark(["ink", "lime", "lime", "ink", "lime"])],
-  ["t8", mark(["bone", "bone", "bone", "bone", "lime"])],
+  ["t6", mark(["orange", "bone", "bone", "orange", "bone"])],
+  ["t7", mark(["bone", "lime", "lime", "bone", "lime"])],
+  ["t8", mark(["ink", "bone", "bone", "ink", "bone"])],
   ["t9", [MULTI, K, ["orange", "lime", "violet", "magenta", "ink"] as Cols]
     .map((c, i) => mark(c, { style: `animation-delay:-${i * 3}s` })).join("")],
 ];

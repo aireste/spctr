@@ -297,3 +297,4 @@ footer{border-top-color:var(--ink)}
   h1{font-size:clamp(92px,5.4vw,120px)}
   .lead{font-size:22px}
 }
+.t7{background:var(--violet)}
