@@ -1,6 +1,6 @@
 import { LivingEye } from "./LivingEye";
 
-/** The SPCTR mascot, small, parked next to the contact form. Name TBD. */
+/** Glint, the SPCTR mascot (the living eye), parked next to the contact form. */
 export function Lookout({ line }: { line: string }) {
   return (
     <div className="lookout">
