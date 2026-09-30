@@ -1,4 +1,6 @@
 import { markInner } from "./Brand";
+import { AssemblyLine } from "./AssemblyLine";
+import { LivingEye } from "./LivingEye";
 
 // Every tile is the SPCTR mark. Each quadrant of the ring (and the center disc)
 // is clipped separately so it can take its own color.
@@ -34,9 +36,8 @@ const minis: Cols[] = [
 const tiles: [string, string][] = [
   ["t1", mark(MULTI, { wrap: "spin" })],
   ["t2", mark(K)],
-  ["t3", `<div class="col">${[W, W2, W, W2].map((c) => mark(c)).join("")}</div>`],
+  // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
   ["t4", `<div class="grid">${minis.map((c, i) => mark(c, { style: `animation-delay:${i * 0.35}s` })).join("")}</div>`],
-  ["t5", mark(["bone", "bone", "bone", "bone", "ink"])],
   ["t6", mark(W)],
   ["t7", mark(["ink", "lime", "lime", "ink", "lime"])],
   ["t8", mark(["bone", "bone", "bone", "bone", "lime"])],
@@ -67,6 +68,8 @@ export function Mosaic() {
         {tiles.map(([cls, html]) => (
           <div key={cls} className={`t ${cls}`} dangerouslySetInnerHTML={{ __html: html }} />
         ))}
+        <div className="t t3"><AssemblyLine /></div>
+        <div className="t t5"><LivingEye lively ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
       </div>
     </>
   );
