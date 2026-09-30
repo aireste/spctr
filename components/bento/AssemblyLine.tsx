@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 // Uses the shared #mk / #c* / #ringOnly defs.
 const H = 200, W = 100;          // tile coordinates (the tile is 1 wide x 2 tall)
 const SIZE = 58, GAP = 78;       // mark size and spacing along the belt
-const SPEED = 14;                // units per second
+const SPEED = 9;                 // units per second
 const COUNT = Math.ceil(H / GAP) + 2;
 const COLORS: [string, string][] = [["#eeeee6", "var(--lime)"], ["var(--lime)", "#eeeee6"]]; // [ring, center]
 

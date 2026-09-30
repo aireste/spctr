@@ -511,3 +511,14 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 .glint-launch .living-eye{width:74%;height:74%}
 .glint-hello{padding:12px 16px;pointer-events:none;animation:glintIn .25s var(--ease)}
 @media (max-width:900px){.glint-launch{width:64px;height:64px;border-radius:20px}}
+
+/* ---------- Calmer hero: only the lively eye, the conveyor and the stroll move ---------- */
+.t2 .qTL,.t2 .qTR,.t2 .qBL,.t2 .qBR,.t4 .grid svg,.t6 svg,.t7 svg,.t8 svg{animation:none!important}
+/* stroll: w1 = multicolor from the left, w2 = black from the right; one at a time */
+.t9 .duo.w1 .mv.b,.t9 .duo.w2 .mv.a{display:none}
+.w1 .mv.a{animation-name:w1A;animation-duration:8s}.w1 .a .rl{animation-name:w1R;animation-duration:8s}
+.w2 .mv.b{animation-name:w2B;animation-duration:8s}.w2 .b .rl{animation-name:w2R;animation-duration:8s}
+@keyframes w1A{0%{transform:translateX(calc(-1 * var(--S)))}35%,70%{transform:translateX(calc(50cqw - var(--S) / 2))}100%{transform:translateX(calc(100cqw + var(--S)))}}
+@keyframes w1R{0%{transform:rotate(0)}35%{transform:rotate(360deg)}42%{transform:rotate(385deg)}50%{transform:rotate(335deg)}58%,70%{transform:rotate(360deg)}100%{transform:rotate(720deg)}}
+@keyframes w2B{0%{transform:translateX(100cqw)}35%,70%{transform:translateX(calc(50cqw - var(--S) / 2))}100%{transform:translateX(calc(-1 * var(--S)))}}
+@keyframes w2R{0%{transform:rotate(0)}35%{transform:rotate(-360deg)}42%{transform:rotate(-335deg)}50%{transform:rotate(-385deg)}58%,70%{transform:rotate(-360deg)}100%{transform:rotate(-720deg)}}

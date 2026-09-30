@@ -35,7 +35,7 @@ const minis: Cols[] = [
 ];
 
 const tiles: [string, string][] = [
-  ["t1", mark(MULTI, { wrap: "spin" })],
+  ["t1", mark(MULTI)],
   ["t2", mark(K)],
   // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
   ["t4", `<div class="grid">${minis.map((c, i) => mark(c, { style: `animation-delay:${i * 0.35}s` })).join("")}</div>`],
