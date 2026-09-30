@@ -2,16 +2,14 @@
 
 import { useEffect, useRef } from "react";
 
-// A conveyor of SPCTR marks riding up the tile. Each mark assembles as it
-// reaches the middle (ring pieces fly in and lock, the center pops in) and
-// comes apart again as it leaves. Uses the shared #mk / #c* / #ringOnly defs.
+// A conveyor of whole SPCTR marks gliding up the tile in an endless loop.
+// (The assemble/scatter effect was tried and removed: it read as weird.)
+// Uses the shared #mk / #c* / #ringOnly defs.
 const H = 200, W = 100;          // tile coordinates (the tile is 1 wide x 2 tall)
 const SIZE = 58, GAP = 78;       // mark size and spacing along the belt
 const SPEED = 14;                // units per second
 const COUNT = Math.ceil(H / GAP) + 2;
 const COLORS: [string, string][] = [["#eeeee6", "var(--lime)"], ["var(--lime)", "#eeeee6"]]; // [ring, center]
-
-const smooth = (t: number) => t * t * (3 - 2 * t);
 
 export function AssemblyLine() {
   const ref = useRef<SVGSVGElement>(null);
@@ -29,19 +27,8 @@ export function AssemblyLine() {
         // position on a looping belt, moving upward
         const y = ((i * GAP - travel) % (COUNT * GAP) + COUNT * GAP) % (COUNT * GAP) - GAP;
         const cy = y + SIZE / 2;
-        const dist = Math.abs(cy - H / 2) / (H / 2);            // 0 at center, 1 at edges
-        const apart = smooth(Math.min(1, Math.max(0, (dist - 0.25) / 0.6))); // 0 assembled, 1 scattered
         const s = SIZE / 520;
         g.setAttribute("transform", `translate(${W / 2 - 500 * s} ${cy - 500 * s}) scale(${s})`);
-        const d = apart * 150, r = apart * 70;
-        g.querySelectorAll<SVGGElement>(".al-q").forEach((q, k) => {
-          const dx = k % 2 ? d : -d, dy = k < 2 ? -d : d;
-          q.setAttribute("transform", `translate(${dx} ${dy}) rotate(${(k % 2 ? r : -r)} 500 500)`);
-          q.style.opacity = String(1 - apart * 0.35);
-        });
-        const c = g.querySelector<SVGGElement>(".al-c")!;
-        const cs = 1 - apart * 0.9;
-        c.setAttribute("transform", `translate(500 500) scale(${cs}) translate(-500 -500)`);
       });
       if (!reduce) raf = requestAnimationFrame(frame);
     };
