@@ -1,11 +1,13 @@
 import { Letters } from "./Brand";
 import { ScrollSpy } from "./ScrollSpy";
 import { Reveal } from "./Reveal";
+import { GlintHelper } from "./GlintHelper";
 
 /** Site nav, shared by every page. Links are absolute so they work from subpages.
  *  Pages without their own contact form pass ctaHref="/#contact". */
 export function SiteNav({ ctaHref = "#contact" }: { ctaHref?: string }) {
   return (
+    <>
     <nav>
       <div className="wrap">
         <a href="/" className="brand" aria-label="SPCTR home"><Letters /></a>
@@ -19,6 +21,9 @@ export function SiteNav({ ctaHref = "#contact" }: { ctaHref?: string }) {
       <ScrollSpy />
       <Reveal />
     </nav>
+    {/* outside <nav>: the nav's backdrop-filter would pin fixed children to it */}
+    <GlintHelper />
+    </>
   );
 }
 
