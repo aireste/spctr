@@ -65,3 +65,8 @@ export function Mosaic() {
     </>
   );
 }
+
+/** A single multicolor mascot, used as a small badge outside the mosaic (relies on the defs Mosaic renders). */
+export function MarkBadge() {
+  return <div className="markbadge" aria-hidden="true" dangerouslySetInnerHTML={{ __html: mark(MULTI, { wrap: "spin" }) }} />;
+}

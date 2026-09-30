@@ -1,5 +1,6 @@
 import "./home.css";
 import { Letters } from "@/components/bento/Brand";
+import { MarkBadge } from "@/components/bento/Mosaic";
 import { Mosaic } from "@/components/bento/Mosaic";
 import { ContactForm } from "@/components/bento/ContactForm";
 
@@ -57,6 +58,15 @@ export default function Home() {
               <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem →</a>
             </article>
           </div>
+          <div className="more">
+            <MarkBadge />
+            <div>
+              <div className="otop"><span className="num">03</span><span className="badge">Coming soon</span></div>
+              <b>More offerings on the way.</b>
+              <p>We&apos;re building new ways to put AI to work for you. Want to hear about them first?</p>
+            </div>
+            <a className="btn ghost" href="#contact" data-interest="updates">Keep me posted →</a>
+          </div>
         </section>
 
         <section className="sec" id="start">
@@ -92,7 +102,7 @@ export default function Home() {
       <footer>
         <div className="wrap">
           <span className="brand"><Letters /></span>
-          <span>© 2026 Guerra Digital LLC · Nashville, TN · <a href="https://estejg.com" target="_blank" rel="noopener noreferrer">About</a> · <a href="/privacy">Privacy</a></span>
+          <span>© 2026 <a href="https://estejg.com" target="_blank" rel="noopener noreferrer">Guerra Digital LLC</a> · Nashville, TN · <a href="/privacy">Privacy</a></span>
         </div>
       </footer>
     </>
