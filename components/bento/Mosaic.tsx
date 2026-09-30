@@ -28,14 +28,15 @@ const K: Cols = ["ink", "ink", "ink", "ink", "ink"];
 const MULTI: Cols = ["magenta", "orange", "green", "violet", "ink"];
 const W2: Cols = ["lime", "bone", "bone", "lime", "bone"];
 
+// 3x3 grid: nine different colorways, all SPCTR palette, all readable on the gray tile
 const minis: Cols[] = [
-  MULTI, K, ["orange", "orange", "orange", "orange", "ink"], ["white", "white", "white", "white", "violet"],
-  ["lime", "ink", "ink", "lime", "ink"], MULTI, ["violet", "violet", "violet", "violet", "lime"], K,
-  ["green", "orange", "magenta", "violet", "ink"],
+  MULTI, K, ["orange", "orange", "orange", "orange", "ink"],
+  ["white", "white", "white", "white", "violet"], ["lime", "ink", "ink", "lime", "ink"], ["green", "green", "green", "green", "ink"],
+  ["violet", "violet", "violet", "violet", "lime"], ["magenta", "magenta", "magenta", "magenta", "ink"], ["violet", "orange", "orange", "violet", "ink"],
 ];
 
 const tiles: [string, string][] = [
-  ["t1", mark(MULTI)],
+  ["t1", mark(MULTI, { wrap: "sweep" })],
   ["t2", mark(K)],
   // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
   ["t4", `<div class="grid">${minis.map((c, i) => mark(c, { style: `animation-delay:${i * 0.35}s` })).join("")}</div>`],
