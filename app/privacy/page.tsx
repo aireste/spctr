@@ -1,3 +1,4 @@
+import "../globals.css";
 const policyHtml = `
 <div data-custom-class="body">
 <div><strong><span style="font-size: 26px;"><span data-custom-class="title"><h1>PRIVACY NOTICE</h1></span></span></strong></div>

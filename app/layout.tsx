@@ -1,64 +1,27 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, IBM_Plex_Mono, Martian_Mono } from "next/font/google";
-import localFont from "next/font/local";
-import "./globals.css";
-import { ScanlineOverlay } from "@/components/ScanlineOverlay";
+import { Hanken_Grotesk } from "next/font/google";
 
-const barlow = Barlow_Condensed({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-barlow",
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-space-mono",
-  display: "swap",
-});
-
-const martianMono = Martian_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-martian",
-  display: "swap",
-});
-
-const khInterference = localFont({
-  src: [
-    { path: "../public/fonts/KHInterferenceTRIAL-Light.woff2",   weight: "300" },
-    { path: "../public/fonts/KHInterferenceTRIAL-Regular.woff2", weight: "400" },
-    { path: "../public/fonts/KHInterferenceTRIAL-Bold.woff2",    weight: "700" },
-  ],
-  variable: "--font-kh",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-hanken",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "SPCTR — Lead Generation Intelligence",
+  title: "SPCTR · AI implementation studio",
   description:
-    "Boutique lead generation agency. Precision pipeline engineering. We hunt. You close.",
+    "SPCTR is an AI implementation studio. We book you meetings with buyers who need what you sell, and build custom AI that takes work off your plate.",
   openGraph: {
-    title: "SPCTR — Lead Generation Intelligence",
-    description: "We hunt. You close. Precision outbound for operators who move fast.",
+    title: "SPCTR · AI that brings in business",
+    description: "Booked meetings, pay per meeting. Custom AI builds, one flat quote.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${barlow.variable} ${ibmPlexMono.variable} ${martianMono.variable} ${khInterference.variable} antialiased bg-background`}
-      >
-        <ScanlineOverlay />
-        {children}
-      </body>
+    <html lang="en">
+      <body className={hanken.variable}>{children}</body>
     </html>
   );
 }

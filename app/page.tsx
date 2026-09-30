@@ -1,130 +1,106 @@
-"use client";
-
-import { useEffect } from "react";
-import dynamic from "next/dynamic";
-import { Starfield } from "@/components/ui/starfield-1";
-import { HeroSection } from "@/components/HeroSection";
-import { WhatIsSPCTR } from "@/components/WhatIsSPCTR";
-import { ServicesSection } from "@/components/ServicesSection";
-import { RatesSection } from "@/components/RatesSection";
-import { ContactForm } from "@/components/ContactForm";
-
-const DottedSurface = dynamic(
-  () => import("@/components/ui/dotted-surface").then((m) => ({ default: m.DottedSurface })),
-  { ssr: false }
-);
+import "./home.css";
+import { Letters } from "@/components/bento/Brand";
+import { Mosaic } from "@/components/bento/Mosaic";
+import { ContactForm } from "@/components/bento/ContactForm";
 
 export default function Home() {
-  useEffect(() => {
-    const nav = document.getElementById("main-nav");
-    const onScroll = () => {
-      if (nav) {
-        nav.style.borderBottomColor =
-          window.scrollY > 60 ? "rgba(170,255,0,0.12)" : "var(--border)";
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <main style={{ position: "relative", minHeight: "100vh" }}>
-      {/* Starfield — fixed full-screen background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Starfield
-          starColor="rgba(255,255,255,0.8)"
-          bgColor="rgba(5,5,10,1)"
-          speed={1.2}
-          quantity={500}
-          opacity={0.15}
-        />
-      </div>
-
-      {/* NAV */}
-      <nav id="main-nav" className="nav-root">
-        <div className="nav-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="305 315 670 145" height={36} style={{ display: "block", width: "auto" }}>
-            <g>
-              <path fill="#EEEEE6" d="M858.542,335.399c4.743-4.008,10.094-7.3,15.853-9.829C868.636,328.099,863.285,331.391,858.542,335.399z"/>
-              <path fill="#EEEEE6" d="M865.728,350.537c0.033-0.034,0.062-0.07,0.095-0.104C865.789,350.466,865.761,350.502,865.728,350.537z"/>
-              <path fill="#EEEEE6" d="M941.529,411.338c3.804-5.922,6.396-12.693,7.346-19.986h16.124c0,0,0-0.002,0.001-0.004h-16.124C947.924,398.641,945.333,405.415,941.529,411.338z"/>
-              <path fill="#EEEEE6" d="M865.939,350.326c7.429-7.377,17.203-12.397,28.096-13.817v-16.124c-0.002,0-0.004,0-0.006,0v16.122C883.138,337.926,873.366,342.947,865.939,350.326z"/>
-              <path fill="#EEEEE6" d="M906.749,449.611v0.007c11.234-1.102,21.621-5.102,30.447-11.209C928.371,444.512,917.984,448.511,906.749,449.611z"/>
-              <path fill="#EEEEE6" d="M851.89,391.349h-16.124c3.015,30.742,27.529,55.256,58.27,58.27v-16.124C872.14,430.638,854.746,413.245,851.89,391.349z"/>
-              <path fill="#EEEEE6" d="M948.875,378.635h16.124c-3.015-30.721-27.529-55.256-58.25-58.25v16.124C928.645,339.365,946.019,356.739,948.875,378.635z"/>
-              <path fill="#EEEEE6" d="M941.529,411.338c-7.615,11.86-20.177,20.252-34.78,22.156v16.117c11.235-1.1,21.622-5.099,30.447-11.202c15.316-10.589,25.897-27.56,27.804-47.057h-0.001h-16.124C947.925,398.645,945.334,405.417,941.529,411.338z"/>
-              <path fill="#EEEEE6" d="M851.89,378.635c1.422-10.898,6.449-20.675,13.837-28.099c0.033-0.034,0.062-0.07,0.095-0.104c0.038-0.038,0.079-0.07,0.117-0.106c7.426-7.379,17.198-12.4,28.09-13.818v-16.122v-0.004c-6.928,0.678-13.514,2.5-19.635,5.188c-5.758,2.529-11.109,5.821-15.853,9.829c-4.464,3.772-8.384,8.156-11.698,12.985c-6.027,8.785-9.981,19.099-11.072,30.252H851.89z"/>
-              <path fill="#EEEEE6" d="M911.731,419.185c0.13-0.043,0.266-0.079,0.395-0.122c0.659-0.228,1.306-0.496,1.954-0.764c0.809-0.332,1.584-0.688,2.335-1.068c0.397-0.198,0.801-0.377,1.192-0.589c-0.003-0.004-0.005-0.007-0.008-0.011c9.917-5.501,14.479-14.465,14.479-14.465c3.688-6.759,5.062-14.447,4.15-21.906c-0.042-0.345-0.091-0.687-0.143-1.03c-0.057-0.381-0.131-0.758-0.2-1.138c-1.286-6.998-4.602-13.694-10.004-19.097c-14.186-14.187-37.269-14.187-51.455,0c-14.186,14.187-14.186,37.27,0,51.455c2.814,2.814,5.999,5.009,9.373,6.703c0.97,0.487,1.949,0.953,2.951,1.346c0.333,0.133,0.663,0.266,1,0.388C895.474,421.67,903.953,421.784,911.731,419.185z M877.53,377.952c0-7.309,5.925-13.234,13.235-13.234c7.31,0,13.235,5.925,13.235,13.234s-5.925,13.234-13.235,13.234C883.455,391.187,877.53,385.261,877.53,377.952z"/>
-              <path fill="#EEEEE6" d="M329.35,432.466l-13.522-13.522c-0.552-0.552-0.827-1.38-0.827-2.069v-18.076h20.697v8.14l5.657,5.657h16.282l5.657-5.657v-6.209l-5.657-5.657h-23.181c-0.69,0-1.517-0.414-2.069-0.966l-16.558-16.558c-0.552-0.552-0.827-1.38-0.827-2.069v-22.353c0-0.691,0.276-1.519,0.827-2.07l13.522-13.522c0.552-0.552,1.38-0.828,2.07-0.828h36.152c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v18.074h-20.698v-8.14l-5.657-5.657h-16.282l-5.657,5.657v5.657l5.657,5.657h22.491c0.69,0,1.517,0.277,2.07,0.828l17.248,17.248c0.552,0.552,0.828,1.38,0.828,2.07v22.353c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828h-36.152C330.729,433.294,329.902,433.017,329.35,432.466z"/>
-              <path fill="#EEEEE6" d="M417.113,336.706h52.571c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v26.493c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828H437.81v37.255h-20.697V336.706z M459.749,375.341l5.657-5.657v-6.623l-5.657-5.657H437.81v17.937H459.749z"/>
-              <path fill="#EEEEE6" d="M533.575,432.466l-13.522-13.522c-0.552-0.552-0.828-1.38-0.828-2.069v-63.747c0-0.691,0.276-1.519,0.828-2.07l13.522-13.522c0.552-0.552,1.38-0.828,2.07-0.828h36.152c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v18.074h-20.698v-8.14l-5.657-5.657H545.58l-5.657,5.657v43.878l5.657,5.657h16.282l5.657-5.657v-8.14h20.698v18.076c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828h-36.152C534.955,433.294,534.128,433.017,533.575,432.466z"/>
-              <path fill="#EEEEE6" d="M645.485,357.404h-24.147v-20.698h68.991v20.698h-24.147v75.89h-20.697V357.404z"/>
-              <path fill="#EEEEE6" d="M723.452,336.706h52.571c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v26.493c0,0.689-0.277,1.517-0.828,2.069l-13.385,13.385c-0.827,0.828-1.38,0.966-2.207,0.966h-2.621l18.213,18.213c0.552,0.552,0.828,1.38,0.828,2.069v16.973h-20.697v-9.797l-19.318-19.318v-8.14h-8.279v37.255h-20.697V336.706z M766.088,375.341l5.658-5.657v-6.623l-5.658-5.657h-21.939v17.937H766.088z"/>
-            </g>
-          </svg>
+    <>
+      <nav>
+        <div className="wrap">
+          <a href="#" className="brand" aria-label="SPCTR home"><Letters /></a>
+          <div className="links">
+            <a href="#offerings">Offerings</a>
+            <a href="#builds">Custom builds</a>
+            <a href="#start">How to start</a>
+          </div>
+          <a className="btn" href="#contact">Book a call</a>
         </div>
-        <ul className="nav-links">
-          <li><a href="#about">What is SPCTR</a></li>
-          <li><a href="#what">Services</a></li>
-          <li><a href="#rates">Rates</a></li>
-        </ul>
-        <button
-          className="nav-btn"
-          onClick={() =>
-            document.getElementById("deploy")?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          Deploy SPCTR
-        </button>
       </nav>
 
-      {/* CONTENT */}
-      <div style={{ position: "relative", zIndex: 10 }}>
-        <HeroSection />
-        <ServicesSection />
-        <div style={{
-          position: "relative", overflow: "hidden",
-          background: "rgba(12,12,18,0.9)",
-          borderTop: "1px solid var(--border)",
-          borderBottom: "1px solid var(--border)",
-        }}>
-          <DottedSurface />
-          <WhatIsSPCTR />
-          <RatesSection />
-        </div>
-        <ContactForm />
-      </div>
+      <main className="wrap">
+        <section className="hero">
+          <div>
+            <h1>AI that brings in <em>business.</em></h1>
+            <p className="lead">
+              <b>SPCTR is an AI implementation studio.</b> Right now our engine finds buyers who need what you
+              sell and puts them on your calendar. You only pay when a meeting lands.
+            </p>
+            <div className="cta">
+              <a className="btn" href="#contact">Book a 20 min call →</a>
+              <a className="btn ghost" href="#offerings">See what we do</a>
+            </div>
+          </div>
+          <Mosaic />
+        </section>
 
-      {/* FOOTER */}
-      <footer className="footer-root">
-        <div className="footer-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="305 315 670 145" height={28} style={{ display: "block", width: "auto" }}>
-            <g>
-              <path fill="#EEEEE6" d="M858.542,335.399c4.743-4.008,10.094-7.3,15.853-9.829C868.636,328.099,863.285,331.391,858.542,335.399z"/>
-              <path fill="#EEEEE6" d="M865.728,350.537c0.033-0.034,0.062-0.07,0.095-0.104C865.789,350.466,865.761,350.502,865.728,350.537z"/>
-              <path fill="#EEEEE6" d="M941.529,411.338c3.804-5.922,6.396-12.693,7.346-19.986h16.124c0,0,0-0.002,0.001-0.004h-16.124C947.924,398.641,945.333,405.415,941.529,411.338z"/>
-              <path fill="#EEEEE6" d="M865.939,350.326c7.429-7.377,17.203-12.397,28.096-13.817v-16.124c-0.002,0-0.004,0-0.006,0v16.122C883.138,337.926,873.366,342.947,865.939,350.326z"/>
-              <path fill="#EEEEE6" d="M906.749,449.611v0.007c11.234-1.102,21.621-5.102,30.447-11.209C928.371,444.512,917.984,448.511,906.749,449.611z"/>
-              <path fill="#EEEEE6" d="M851.89,391.349h-16.124c3.015,30.742,27.529,55.256,58.27,58.27v-16.124C872.14,430.638,854.746,413.245,851.89,391.349z"/>
-              <path fill="#EEEEE6" d="M948.875,378.635h16.124c-3.015-30.721-27.529-55.256-58.25-58.25v16.124C928.645,339.365,946.019,356.739,948.875,378.635z"/>
-              <path fill="#EEEEE6" d="M941.529,411.338c-7.615,11.86-20.177,20.252-34.78,22.156v16.117c11.235-1.1,21.622-5.099,30.447-11.202c15.316-10.589,25.897-27.56,27.804-47.057h-0.001h-16.124C947.925,398.645,945.334,405.417,941.529,411.338z"/>
-              <path fill="#EEEEE6" d="M851.89,378.635c1.422-10.898,6.449-20.675,13.837-28.099c0.033-0.034,0.062-0.07,0.095-0.104c0.038-0.038,0.079-0.07,0.117-0.106c7.426-7.379,17.198-12.4,28.09-13.818v-16.122v-0.004c-6.928,0.678-13.514,2.5-19.635,5.188c-5.758,2.529-11.109,5.821-15.853,9.829c-4.464,3.772-8.384,8.156-11.698,12.985c-6.027,8.785-9.981,19.099-11.072,30.252H851.89z"/>
-              <path fill="#EEEEE6" d="M911.731,419.185c0.13-0.043,0.266-0.079,0.395-0.122c0.659-0.228,1.306-0.496,1.954-0.764c0.809-0.332,1.584-0.688,2.335-1.068c0.397-0.198,0.801-0.377,1.192-0.589c-0.003-0.004-0.005-0.007-0.008-0.011c9.917-5.501,14.479-14.465,14.479-14.465c3.688-6.759,5.062-14.447,4.15-21.906c-0.042-0.345-0.091-0.687-0.143-1.03c-0.057-0.381-0.131-0.758-0.2-1.138c-1.286-6.998-4.602-13.694-10.004-19.097c-14.186-14.187-37.269-14.187-51.455,0c-14.186,14.187-14.186,37.27,0,51.455c2.814,2.814,5.999,5.009,9.373,6.703c0.97,0.487,1.949,0.953,2.951,1.346c0.333,0.133,0.663,0.266,1,0.388C895.474,421.67,903.953,421.784,911.731,419.185z M877.53,377.952c0-7.309,5.925-13.234,13.235-13.234c7.31,0,13.235,5.925,13.235,13.234s-5.925,13.234-13.235,13.234C883.455,391.187,877.53,385.261,877.53,377.952z"/>
-              <path fill="#EEEEE6" d="M329.35,432.466l-13.522-13.522c-0.552-0.552-0.827-1.38-0.827-2.069v-18.076h20.697v8.14l5.657,5.657h16.282l5.657-5.657v-6.209l-5.657-5.657h-23.181c-0.69,0-1.517-0.414-2.069-0.966l-16.558-16.558c-0.552-0.552-0.827-1.38-0.827-2.069v-22.353c0-0.691,0.276-1.519,0.827-2.07l13.522-13.522c0.552-0.552,1.38-0.828,2.07-0.828h36.152c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v18.074h-20.698v-8.14l-5.657-5.657h-16.282l-5.657,5.657v5.657l5.657,5.657h22.491c0.69,0,1.517,0.277,2.07,0.828l17.248,17.248c0.552,0.552,0.828,1.38,0.828,2.07v22.353c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828h-36.152C330.729,433.294,329.902,433.017,329.35,432.466z"/>
-              <path fill="#EEEEE6" d="M417.113,336.706h52.571c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v26.493c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828H437.81v37.255h-20.697V336.706z M459.749,375.341l5.657-5.657v-6.623l-5.657-5.657H437.81v17.937H459.749z"/>
-              <path fill="#EEEEE6" d="M533.575,432.466l-13.522-13.522c-0.552-0.552-0.828-1.38-0.828-2.069v-63.747c0-0.691,0.276-1.519,0.828-2.07l13.522-13.522c0.552-0.552,1.38-0.828,2.07-0.828h36.152c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v18.074h-20.698v-8.14l-5.657-5.657H545.58l-5.657,5.657v43.878l5.657,5.657h16.282l5.657-5.657v-8.14h20.698v18.076c0,0.689-0.277,1.517-0.828,2.069l-13.522,13.522c-0.552,0.552-1.38,0.828-2.07,0.828h-36.152C534.955,433.294,534.128,433.017,533.575,432.466z"/>
-              <path fill="#EEEEE6" d="M645.485,357.404h-24.147v-20.698h68.991v20.698h-24.147v75.89h-20.697V357.404z"/>
-              <path fill="#EEEEE6" d="M723.452,336.706h52.571c0.69,0,1.517,0.277,2.07,0.828l13.522,13.522c0.552,0.552,0.828,1.38,0.828,2.07v26.493c0,0.689-0.277,1.517-0.828,2.069l-13.385,13.385c-0.827,0.828-1.38,0.966-2.207,0.966h-2.621l18.213,18.213c0.552,0.552,0.828,1.38,0.828,2.069v16.973h-20.697v-9.797l-19.318-19.318v-8.14h-8.279v37.255h-20.697V336.706z M766.088,375.341l5.658-5.657v-6.623l-5.658-5.657h-21.939v17.937H766.088z"/>
-            </g>
-          </svg>
+        <section className="sec" id="offerings">
+          <p className="eyebrow">Our offerings</p>
+          <h2>Pick what you need. We handle the rest.</h2>
+          <div className="offers">
+            <article className="offer o1">
+              <div className="otop"><span className="num">01</span><span className="badge live">Live now</span></div>
+              <h3>Lead Generation Intelligence</h3>
+              <p className="d">Sales outreach, done for you. You get a calendar invite with a decision maker who already said yes. No ramp time. No overhead.</p>
+              <dl className="spec">
+                <dt>Price</dt><dd>Flat fee per booked meeting</dd>
+                <dt>Risk</dt><dd>No meeting, no charge</dd>
+                <dt>First sends</dt><dd>About 2 to 3 weeks</dd>
+              </dl>
+              <a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a>
+            </article>
+            <article className="offer o2" id="builds">
+              <div className="otop"><span className="num">02</span><span className="badge">Scoped per project</span></div>
+              <h3>Custom AI Builds</h3>
+              <p className="d">Tell us what&apos;s eating your week. We build the fix, hand it over, and make sure it works.</p>
+              <div className="ex"><span>Leads answered in minutes</span><span>Reports that write themselves</span><span>Your tools talking to each other</span></div>
+              <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem →</a>
+            </article>
+            <article className="offer o3">
+              <div className="otop"><span className="num">03</span><span className="badge">Coming soon</span></div>
+              <h3>CRM Audit &amp; Cleanup</h3>
+              <p className="d">Find out what&apos;s broken in your CRM, then get it fixed. Duplicates merged, dead contacts flagged, stale deals surfaced.</p>
+              <a className="btn ghost" href="#contact" data-interest="crm-audit">Get early access →</a>
+            </article>
+          </div>
+        </section>
+
+        <section className="sec" id="start">
+          <p className="eyebrow">How to start</p>
+          <h2>Three steps. That&apos;s it.</h2>
+          <ol className="steps">
+            <li><span className="sn">1</span><b>Book a call</b><p>20 minutes. Tell us what you sell or what you want fixed.</p></li>
+            <li><span className="sn">2</span><b>Get a clear price</b><p>Pay per meeting, or one flat quote for a build. No surprises.</p></li>
+            <li><span className="sn">3</span><b>Get the result</b><p>Meetings on your calendar, or the build in your hands.</p></li>
+          </ol>
+        </section>
+
+        <section className="sec">
+          <p className="eyebrow">Who it&apos;s for</p>
+          <div className="who">
+            <div><b>Owner led businesses</b><span>You sell, you deliver, you&apos;re out of hours.</span></div>
+            <div><b>Small sales teams</b><span>Great closers, not enough at bats.</span></div>
+            <div><b>Service companies</b><span>IT, property, facilities, professional services.</span></div>
+            <div><b>Teams buried in admin</b><span>Too many tools, not enough hours.</span></div>
+          </div>
+        </section>
+
+        <section className="sec contact" id="contact">
+          <div>
+            <p className="eyebrow">Next step</p>
+            <h2>Tell us what you want booked, or built.</h2>
+            <p className="sub">We&apos;ll get back to you fast. If we&apos;re not a fit, we&apos;ll say so.</p>
+          </div>
+          <ContactForm />
+        </section>
+      </main>
+
+      <footer>
+        <div className="wrap">
+          <span className="brand"><Letters /></span>
+          <span>© 2026 Guerra Digital LLC · Nashville, TN · <a href="https://estejg.com" target="_blank" rel="noopener noreferrer">About</a> · <a href="/privacy">Privacy</a></span>
         </div>
-        <div className="footer-copy">© 2026 SPCTR — v1.0.0 — All Rights Reserved</div>
-        <ul className="footer-links">
-          <li><a href="https://estejg.com" target="_blank" rel="noopener noreferrer">About Me</a></li>
-          <li><a href="https://www.linkedin.com/in/esteban-guerra-b3631415b/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-        </ul>
       </footer>
-    </main>
+    </>
   );
 }
