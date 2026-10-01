@@ -18,7 +18,7 @@ export default function Home() {
               sell and puts them on your calendar. You only pay when a meeting lands.
             </p>
             <div className="cta">
-              <a className="btn" href="#contact">Book a 20 min call →</a>
+              <a className="btn" href="#contact">Book a 20 min call</a>
               <a className="btn ghost" href="#offerings">See what we do</a>
             </div>
           </div>
@@ -30,22 +30,22 @@ export default function Home() {
           <h2>Pick what you need. We handle the rest.</h2>
           <div className="offers">
             <article className="offer o1">
-              <div className="otop"><span className="num">01</span><span className="badge live">Live now</span></div>
-              <h3>Lead Generation Intelligence</h3>
+              <div className="otop"><span className="num">01</span><span className="badge live">Available now</span></div>
+              <h3>Lead Generation<br />Intelligence</h3>
               <p className="d">Sales outreach, done for you. You get a calendar invite with a decision maker who already said yes. No ramp time. No overhead.</p>
               <dl className="spec">
                 <dt>Price</dt><dd>Flat fee per booked meeting</dd>
                 <dt>Risk</dt><dd>No meeting, no charge</dd>
                 <dt>First sends</dt><dd>About 2 to 3 weeks</dd>
               </dl>
-              <div className="obtns"><a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a><a className="btn ghost" href="/lead-generation">Know more</a></div>
+              <div className="obtns"><a className="btn" href="#contact" data-interest="lead-generation">Get meetings</a><a className="btn ghost" href="/lead-generation">Know more</a></div>
             </article>
             <article className="offer o2" id="builds">
-              <div className="otop"><span className="num">02</span><span className="badge">Scoped per project</span></div>
-              <h3>Custom AI Builds</h3>
+              <div className="otop"><span className="num">02</span><span className="badge">Quoted per project</span></div>
+              <h3>Custom AI<br />Builds</h3>
               <p className="d">Tell us what&apos;s eating your week. We build the fix, hand it over, and make sure it works.</p>
               <div className="ex"><span>Leads answered in minutes</span><span>Reports that write themselves</span><span>Your tools talking to each other</span></div>
-              <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem →</a>
+              <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem</a>
             </article>
           </div>
           <div className="more">
@@ -55,7 +55,7 @@ export default function Home() {
               <b>More offerings on the way.</b>
               <p>We&apos;re building new ways to put AI to work for you. Want to hear about them first?</p>
             </div>
-            <a className="btn ghost" href="#contact" data-interest="updates">Keep me posted →</a>
+            <a className="btn ghost" href="#contact" data-interest="updates">Keep me posted</a>
           </div>
         </section>
 

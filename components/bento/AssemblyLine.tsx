@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 const H = 200, W = 100;          // tile coordinates (the tile is 1 wide x 2 tall)
 const SIZE = 58, GAP = 78;       // mark size and spacing along the belt
 const SPEED = 9;                 // units per second
-const COUNT = Math.ceil(H / GAP) + 2;
+const COUNT = 6;                 // even, so the lime/bone alternation never doubles up at the wrap
 const COLORS: [string, string][] = [["#eeeee6", "var(--lime)"], ["var(--lime)", "#eeeee6"]]; // [ring, center]
 
 export function AssemblyLine() {
@@ -19,10 +19,11 @@ export function AssemblyLine() {
     if (!svg) return;
     const marks = Array.from(svg.querySelectorAll<SVGGElement>(".al-mark"));
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0;
-    const start = performance.now();
+    let raf = 0, travel = 0, last = performance.now();
     const frame = (now: number) => {
-      const travel = reduce ? 0 : ((now - start) / 1000) * SPEED;
+      // advance by elapsed time, capped per frame: after a background tab
+      // the belt resumes where it was instead of jumping ahead
+      travel += reduce ? 0 : Math.min(0.05, (now - last) / 1000) * SPEED; last = now;
       marks.forEach((g, i) => {
         // position on a looping belt, moving upward
         const y = ((i * GAP - travel) % (COUNT * GAP) + COUNT * GAP) % (COUNT * GAP) - GAP;

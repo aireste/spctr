@@ -33,7 +33,7 @@ export default function LeadGeneration() {
               You show up and close. You only pay when a meeting lands.
             </p>
             <div className="cta">
-              <a className="btn" href="#contact" data-interest="lead-generation">Book a 20 min call →</a>
+              <a className="btn" href="#contact" data-interest="lead-generation">Book a 20 min call</a>
               <a className="btn ghost" href="#pricing">How pricing works</a>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function LeadGeneration() {
             <div className="pmain">
               <h3>We win when you win.</h3>
               <p>A flat fee per booked meeting with a qualified decision maker. No meeting, no charge. That&apos;s not a guarantee, it&apos;s the model.</p>
-              <a className="btn" href="#contact" data-interest="lead-generation">Get meetings →</a>
+              <a className="btn" href="#contact" data-interest="lead-generation">Get meetings</a>
             </div>
             <ul className="pterms">
               <li><b>No retainer</b><span>Nothing up front for meetings that never happen.</span></li>

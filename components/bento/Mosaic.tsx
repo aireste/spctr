@@ -4,6 +4,7 @@ import { LivingEye } from "./LivingEye";
 import { DuoTile } from "./DuoTile";
 import { FocusLock } from "./FocusLock";
 import { GridWave } from "./GridWave";
+import { TrioGaze } from "./TrioGaze";
 
 // Every tile is the SPCTR mark. Each quadrant of the ring (and the center disc)
 // is clipped separately so it can take its own color.
@@ -20,7 +21,7 @@ function mark(cols: Cols, { wrap = "", style = "" } = {}) {
   const q = (id: string, col: string) =>
     `<g class="q${id}"><g clip-path="url(#c${id})" mask="url(#ringOnly)"><use href="#mk" style="--a:${col};--b:${col}"/></g></g>`;
   const inner = q("TL", tl) + q("TR", tr) + q("BL", bl) + q("BR", br) +
-    `<g clip-path="url(#cC)"><use href="#mk" style="--a:${c};--b:${c}"/></g>`;
+    `<g class="pc"><g clip-path="url(#cC)"><use href="#mk" style="--a:${c};--b:${c}"/></g></g>`;
   const body = wrap ? `<g class="${wrap}" style="transform-origin:500px 500px">${inner}</g>` : inner;
   return `<svg viewBox="240 240 520 520"${style ? ` style="${style}"` : ""}>${body}</svg>`;
 }
@@ -74,6 +75,7 @@ export function Mosaic() {
         <div className="t t3"><AssemblyLine /></div>
         <div className="t t2"><FocusLock /></div>
         <GridWave />
+        <TrioGaze />
         <div className="t t9"><DuoTile a={mark(MULTI)} b={mark(K)} c={mark(["orange", "orange", "orange", "orange", "ink"])} /></div>
         <div className="t t5"><LivingEye lively steadyRing ring="#eeeee6" ink="var(--ink)" bg="var(--orange)" /></div>
       </div>

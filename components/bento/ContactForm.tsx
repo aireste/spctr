@@ -74,7 +74,7 @@ export function ContactForm() {
       </label>
       <div className="full">
         <button className="btn" type="submit" disabled={state === "sending"}>
-          {state === "sending" ? "Sending…" : "Send it →"}
+          {state === "sending" ? "Sending…" : "Send it"}
         </button>
         {state === "error" && <p className="err" role="alert">Something went wrong. Please try again.</p>}
       </div>

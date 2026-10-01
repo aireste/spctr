@@ -538,3 +538,43 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 .t2 .focus-lock{width:74%;height:74%;display:block}
 /* 3x3 wave is driven by GridWave.tsx (order changes every wave) */
 .t4 .grid svg{animation:none!important}
+
+/* ---------- Offers: aligned rows, no pills, no lime slab ---------- */
+/* Both cards share one row grid, so number line, title, copy, details and buttons line up across cards */
+.offers{grid-template-rows:auto auto auto 1fr auto;row-gap:0}
+.offer{display:grid;grid-row:span 5;grid-template-rows:subgrid;min-height:0}
+.offer h3{margin-top:0;padding-top:clamp(56px,7vw,96px);align-self:end}
+.offer .d{align-self:start}
+.offer .spec,.offer .ex{align-self:start}
+.offer > .btn,.offer .obtns{align-self:end;justify-self:start;margin-top:28px}
+.o1{background:var(--orange);color:var(--ink)}
+.offer.o1 .d{color:var(--ink)}
+.o1 .badge,.o1 .badge.live{color:rgb(12 12 17 / .65)}
+.o2{background:var(--violet);color:var(--paper)}
+.o2 .badge{color:rgb(238 237 231 / .7)}
+.o2 .ex span{background:rgb(255 255 255 / .14);color:var(--paper)}
+.o2 .btn.alt{background:var(--ink);color:var(--paper)}
+.o2 .btn.alt:hover{background:var(--lime);color:var(--ink)}
+/* status reads as plain type next to the number, not a chip */
+.otop{justify-content:flex-start;align-items:baseline;gap:14px}
+.offer .badge,.more .badge,.badge.live{background:none;padding:0;border-radius:0;font-family:var(--font-hanken),system-ui,sans-serif;font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.badge.live::before{content:none}
+.o2 .badge{background:none;color:rgb(238 237 231 / .6)}
+@media (max-width:900px){
+  .offers{grid-template-rows:none}
+  .offer{grid-row:auto;grid-template-rows:none;display:flex}
+  .offer h3{padding-top:40px}
+  .offer h3,.offer .d,.offer .spec,.offer .ex{align-self:auto}
+  .offer > .btn,.offer .obtns{align-self:flex-start}
+}
+/* contact form teal, step 1 marker pink (swapped) */
+form,.sent{background:var(--teal)}
+.steps li:nth-child(1) .sn{background:var(--magenta);color:#fff}
+/* chip check: lime so it doesn't blend into the teal form */
+.chips input:checked + span::before{border-color:var(--lime);background-color:var(--lime)}
+/* offer cards + coming-soon box stay still; only their buttons lift */
+.offer:hover,.more:hover{transform:none;box-shadow:none}
+
+/* 3x3: eyes glance at the cursor on hover (GridWave.tsx), eased so it feels alive, not robotic */
+.t4 .pc{transition:transform .45s cubic-bezier(.34,1.4,.64,1)}
+@media (prefers-reduced-motion:reduce){.t4 .pc{transition:none}}

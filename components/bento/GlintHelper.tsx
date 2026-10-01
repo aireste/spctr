@@ -99,7 +99,7 @@ export function GlintHelper() {
             {msgs.map((m, k) => (
               <div key={k} className={`glint-msg from-${m.from}`}>
                 {m.text}
-                {m.link && <a href={m.link.href} onClick={() => setOpen(false)}>{m.link.label} →</a>}
+                {m.link && <a href={m.link.href} onClick={() => setOpen(false)}>{m.link.label}</a>}
               </div>
             ))}
             {typing && <div className="glint-msg from-glint glint-typing" aria-label="Glint is typing"><i /><i /><i /></div>}
@@ -108,7 +108,7 @@ export function GlintHelper() {
             {remaining.map((x) => (
               <button key={x.i} className="glint-q" onClick={() => reply(x.i)} disabled={typing}>{x.q}</button>
             ))}
-            <a className="glint-human" href="#contact" onClick={() => setOpen(false)}>Talk to a human →</a>
+            <a className="glint-human" href="#contact" onClick={() => setOpen(false)}>Talk to a human</a>
           </div>
         </div>
       )}

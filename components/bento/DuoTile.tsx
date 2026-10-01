@@ -8,7 +8,6 @@ import { useEffect, useRef } from "react";
 // Each scene is pure CSS keyframes (app/home.css, ".duo.wN"); this component
 // only swaps the scene class on a timer.
 const SCENES = ["w1", "w2"];
-const SCENE_MS = 8000; // must match the 8s scene duration in home.css
 
 export function DuoTile({ a, b, c }: { a: string; b: string; c: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,15 +16,19 @@ export function DuoTile({ a, b, c }: { a: string; b: string; c: string }) {
     const duo = ref.current;
     if (!duo || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let i = 0;
-    // swap scenes on a timer (each scene is SCENE_MS long); swapping the class
-    // restarts the CSS animations, so timer and animation never drift apart
-    const t = window.setInterval(() => {
+    // swap to the next scene exactly when the current one finishes (the walker
+    // has rolled off-tile), never on a separate timer: a timer drifts from the
+    // CSS clock (e.g. in a background tab) and restarts a scene mid-roll,
+    // which reads as a visible reset
+    const next = (e: AnimationEvent) => {
+      if (!(e.target as HTMLElement).classList.contains("mv")) return;
       duo.classList.remove(SCENES[i]);
       i = (i + 1) % SCENES.length;
       void duo.offsetWidth;
       duo.classList.add(SCENES[i]);
-    }, SCENE_MS);
-    return () => clearInterval(t);
+    };
+    duo.addEventListener("animationend", next);
+    return () => duo.removeEventListener("animationend", next);
   }, []);
 
   return (
