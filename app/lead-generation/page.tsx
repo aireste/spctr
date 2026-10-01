@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../home.css";
 import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
-import { MarkDefs } from "@/components/bento/Mosaic";
+import { MarkDefs, MarkBadge } from "@/components/bento/Mosaic";
 import { LivingEye } from "@/components/bento/LivingEye";
 import { ContactForm } from "@/components/bento/ContactForm";
 
@@ -56,7 +56,7 @@ export default function LeadGeneration() {
           <p className="eyebrow">What you get</p>
           <h2>A calendar invite with a decision maker who already said yes.</h2>
           <div className="gets">
-            <div className="g1"><span className="gi">✓</span><b>Qualified meetings on your calendar</b><p>Real conversations with people who fit who you sell to. That&apos;s the whole point.</p></div>
+            <div className="g1"><MarkBadge colors={["ink", "ink", "ink", "ink", "ink"]} className="g1-mark" /><b>Qualified meetings on your calendar</b><p>Real conversations with people who fit who you sell to. That&apos;s the whole point.</p></div>
             <div><span className="gi">✓</span><b>Decision makers, not gatekeepers</b><p>Owners, founders, and the people who actually sign.</p></div>
             <div><span className="gi">✓</span><b>Outreach that sounds like you</b><p>You approve the message before anything goes out under your name.</p></div>
             <div><span className="gi">✓</span><b>The full thread before every call</b><p>You walk in knowing who they are and why they said yes.</p></div>

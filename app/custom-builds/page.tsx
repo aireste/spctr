@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../home.css";
 import { SiteNav, SiteFooter } from "@/components/bento/Chrome";
-import { MarkDefs } from "@/components/bento/Mosaic";
+import { MarkDefs, MarkBadge } from "@/components/bento/Mosaic";
 import { Relay } from "@/components/bento/Relay";
 import { ContactForm } from "@/components/bento/ContactForm";
 
@@ -57,7 +57,7 @@ export default function CustomBuilds() {
           <p className="eyebrow">What we build</p>
           <h2>Small fixes that give you hours back.</h2>
           <div className="gets">
-            <div className="g1"><span className="gi">✓</span><b>Your tools, connected</b><p>Your customer list, inbox, calendar and spreadsheets share what they know, on their own. Type it once, it shows up everywhere it should.</p></div>
+            <div className="g1"><MarkBadge colors={["ink", "ink", "ink", "ink", "ink"]} className="g1-mark" /><b>Your tools, connected</b><p>Your customer list, inbox, calendar and spreadsheets share what they know, on their own. Type it once, it shows up everywhere it should.</p></div>
             <div><span className="gi">✓</span><b>Leads answered in minutes</b><p>Every new inquiry gets a thoughtful reply and lands in the right place, even at 10pm.</p></div>
             <div><span className="gi">✓</span><b>Reports that write themselves</b><p>The numbers you check every Monday, pulled together and explained in plain English, waiting in your inbox.</p></div>
             <div><span className="gi">✓</span><b>A helper that knows your business</b><p>Ask a question, get an answer from your own prices, policies and past work.</p></div>

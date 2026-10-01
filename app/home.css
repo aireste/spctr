@@ -582,8 +582,7 @@ form,.sent{background:var(--teal)}
 /* ---------- Custom builds page ---------- */
 .cb-art{background:var(--violet)}
 .cb-art .relay{width:92%;height:92%;display:block;overflow:visible}
-.relay .rl-line{stroke:rgb(238 237 231 / .22);stroke-width:5;stroke-linecap:round;stroke-dasharray:2 16}
-.relay .rl-trail{stroke:var(--lime);stroke-width:6;stroke-linecap:round}
+.relay .rl-trail{stroke:var(--lime);stroke-width:8;stroke-linecap:round;stroke-opacity:.5}
 .relay .rl-dot{fill:var(--lime)}
 .o2 .btn.ghost{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 2px var(--paper)}
 .o2 .btn.ghost:hover{background:var(--paper);color:var(--ink)}
@@ -614,3 +613,18 @@ nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;heig
 nav .links a:hover::after,nav .links a[aria-current]::after{transform:scaleX(1)}
 nav .links a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){nav .links a::after{transition:none}}
+
+/* problem cards: no red dash; "what you get" cards: no check badges, no outlined odd one out */
+.probs div::before,.probs div:nth-child(2)::before,.probs div:nth-child(3)::before{content:none}
+.gets .gi{display:none}
+.gets > div:nth-child(5){background:var(--panel);border:0}
+
+/* lime "what you get" card: a still ink mascot fills the top, copy sits at the bottom */
+.gets .g1{justify-content:flex-start}
+.gets .g1 b{margin-top:auto;padding-top:24px}
+.g1-mark{width:clamp(64px,6vw,88px);aspect-ratio:1}
+.g1-mark svg{width:100%;height:100%;display:block}
+.g1-mark .spin{animation:none}
+/* problem cards go ink: a dark band so the page isn't a long run of gray */
+.probs div,.probs div:nth-child(1),.probs div:nth-child(2),.probs div:nth-child(3){background:var(--ink);color:var(--paper)}
+.probs p{color:rgb(238 237 231 / .72)}

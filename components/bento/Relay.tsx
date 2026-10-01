@@ -16,10 +16,13 @@ const S = 0.5;                             // mark scale in the 1000x1000 tile
 const TRIM = 250 * S;                      // keep lines/dot outside each mark
 const TRAVEL_MS = 1400, REST_MS = 1300;
 
+// each mark is one color (ring + eyeball), and the pupil is painted with the
+// tile's cobalt so it reads as the logo's cut-out, not a realistic eye.
+// No magenta: it vibrates against cobalt.
 const MARKS = [
-  { x: 270, y: 290, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--ink)", pupil: "#eeeee6" },
-  { x: 740, y: 400, ring: ["#eeeee6", "var(--lime)", "var(--lime)", "#eeeee6"], disc: "var(--ink)", pupil: "#eeeee6" },
-  { x: 410, y: 740, ring: ["var(--magenta)", "var(--magenta)", "var(--magenta)", "var(--magenta)"], disc: "var(--ink)", pupil: "#eeeee6" },
+  { x: 270, y: 290, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--violet)" },
+  { x: 740, y: 400, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--violet)" },
+  { x: 410, y: 740, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--violet)" },
 ];
 
 type Spring = { x: number; v: number; to: number; k: number; c: number };
@@ -94,7 +97,9 @@ export function Relay() {
       }
 
       // trail: draws behind the dot while traveling, fades after the catch
-      if (phase === "travel") { trail.setAttribute("x1", String(s.x1)); trail.setAttribute("y1", String(s.y1)); trail.setAttribute("x2", String(px)); trail.setAttribute("y2", String(py)); trail.style.opacity = "1"; }
+      // a short comet tail just behind the dot, not a wire back to the sender
+      const tail = Math.max(0, p - 0.3);
+      if (phase === "travel") { trail.setAttribute("x1", String(s.x1 + (s.x2 - s.x1) * tail)); trail.setAttribute("y1", String(s.y1 + (s.y2 - s.y1) * tail)); trail.setAttribute("x2", String(px)); trail.setAttribute("y2", String(py)); trail.style.opacity = "1"; }
       else { trailFade = Math.max(0, trailFade - dt * 2.2); trail.style.opacity = String(trailFade); }
       // the dot shrinks into the catcher, waits inside, then grows back out on the far side
       let dr = 17, dx0 = px, dy0 = py;
@@ -136,17 +141,13 @@ export function Relay() {
 
   const q = (id: string, col: string) =>
     `<g clip-path="url(#c${id})" mask="url(#ringOnly)"><use href="#mk" style="--a:${col};--b:${col}"/></g>`;
-  const lines = MARKS.map((_, i) => {
-    const s = seg(i, (i + 1) % MARKS.length);
-    return `<line x1="${s.x1}" y1="${s.y1}" x2="${s.x2}" y2="${s.y2}" class="rl-line"/>`;
-  }).join("");
   const marks = MARKS.map((m) =>
     `<g class="rl-mark" transform="translate(${m.x} ${m.y}) scale(${S}) translate(-500 -500)">` +
     q("TL", m.ring[0]) + q("TR", m.ring[1]) + q("BL", m.ring[2]) + q("BR", m.ring[3]) +
     `<g class="rl-disc"><circle cx="${DISC.x}" cy="${DISC.y}" r="${DISC.r}" fill="${m.disc}"/>` +
     `<circle class="rl-pupil" cx="${DISC.x + PUPIL_REST.x}" cy="${DISC.y + PUPIL_REST.y}" r="${PUPIL_R}" fill="${m.pupil}"/></g></g>`,
   ).join("");
-  const html = lines + `<line class="rl-trail" x1="0" y1="0" x2="0" y2="0" style="opacity:0"/>` + marks + `<circle class="rl-dot" cx="0" cy="0" r="0"/>`;
+  const html = `<line class="rl-trail" x1="0" y1="0" x2="0" y2="0" style="opacity:0"/>` + marks + `<circle class="rl-dot" cx="0" cy="0" r="0"/>`;
 
   return <svg ref={ref} className="relay" viewBox="0 0 1000 1000" aria-hidden="true" dangerouslySetInnerHTML={{ __html: html }} />;
 }
