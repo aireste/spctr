@@ -1,43 +1,48 @@
 # SPCTR
 
-**AI-powered B2B lead generation that books qualified meetings, not spam.**
+**An AI implementation studio. We put AI to work for small and mid-sized businesses.**
 
 Live site: **[spctr.run](https://spctr.run)**
 
-SPCTR is the marketing site for a done-for-you outbound service that finds the right buyers, runs the outreach, qualifies interest, and hands the client a calendar invite with a decision-maker who already said yes. The positioning is outcome-first and the business model is pay-per-meeting: the client only pays when a meeting actually lands, which structurally aligns incentives ("I only win when you win").
+SPCTR helps businesses get real results from AI without needing to understand it. Two offers today:
 
-Built and shipped by Esteban Guerra under Guerra Digital LLC.
+1. **Lead Generation Intelligence** (live now). Sales outreach, done for you. Clients get calendar invites with decision makers who already said yes, and pay a flat fee per booked meeting. No meeting, no charge.
+2. **Custom AI Builds** (quoted per project). Clients tell us what's eating their week. We connect the tools they already use, build the fix, hand it over, and make sure it works. One flat quote after a 20 minute call.
+
+More offerings are on the way. The site sells the outcome, never the plumbing: no jargon, no "how it works under the hood."
+
+Built and shipped by Esteban Guerra under Guerra Digital LLC, Nashville, TN.
 
 ---
 
 ## What this project demonstrates
 
-A production, deployed marketing site built from scratch, not a template. Highlights a reviewer can look at:
+A production marketing site built from scratch, not a template:
 
-- **Interactive 3D globe** (`components/GlobeCanvas.tsx`) built with Three.js: a sphere with topojson country outlines, ~80 population-center clusters with Gaussian scatter, pulsing halos, animated arc connections, drag-to-spin, and auto-spin driven by an IntersectionObserver so it only animates when in view. Hidden on mobile for performance.
-- **Custom animated starfield** background, resize-debounced so it stays smooth during mobile scroll rather than recalculating every frame.
-- **A hand-built design system**, not a UI kit drop-in: a dark tactical aesthetic on a pure-black base with a disciplined accent palette, consistent eyebrow labels, and typography pairing Barlow Condensed, Space Mono, and Playfair Display.
-- **Conversion-focused copy and layout**, sharpened through real iteration (hero, services, rates, and a lead-capture form).
-- **Responsive from the ground up**, with deliberate mobile fallbacks for the heavier visual elements.
-- **Live lead capture** wired to a form backend, deployed continuously to Vercel on every push to `main`.
+- **A mascot as a design system.** The SPCTR crosshair "eye" mark is a character (Glint) rendered in endless colorways. One SVG mark with each ring quadrant and the center disc clipped separately, so every tile can recolor it.
+- **A living hero mosaic.** Every tile moves with its own gentle personality: a searchlight sweep, a spring-physics "focus lock," a spin wave across a 3x3 grid, a conveyor, a stroll. Loops are seamless (no visible resets), and motion respects `prefers-reduced-motion`.
+- **Eyes that notice you.** The 3x3 grid looks at your cursor on hover, and three spinning marks track the cursor mid-spin (the look vector is counter-rotated against each mark's live CSS rotation every frame).
+- **Hand-tuned rAF springs** instead of keyframes for the "alive" moments, with deliberately unhurried tempos.
+- **Glint, the site helper.** A corner launcher that answers common questions from site copy only, with a handoff to a human.
+- **Outcome-first copy**, sharpened through real iteration: sell the six-pack, not the workout.
+- **Responsive and accessible**: aligned card rows via CSS subgrid, mobile fallbacks, reduced-motion support.
+- **Live lead capture** to a form backend, deployed continuously to Vercel on every push to `main`.
 
 ## Tech stack
 
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS + a custom design system in `app/globals.css`
-- **3D / graphics:** Three.js (globe, starfield)
-- **Components:** shadcn/ui
+- **Styling:** hand-written CSS design system in `app/home.css` (Hanken Grotesk + JetBrains Mono)
+- **Motion:** inline SVG, CSS animations, Web Animations API, requestAnimationFrame springs
 - **Forms:** Formspree
 - **Hosting / CI:** Vercel (auto-deploy on push to `main`)
 
-## Page structure
+## Pages
 
-1. **Hero** — headline, primary CTA, starfield background
-2. **Services** — what SPCTR delivers, paired with the interactive globe
-3. **What is SPCTR** — the model and philosophy, shared dotted-surface background
-4. **Rates** — pay-per-meeting pricing
-5. **Contact** — lead-capture form (`#deploy`)
+- `/` home: hero mosaic, offerings, how to start, who it's for, contact
+- `/lead-generation`: the pay-per-meeting offer in full (problem, what you get, fit, pricing, FAQ)
+- `/custom-builds`: the custom AI builds offer in full
+- `/privacy`: privacy notice
 
 ## Run it locally
 
@@ -54,18 +59,29 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```
 app/
-  page.tsx          # composes the page sections
-  globals.css       # the full design system + section styling
-components/
-  GlobeCanvas.tsx   # Three.js interactive globe
-  ...               # Hero, Services, Rates, Contact, etc.
-public/             # static assets
+  page.tsx                # home
+  lead-generation/        # lead gen offer page
+  custom-builds/          # custom AI builds offer page
+  home.css                # the design system + all page styling
+components/bento/
+  Mosaic.tsx              # hero mosaic + the recolorable SPCTR mark
+  LivingEye.tsx           # Glint's eye: glances, blinks, double-takes
+  FocusLock.tsx           # spring-physics "scan and lock"
+  GridWave.tsx            # 3x3 spin wave + look-at-cursor
+  TrioGaze.tsx            # spinning marks whose eyes track the cursor
+  AssemblyLine.tsx        # conveyor of marks
+  DuoTile.tsx             # the stroll
+  GlintHelper.tsx         # corner helper
+  Chrome.tsx              # nav + footer
+  ContactForm.tsx         # lead capture
 ```
 
-## Notes
+Older components in `components/` (globe, starfield) are from the previous site and are no longer rendered.
 
-- The site is intentionally copy-light and visual-forward: the goal is to sell an outcome, so the messaging leads with results and keeps the "how" quiet.
-- Deployment is continuous: a push to `main` ships to production at spctr.run via Vercel.
+## Docs
+
+- `PRODUCT.md`: who the site is for and what it must do
+- `DESIGN.md`: palette, type, color roles, motion rules
 
 ---
 

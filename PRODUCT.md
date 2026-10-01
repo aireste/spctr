@@ -4,37 +4,46 @@
 
 brand
 
+## What SPCTR is
+
+An AI implementation studio. SPCTR puts AI to work for small and mid-sized businesses and sells the result, not the technology. All client AI work lives under the SPCTR brand.
+
+**Offers**
+1. **Lead Generation Intelligence** (live now): booked meetings with qualified decision makers, flat fee per meeting, no meeting no charge.
+2. **Custom AI Builds** (quoted per project): connect the tools a business already uses and build simple AI fixes for repeat work. One flat quote after a 20 minute call, handed over working.
+3. **More on the way**: shown only as "coming soon" with an early-interest button. Nothing is described as shipped until it is.
+
 ## Users
 
-IT/VAR companies (IT resellers and value-added resellers) who need to outsource their BDR function. Primary decision-makers: founders, VPs of Sales, and sales ops leaders. They are experienced buyers — skeptical, results-oriented, and tired of being sold to. They evaluate SPCTR the way they evaluate any vendor: does this look like it actually works, or does it look like a pitch deck?
+Owner-led businesses, small sales teams, service companies (IT, property, facilities, professional services), and teams buried in admin. They are busy, practical, and not technical. They want the problem gone, not a lesson in how it was solved.
 
-## Product Purpose
+## Product purpose
 
-SPCTR books qualified outbound meetings for IT/VAR companies. Clients stop hiring, training, and managing BDRs — SPCTR runs the outbound motion and delivers accepted meetings. Two pricing tiers: Pay Per Meeting and BDR Retainer. The website exists to convert skeptical prospects into booked calls, not to explain the category.
+Turn visitors into booked 20 minute calls. Every page should answer: what do I get, what does it cost, is it for me, how do I start.
 
-## Brand Personality
+## Voice
 
-Tactical, modern, swift.
+- Outcome first: sell the six-pack, not the workout.
+- Plain English. No jargon: no APIs, models, LLMs, agents, pipelines, or "under the hood" talk.
+- "We" by default. Approachable, confident, honest. Say when something is not a fit.
+- No invented results. Real proof only (our own live builds, described in plain terms; client case studies only with permission).
+
+## Brand personality
+
+Professional, cool, approachable, still tech-led. Playful in motion, calm in layout.
 
 ## References
 
-Marathon (2026, Bungie) — angular geometric type, muted and deliberate color palette, sense of operational weight. Not cyberpunk chaos, not neon excess. Controlled, heavy, purposeful. The aesthetic of a serious operation, not a hype machine.
+Marathon (Bungie): bold flat color blocks, confident type, a disciplined high-contrast palette on a warm bone base.
 
 ## Anti-references
 
-- Bubbly SaaS optimism: rounded everything, pastel gradients, friendly illustrations, "Let's grow together" energy
-- AI-slop defaults: gradient text, glowing cards, hero-metric templates, identical icon grids
-- Super-bright or high-chroma color schemes that read as excited rather than authoritative
-- Generic B2B marketing: stock photography, blue-and-white trust theater, corporate stock language
+- AI slop: neon pills and badges, all-caps neon labels, status dots, glowing cards, gradient text, shimmer and scan sweeps
+- Dark "tactical" or terminal aesthetics (the old SPCTR look)
+- Clean light dashboards that resemble HedgePredict (SPCTR must never look like it)
+- Dot-matrix or pixel icons
+- Arrows on buttons
 
-## Design Principles
+## Accessibility
 
-1. **Operational credibility over aspiration.** The site should look like it was built by people who run outbound campaigns, not people who pitch investors. Every element earns trust through competence, not enthusiasm.
-2. **Restraint is a power signal.** Confidence doesn't need to shout. Whitespace, precision spacing, and deliberate type choices communicate authority better than decoration.
-3. **Tactical tone, never aggressive.** The voice is controlled and direct — like a mission briefing, not a sales ad. No exclamation points in the design language.
-4. **Weight signals seriousness.** Heavy type, deliberate contrast, and mass in composition. Soft edges and light weights undermine the brand.
-5. **Earned intensity.** Color, motion, and glitch effects are deployed sparingly so they land with impact when they appear — not as decoration but as punctuation.
-
-## Accessibility & Inclusion
-
-Standard web baseline (WCAG 2.1 AA minimum). No specific user needs beyond that. Reduced motion support is good practice given the animation-heavy design.
+WCAG 2.1 AA baseline. Every animation respects `prefers-reduced-motion`.
