@@ -35,3 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 campaigns/
+
+# internal business docs: pricing, ops, sales collateral (keep local, never public)
+SPCTR_STATE.md
+DESIGN.json
+docs/
+design-concepts/
