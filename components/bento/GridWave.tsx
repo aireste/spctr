@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { EYE } from "./Brand";
 
 // 3x3 hero grid: every few seconds the minis spin in a wave, and the wave's
 // order changes each time (never the same pattern twice in a row).
@@ -26,19 +27,21 @@ export function GridWave() {
     const cells = Array.from(document.querySelectorAll<SVGSVGElement>(".t4 .grid svg"));
     if (cells.length !== 9 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const tile = cells[0].closest<HTMLElement>(".t4");
-    const eyes = cells.map((c) => c.querySelector<SVGGElement>(".pc"));
+    const eyes = cells.map((c) => c.querySelector<SVGCircleElement>(".pp")); // pupils only, the eyeball stays put
     let hovering = false;
-    const LOOK = 34; // max eye travel, in mark units (disc radius is 165)
+    const LOOK = 72;                                  // pupil distance from eye center when looking (disc r 141, pupil r 51)
+    const RX = EYE.px - EYE.x, RY = EYE.py - EYE.y;   // pupil's resting offset
     const look = (e: PointerEvent) => {
       cells.forEach((c, i) => {
         const r = c.getBoundingClientRect();
         const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
         const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / (r.width * 1.2));
-        eyes[i]?.setAttribute("style", `transform:translate(${(dx / d) * LOOK * k}px,${(dy / d) * LOOK * k}px)`);
+        const tx = (dx / d) * LOOK * k + RX * (1 - k), ty = (dy / d) * LOOK * k + RY * (1 - k);
+        eyes[i]?.style.setProperty("transform", `translate(${tx - RX}px,${ty - RY}px)`);
       });
     };
     const enter = () => { hovering = true; cells.forEach((c) => c.getAnimations().forEach((a) => a.finish())); };
-    const leave = () => { hovering = false; eyes.forEach((g) => g?.setAttribute("style", "")); };
+    const leave = () => { hovering = false; eyes.forEach((g) => g?.style.removeProperty("transform")); };
     tile?.addEventListener("pointerenter", enter);
     tile?.addEventListener("pointermove", look);
     tile?.addEventListener("pointerleave", leave);

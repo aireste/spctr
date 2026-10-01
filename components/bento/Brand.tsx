@@ -13,3 +13,7 @@ export function Letters({ className = "letters" }: { className?: string }) {
 
 /** Raw SVG markup of the mark, for building the mosaic tiles. */
 export const markInner = MARK_PATHS.map((p) => `<path class="${p.cls}" d="${p.d}"/>`).join("");
+
+/** Eye geometry inside the mark (viewBox 240 240 520 520): eyeball disc + pupil.
+ *  The logo's pupil is a hole, so anything that moves the pupil redraws it with these. */
+export const EYE = { x: 499, y: 491, r: 141, px: 462, py: 473, pr: 51 };

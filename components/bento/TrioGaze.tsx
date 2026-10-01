@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { EYE } from "./Brand";
 
 // Hero tiles t6 / t7 / t8 (black, cobalt, pink): when the cursor comes near
 // them, their eyes track it together while the marks keep spinning, pulsing
@@ -8,7 +9,8 @@ import { useEffect } from "react";
 // current CSS rotation, so the pupil stays aimed at the cursor mid-spin.
 // Off the area, the eyes ease back to center and the tiles carry on.
 const TILES = [".t6", ".t7", ".t8"];
-const LOOK = 40;    // max eye travel, in mark units (disc radius is 165)
+const LOOK = 72;    // pupil distance from eye center when looking (disc r 141, pupil r 51)
+const RX = EYE.px - EYE.x, RY = EYE.py - EYE.y; // pupil's resting offset
 const NEAR = 140;   // px around the trio that still counts as "near"
 const EASE = 0.12;  // how fast the gaze engages / lets go (per frame)
 
@@ -18,7 +20,7 @@ export function TrioGaze() {
     const tiles = TILES.map((s) => document.querySelector<HTMLElement>(`.mosaic ${s}`));
     if (tiles.some((t) => !t)) return;
     const svgs = tiles.map((t) => t!.querySelector<SVGSVGElement>("svg")!);
-    const eyes = svgs.map((s) => s.querySelector<SVGGElement>(".pc"));
+    const eyes = svgs.map((s) => s.querySelector<SVGCircleElement>(".pp")); // pupils only, the eyeball stays put
 
     let px = 0, py = 0, near = false, amt = 0, raf = 0;
 
@@ -42,11 +44,12 @@ export function TrioGaze() {
         const tf = getComputedStyle(svgs[i]).transform;
         const m = new DOMMatrix(tf === "none" ? undefined : tf);
         const th = Math.atan2(m.b, m.a), c = Math.cos(th), s = Math.sin(th);
-        const wx = (dx / d) * LOOK * k * amt, wy = (dy / d) * LOOK * k * amt;
-        g.setAttribute("style", `transform:translate(${c * wx + s * wy}px,${-s * wx + c * wy}px)`);
+        const wx = (dx / d) * LOOK * k, wy = (dy / d) * LOOK * k;
+        const lx = c * wx + s * wy, ly = -s * wx + c * wy;     // look target in the mark's own frame
+        g.style.setProperty("transform", `translate(${(lx - RX) * amt}px,${(ly - RY) * amt}px)`);
       });
       if (near || amt > 0.01) raf = requestAnimationFrame(frame);
-      else { raf = 0; amt = 0; eyes.forEach((g) => g?.setAttribute("style", "")); }
+      else { raf = 0; amt = 0; eyes.forEach((g) => g?.style.removeProperty("transform")); }
     };
 
     const move = (e: PointerEvent) => {

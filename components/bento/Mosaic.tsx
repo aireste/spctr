@@ -1,4 +1,4 @@
-import { markInner } from "./Brand";
+import { markInner, EYE } from "./Brand";
 import { AssemblyLine } from "./AssemblyLine";
 import { LivingEye } from "./LivingEye";
 import { DuoTile } from "./DuoTile";
@@ -16,12 +16,17 @@ const C: Record<string, string> = {
   orange: "var(--orange)", magenta: "var(--magenta)", violet: "var(--violet)", green: "var(--green)",
 };
 
-function mark(cols: Cols, { wrap = "", style = "" } = {}) {
+// Marks that gaze (eye: true) redraw the eye as a disc + a pupil circle filled with
+// the tile's background (--tile-bg): looks like the logo's cut-out, but the pupil moves alone.
+function mark(cols: Cols, { wrap = "", style = "", eye = false } = {}) {
   const [tl, tr, bl, br, c] = cols.map((k) => C[k] ?? k);
   const q = (id: string, col: string) =>
     `<g class="q${id}"><g clip-path="url(#c${id})" mask="url(#ringOnly)"><use href="#mk" style="--a:${col};--b:${col}"/></g></g>`;
   const inner = q("TL", tl) + q("TR", tr) + q("BL", bl) + q("BR", br) +
-    `<g class="pc"><g clip-path="url(#cC)"><use href="#mk" style="--a:${c};--b:${c}"/></g></g>`;
+    (eye
+      ? `<g class="pc"><circle cx="${EYE.x}" cy="${EYE.y}" r="${EYE.r}" fill="${c}"/>` +
+        `<circle class="pp" cx="${EYE.px}" cy="${EYE.py}" r="${EYE.pr}" style="fill:var(--tile-bg)"/></g>`
+      : `<g class="pc"><g clip-path="url(#cC)"><use href="#mk" style="--a:${c};--b:${c}"/></g></g>`);
   const body = wrap ? `<g class="${wrap}" style="transform-origin:500px 500px">${inner}</g>` : inner;
   return `<svg viewBox="240 240 520 520"${style ? ` style="${style}"` : ""}>${body}</svg>`;
 }
@@ -42,10 +47,10 @@ const tiles: [string, string][] = [
   ["t1", mark(MULTI, { wrap: "sweep" })],
   // t2 = <FocusLock/> (rendered below): spring-physics "scan and lock"
   // t3 = <AssemblyLine/>, t5 = <LivingEye lively/> (rendered below)
-  ["t4", `<div class="grid">${minis.map((c) => mark(c)).join("")}</div>`],
-  ["t6", mark(["orange", "bone", "bone", "orange", "bone"])],
-  ["t7", mark(["bone", "lime", "lime", "bone", "lime"])],
-  ["t8", mark(["ink", "bone", "bone", "ink", "bone"])],
+  ["t4", `<div class="grid">${minis.map((c) => mark(c, { eye: true })).join("")}</div>`],
+  ["t6", mark(["orange", "bone", "bone", "orange", "bone"], { eye: true })],
+  ["t7", mark(["bone", "lime", "lime", "bone", "lime"], { eye: true })],
+  ["t8", mark(["ink", "bone", "bone", "ink", "bone"], { eye: true })],
   // t9 = <DuoTile/> (rendered below): little scenes of marks playing together
 ];
 

@@ -23,7 +23,7 @@ export default function CustomBuilds() {
   return (
     <>
       <MarkDefs />
-      <SiteNav />
+      <SiteNav page="Custom builds" />
 
       <main className="wrap">
         <section className="lg-hero">

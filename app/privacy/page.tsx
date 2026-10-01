@@ -320,7 +320,7 @@ const policyHtml = `
 export default function PrivacyPage() {
   return (
     <>
-      <SiteNav ctaHref="/#contact" />
+      <SiteNav ctaHref="/#contact" page="Privacy" />
 
       <main className="wrap">
         <header className="policy-head">
