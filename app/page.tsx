@@ -45,7 +45,7 @@ export default function Home() {
               <h3>Custom AI<br />Builds</h3>
               <p className="d">Tell us what&apos;s eating your week. We build the fix, hand it over, and make sure it works.</p>
               <div className="ex"><span>Leads answered in minutes</span><span>Reports that write themselves</span><span>Your tools talking to each other</span></div>
-              <a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem</a>
+              <div className="obtns"><a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem</a><a className="btn ghost" href="/custom-builds">Know more</a></div>
             </article>
           </div>
           <div className="more">

@@ -13,7 +13,7 @@ export function SiteNav({ ctaHref = "#contact" }: { ctaHref?: string }) {
         <a href="/" className="brand" aria-label="SPCTR home"><Letters /></a>
         <div className="links">
           <a href="/lead-generation">Lead generation</a>
-          <a href="/#builds">Custom builds</a>
+          <a href="/custom-builds">Custom builds</a>
           <a href="/#start">How to start</a>
         </div>
         <a className="btn" href={ctaHref}>Book a call</a>

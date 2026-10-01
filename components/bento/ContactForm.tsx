@@ -10,9 +10,9 @@ const INTERESTS = [
   { value: "updates", label: "Updates on new offerings" },
 ];
 
-export function ContactForm() {
+export function ContactForm({ initial = ["lead-generation"] }: { initial?: string[] }) {
   const [state, setState] = useState<State>("idle");
-  const [picked, setPicked] = useState<string[]>(["lead-generation"]);
+  const [picked, setPicked] = useState<string[]>(initial);
 
   // Offer buttons elsewhere on the page carry data-interest; clicking one pre-selects it here.
   useEffect(() => {
