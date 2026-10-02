@@ -16,6 +16,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.spctr.run"),
   title: "SPCTR · AI implementation studio",
   description:
     "SPCTR is an AI implementation studio. We book you meetings with buyers who need what you sell, and build custom AI that takes work off your plate.",
