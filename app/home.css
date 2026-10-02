@@ -687,19 +687,6 @@ nav .links a:hover{color:var(--ink)}
   .offer-page .lg-art{grid-row:auto;width:min(100%,300px);justify-self:start;border-radius:24px}
 }
 
-/* lead gen: the invite + brief they actually receive */
-.cal{margin-top:32px;display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}
-.cal > div{border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:10px}
-.cal-invite{background:var(--violet);color:var(--paper)}
-.cal-invite b{margin-top:auto;padding-top:28px;font-weight:900;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.035em;line-height:1.02}
-.cal-invite span:not(.ba-k){font-size:17px;opacity:.85}
-.cal-invite i{align-self:flex-start;margin-top:10px;font-style:normal;font-weight:700;font-size:14px;color:var(--lime)}
-.cal-brief{background:var(--panel)}
-.cal-brief dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;column-gap:24px}
-.cal-brief dt{font-weight:800;font-size:17px;padding:16px 0;border-top:2px solid var(--ink)}
-.cal-brief dd{margin:0;font-size:17px;line-height:1.5;color:var(--ink-2);padding:16px 0;border-top:2px solid var(--ink)}
-@media (max-width:900px){.cal{grid-template-columns:1fr}.cal-brief dl{grid-template-columns:1fr}.cal-brief dd{border-top:0;padding-top:0}}
-
 /* the deal: "not a fit" sits with the terms, outlined so it reads as the honest exception */
 .offer-page .pterms li.nofit{background:none;box-shadow:inset 0 0 0 2px var(--red,#ff0d1a)}
 .offer-page .pterms li.nofit b{color:var(--red,#ff0d1a)}
@@ -712,3 +699,48 @@ nav .links a:hover{color:var(--ink)}
 /* nav CTA: ink at rest, hot pink on hover (red stays "not a fit") */
 nav .btn.nav-cta{background:var(--ink);color:#fff}
 nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
+
+/* ---------- Offer pages, 2026-10-02 ---------- */
+/* phones: no mascots; the hero runs straight into the first section */
+@media (max-width:900px){
+  .offer-page .lg-art{display:none}
+  .offer-page .lg-hero{padding-bottom:0}
+  .offer-page .lg-hero + .sec{padding-top:56px}
+}
+
+/* deal card: a color instead of black; black stays for the button (like the nav CTA) */
+.page-lg .pmain{background:var(--orange);color:var(--ink)}
+.page-cb .pmain{background:var(--green)}
+.page-lg .pmain,.page-cb .pmain{color:var(--ink)}
+.page-lg .pmain p,.page-cb .pmain p{color:rgb(12 12 17 / .78)}
+.offer-page.page-lg .pmain .btn,.offer-page.page-cb .pmain .btn{background:var(--ink);color:#fff}
+.offer-page.page-lg .pmain .btn:hover,.offer-page.page-cb .pmain .btn:hover{background:var(--violet);color:#fff}
+
+/* "This, on your calendar": the invite as it lands in an inbox (generic mail app, not a copy of one) */
+.mail{margin-top:32px;max-width:820px;background:var(--field);border-radius:20px;box-shadow:0 0 0 1px rgb(12 12 17 / .1),0 24px 48px -28px rgb(12 12 17 / .35);overflow:hidden}
+.mail-bar{display:flex;justify-content:space-between;padding:12px clamp(18px,3vw,32px);font-size:14px;font-weight:600;color:var(--ink-2);border-bottom:1px solid rgb(12 12 17 / .08)}
+.mail-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:20px clamp(18px,3vw,32px) 0}
+.mail-ava{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:800;font-size:16px}
+.mail-head b{display:block;font-size:16px;font-weight:800}
+.mail-head div span,.mail-head time{font-size:14px;color:var(--ink-2)}
+.mail-subj{padding:16px clamp(18px,3vw,32px) 0;font-size:clamp(20px,2vw,26px);font-weight:800;letter-spacing:-.025em;line-height:1.2}
+.mail-inv{margin:18px clamp(18px,3vw,32px) 0;border:1px solid rgb(12 12 17 / .14);border-radius:14px;display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px;background:#fff}
+.mail-date{width:64px;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;align-items:center;background:var(--violet);color:#fff;padding:8px 0;line-height:1}
+.mail-date span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.mail-date b{font-size:28px;font-weight:900;margin:4px 0}
+.mail-ev{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mail-ev b{font-size:18px;font-weight:800}
+.mail-ev span{font-size:15px;color:var(--ink-2)}
+.mail-rsvp{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding-top:14px;border-top:1px solid rgb(12 12 17 / .08);font-size:14px;font-weight:700}
+.mail-rsvp span:first-child{margin-right:auto;color:var(--ink-2);font-weight:600}
+.mail-rsvp span:not(:first-child){padding:7px 14px;border-radius:8px;box-shadow:inset 0 0 0 1px rgb(12 12 17 / .2)}
+.mail-rsvp .on{background:var(--ink);color:#fff;box-shadow:none}
+.mail-body{padding:22px clamp(18px,3vw,32px) clamp(22px,3vw,32px)}
+.mail-body dl{margin:10px 0 0;display:grid;grid-template-columns:auto 1fr;column-gap:24px}
+.mail-body dt{font-weight:800;font-size:16px;padding:14px 0;border-top:1px solid rgb(12 12 17 / .14)}
+.mail-body dd{margin:0;font-size:16px;line-height:1.5;color:var(--ink-2);padding:14px 0;border-top:1px solid rgb(12 12 17 / .14)}
+@media (max-width:600px){
+  .mail-body dl{grid-template-columns:1fr}
+  .mail-body dd{border-top:0;padding-top:0}
+  .mail-rsvp span:not(:first-child){padding:7px 11px}
+}

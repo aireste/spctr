@@ -43,15 +43,27 @@ export default function LeadGeneration() {
         <section className="sec">
           <p className="eyebrow">What you get</p>
           <h2>This, on your calendar.</h2>
-          <div className="cal">
-            <div className="cal-invite">
-              <span className="ba-k">Calendar invite</span>
-              <b>Intro call: Dana Ruiz</b>
-              <span>Tuesday, 10:30 AM · 20 min</span>
-              <span>Owner, 3-location HVAC company</span>
-              <i>Accepted</i>
+          <div className="mail">
+            <div className="mail-bar"><span>&larr; Inbox</span><span>1 of 3</span></div>
+            <div className="mail-head">
+              <span className="mail-ava" aria-hidden="true">S</span>
+              <div><b>SPCTR Bookings</b><span>to me</span></div>
+              <time>9:14 AM</time>
             </div>
-            <div className="cal-brief">
+            <h3 className="mail-subj">Invitation: Intro call with Dana Ruiz @ Tue 10:30 AM</h3>
+            <div className="mail-inv">
+              <div className="mail-date" aria-hidden="true"><span>Oct</span><b>13</b><span>Tue</span></div>
+              <div className="mail-ev">
+                <b>Intro call: Dana Ruiz</b>
+                <span>Tuesday, 10:30 &ndash; 10:50 AM</span>
+                <span>Owner, 3-location HVAC company</span>
+              </div>
+              <div className="mail-rsvp" role="group" aria-label="Going?">
+                <span>Going?</span>
+                <span className="on" aria-current="true">Yes</span><span>Maybe</span><span>No</span>
+              </div>
+            </div>
+            <div className="mail-body">
               <span className="ba-k">Your brief</span>
               <dl>
                 <dt>Who</dt><dd>Dana owns the company and signs off on vendors.</dd>
