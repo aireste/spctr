@@ -2,40 +2,28 @@
 
 import { useEffect, useRef } from "react";
 
-// Custom builds hero = "the relay": three marks (three of your tools) pass a
-// little lime dot of info around a loop. Everyone's eyes follow the dot; the
-// one that catches it gives a happy squint and a small hop, rests, glances at
-// the next one, and passes it on. It's a cycle (A -> B -> C -> A), so it never
-// visibly resets. Spring physics like FocusLock: bouncy, but unhurried.
+// Custom builds hero: three marks (three of your tools) hanging out together.
+// Each one wanders to a nearby spot on a crisp spring, settles, looks at a
+// neighbor or glances around, sometimes blinks or hops, then moves again.
+// Unhurried but sharp: short moves, real rests, no crazy scenes.
 // Uses the shared #mk / #c* / #ringOnly defs from <MarkDefs/>.
 const DISC = { x: 499, y: 491, r: 141 };
 const PUPIL_REST = { x: -37, y: -18 };     // natural pupil offset from disc center
 const PUPIL_R = 51;
 const LOOK = 62;                           // how far a pupil travels toward what it watches
 const S = 0.66;                            // mark scale in the 1000x1000 tile
-const TRIM = 250 * S;                      // keep lines/dot outside each mark
-const TRAVEL_MS = 1400, REST_MS = 1300;
+const WANDER = 70;                         // how far a mark strays from home (keeps them apart)
 
-// each mark is one color (ring + eyeball), and the pupil is painted with the
-// tile's cobalt so it reads as the logo's cut-out, not a realistic eye.
-// No magenta: it vibrates against cobalt.
+// each mark is one color (ring + eyeball). The pupil is painted with the page
+// color, so it reads as a see-through cut-out of the logo.
 const MARKS = [
-  { x: 250, y: 260, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--violet)" },
-  { x: 760, y: 420, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--violet)" },
-  { x: 400, y: 770, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--violet)" },
+  { x: 250, y: 260, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--paper)" },
+  { x: 760, y: 420, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--paper)" },
+  { x: 400, y: 770, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--paper)" },
 ];
 
 type Spring = { x: number; v: number; to: number; k: number; c: number };
 const spring = (x: number, k: number, c: number): Spring => ({ x, v: 0, to: x, k, c });
-const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-// segment from mark i to mark j, trimmed so it starts/ends outside the marks
-function seg(i: number, j: number) {
-  const a = MARKS[i], b = MARKS[j];
-  const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);
-  const ux = dx / d, uy = dy / d;
-  return { x1: a.x + ux * TRIM, y1: a.y + uy * TRIM, x2: b.x - ux * TRIM, y2: b.y - uy * TRIM };
-}
 
 export function Relay() {
   const ref = useRef<SVGSVGElement>(null);
@@ -46,87 +34,69 @@ export function Relay() {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let marks: SVGGElement[] = [], discs: SVGGElement[] = [], pupils: SVGCircleElement[] = [];
-    let dot!: SVGCircleElement, trail!: SVGLineElement;
     const grab = () => {
       marks = Array.from(svg.querySelectorAll<SVGGElement>(".rl-mark"));
       discs = Array.from(svg.querySelectorAll<SVGGElement>(".rl-disc"));
       pupils = Array.from(svg.querySelectorAll<SVGCircleElement>(".rl-pupil"));
-      dot = svg.querySelector<SVGCircleElement>(".rl-dot")!;
-      trail = svg.querySelector<SVGLineElement>(".rl-trail")!;
     };
     grab();
     if (reduce) return;
 
-    const hop = MARKS.map(() => spring(0, 120, 9));     // vertical hop (tile units)
-    const squint = MARKS.map(() => spring(1, 170, 10));  // disc height (1 = open)
-    const push = MARKS.map(() => spring(1, 160, 9));     // sender's little toss
+    const rand = (a: number, b: number) => a + Math.random() * (b - a);
+    // position springs: stiff enough to feel sharp, damped so they settle with one small overshoot
+    const px = MARKS.map((m) => spring(m.x, 38, 9.5));
+    const py = MARKS.map((m) => spring(m.y, 38, 9.5));
+    const hop = MARKS.map(() => spring(0, 120, 9));       // little vertical hop
+    const squint = MARKS.map(() => spring(1, 170, 12));   // disc height (1 = open)
+    const all = [...px, ...py, ...hop, ...squint];
     const gaze = MARKS.map(() => ({ x: PUPIL_REST.x, y: PUPIL_REST.y }));
-    const all = [...hop, ...squint, ...push];
 
-    // phase machine: "rest" at holder, then "travel" holder -> next
-    let holder = 0, phase: "rest" | "travel" = "rest", phaseStart = performance.now();
-    let trailFade = 0, ax = 0, ay = 0; // where the last catch happened
-    const next = () => (holder + 1) % MARKS.length;
+    // each mark runs its own little schedule
+    type Look = { kind: "mark"; j: number } | { kind: "point"; x: number; y: number } | { kind: "ahead" };
+    const st = MARKS.map((_, i) => ({ nextMove: performance.now() + 600 + i * 900, nextBeat: performance.now() + rand(800, 2400), look: { kind: "ahead" } as Look }));
 
     let raf = 0, last = performance.now();
     const frame = (now: number) => {
-      if (!dot.isConnected) grab();
+      if (marks[0] && !marks[0].isConnected) grab();
       const dt = Math.min(0.034, (now - last) / 1000); last = now;
-      const el = now - phaseStart;
 
-      // where the dot is, and what everyone looks at
-      let px: number, py: number, p = 0;
-      const s = seg(holder, next());
-      if (phase === "rest") {
-        px = s.x1; py = s.y1;
-        if (el > REST_MS) { phase = "travel"; phaseStart = now; push[holder].to = 1.08; }
-      } else {
-        p = ease(Math.min(1, el / TRAVEL_MS));
-        px = s.x1 + (s.x2 - s.x1) * p; py = s.y1 + (s.y2 - s.y1) * p;
-        if (p > 0.15) push[holder].to = 1;
-        if (el >= TRAVEL_MS) {
-          const r = next();
-          hop[r].v = -260; squint[r].x = 0.45; squint[r].to = 1; // catch: hop + happy squint
-          ax = px; ay = py; holder = r; phase = "rest"; phaseStart = now; trailFade = 1;
+      MARKS.forEach((m, i) => {
+        const t = st[i];
+        if (now >= t.nextMove) {
+          // move: a short hop to a new spot near home, eyes leading the way
+          const ang = rand(0, Math.PI * 2), r = rand(WANDER * 0.4, WANDER);
+          px[i].to = m.x + Math.cos(ang) * r; py[i].to = m.y + Math.sin(ang) * r;
+          if (Math.random() < 0.35) hop[i].v = -200;
+          t.look = { kind: "ahead" };
+          t.nextMove = now + rand(2600, 4600);
+          t.nextBeat = now + rand(700, 1100);
+        } else if (now >= t.nextBeat) {
+          // settled: look at a friend, glance somewhere, or blink
+          const roll = Math.random();
+          if (roll < 0.5) { let j = Math.floor(rand(0, 2)); if (j >= i) j++; t.look = { kind: "mark", j }; }
+          else if (roll < 0.8) t.look = { kind: "point", x: rand(0, 1000), y: rand(0, 1000) };
+          else { squint[i].x = 0.08; squint[i].to = 1; }
+          t.nextBeat = now + rand(900, 1700);
         }
-      }
+      });
 
       for (let k = 0; k < 3; k++) {
         const h = dt / 3;
         all.forEach((q) => { q.v += (-q.k * (q.x - q.to) - q.c * q.v) * h; q.x += q.v * h; });
       }
 
-      // trail: draws behind the dot while traveling, fades after the catch
-      // a short comet tail just behind the dot, not a wire back to the sender
-      const tail = Math.max(0, p - 0.3);
-      if (phase === "travel") { trail.setAttribute("x1", String(s.x1 + (s.x2 - s.x1) * tail)); trail.setAttribute("y1", String(s.y1 + (s.y2 - s.y1) * tail)); trail.setAttribute("x2", String(px)); trail.setAttribute("y2", String(py)); trail.style.opacity = "1"; }
-      else { trailFade = Math.max(0, trailFade - dt * 2.2); trail.style.opacity = String(trailFade); }
-      // the dot shrinks into the catcher, waits inside, then grows back out on the far side
-      let dr = 17, dx0 = px, dy0 = py;
-      if (phase === "rest") {
-        const IN = 220, OUT = 300;
-        if (el < IN) { dx0 = ax; dy0 = ay; dr = 17 * (1 - el / IN); }
-        else if (el > REST_MS - OUT) dr = 17 * ease((el - (REST_MS - OUT)) / OUT);
-        else dr = 0;
-      }
-      dot.setAttribute("cx", String(dx0)); dot.setAttribute("cy", String(dy0)); dot.setAttribute("r", String(dr));
-
       MARKS.forEach((m, i) => {
-        const bob = Math.sin(now / 1000 * 0.9 + i * 2.1) * 6;
-        const y = m.y + bob + hop[i].x;
-        const sc = S * push[i].x;
-        marks[i]?.setAttribute("transform", `translate(${m.x} ${y}) scale(${sc}) translate(-500 -500)`);
+        const x = px[i].x, y = py[i].x + hop[i].x;
+        marks[i]?.setAttribute("transform", `translate(${x} ${y}) scale(${S}) translate(-500 -500)`);
         discs[i]?.setAttribute("transform", `translate(${DISC.x} ${DISC.y}) scale(1 ${squint[i].x}) translate(${-DISC.x} ${-DISC.y})`);
 
-        // look target: the dot while it moves; at rest everyone watches the holder,
-        // and the holder glances at whoever is next just before passing
-        let tx = px, ty = py;
-        if (phase === "rest" && i === holder) {
-          const n = MARKS[next()];
-          if (el > REST_MS * 0.55) { tx = n.x; ty = n.y; } else { tx = m.x; ty = m.y; }
-        }
-        const dx = tx - m.x, dy = ty - (m.y + bob), d = Math.hypot(dx, dy);
-        const want = d < 1 ? PUPIL_REST : { x: (dx / d) * LOOK, y: (dy / d) * LOOK };
+        const lk = st[i].look;
+        let dx: number, dy: number;
+        if (lk.kind === "mark") { dx = px[lk.j].x - x; dy = py[lk.j].x - y; }
+        else if (lk.kind === "point") { dx = lk.x - x; dy = lk.y - y; }
+        else { dx = px[i].to - x; dy = py[i].to - y; }
+        const d = Math.hypot(dx, dy);
+        const want = d < 4 ? PUPIL_REST : { x: (dx / d) * LOOK, y: (dy / d) * LOOK };
         gaze[i].x += (want.x - gaze[i].x) * Math.min(1, dt * 9);
         gaze[i].y += (want.y - gaze[i].y) * Math.min(1, dt * 9);
         pupils[i]?.setAttribute("cx", String(DISC.x + gaze[i].x));
@@ -147,7 +117,6 @@ export function Relay() {
     `<g class="rl-disc"><circle cx="${DISC.x}" cy="${DISC.y}" r="${DISC.r}" fill="${m.disc}"/>` +
     `<circle class="rl-pupil" cx="${DISC.x + PUPIL_REST.x}" cy="${DISC.y + PUPIL_REST.y}" r="${PUPIL_R}" fill="${m.pupil}"/></g></g>`,
   ).join("");
-  const html = `<line class="rl-trail" x1="0" y1="0" x2="0" y2="0" style="opacity:0"/>` + marks + `<circle class="rl-dot" cx="0" cy="0" r="0"/>`;
 
-  return <svg ref={ref} className="relay" viewBox="0 0 1000 1000" aria-hidden="true" dangerouslySetInnerHTML={{ __html: html }} />;
+  return <svg ref={ref} className="relay" viewBox="0 0 1000 1000" aria-hidden="true" dangerouslySetInnerHTML={{ __html: marks }} />;
 }

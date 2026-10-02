@@ -36,7 +36,7 @@ export default function LeadGeneration() {
             </div>
           </div>
           <div className="lg-art" aria-hidden="true">
-            <LivingEye className="lg-eye" lively />
+            <LivingEye className="lg-eye" lively bg="var(--paper)" />
           </div>
         </section>
 
