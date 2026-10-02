@@ -628,3 +628,5 @@ nav .links a:hover{color:var(--ink)}
 /* problem cards go ink: a dark band so the page isn't a long run of gray */
 .probs div,.probs div:nth-child(1),.probs div:nth-child(2),.probs div:nth-child(3){background:var(--ink);color:var(--paper)}
 .probs p{color:rgb(238 237 231 / .72)}
+/* small phones: let long headline words like "disconnected." fit the column */
+@media (max-width:420px){h1{font-size:min(50px,12.5vw)}}

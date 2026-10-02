@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 const FAQ: [string, string][] = [
+  ["I don't really use AI yet. Is this for me?", "Yes. You don't need to know anything about AI first. We set it up inside the tools you already use, show your team how it works, and you skip the trial and error."],
   ["Do I need to be technical?", "Not at all. You tell us what's slowing you down in plain words. We handle everything else and show you how it works when it's done."],
   ["Will I have to switch the tools I use?", "Usually no. Most builds connect what you already have, so your team keeps working the way they do now, just with less busywork."],
   ["What does it cost?", "It depends on the size of the fix. After a 20 minute call you get one flat quote, so you know the number before any work starts."],
@@ -28,10 +29,10 @@ export default function CustomBuilds() {
       <main className="wrap">
         <section className="lg-hero">
           <div>
-            <h1>Your tools, finally <em>working together.</em></h1>
+            <h1>AI isn&apos;t the problem. It&apos;s <em>disconnected.</em></h1>
             <p className="lead">
-              <b>Custom AI builds, done for you.</b> Tell us what&apos;s eating your week. We connect the tools you already use,
-              build the fix, hand it over, and make sure it works.
+              <b>Custom AI builds, done for you.</b> We connect AI to the tools you already use, build the fix, hand it over,
+              and make sure it works. New to AI? You&apos;ll start with it already set up.
             </p>
             <div className="cta">
               <a className="btn" href="#contact" data-interest="custom-ai-build">Tell us the problem</a>
