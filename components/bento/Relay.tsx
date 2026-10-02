@@ -15,11 +15,12 @@ const S = 0.66;                            // mark scale in the 1000x1000 tile
 const WANDER = 70;                         // how far a mark strays from home (keeps them apart)
 
 // each mark is one color (ring + eyeball). The pupil is painted with the page
-// color, so it reads as a see-through cut-out of the logo.
+// color, so it reads as a see-through cut-out of the logo. Orange / cobalt / pink:
+// lime and teal wash out on the cream page.
 const MARKS = [
   { x: 250, y: 260, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--paper)" },
-  { x: 760, y: 420, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--paper)" },
-  { x: 400, y: 770, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--paper)" },
+  { x: 760, y: 420, ring: ["var(--violet)", "var(--violet)", "var(--violet)", "var(--violet)"], disc: "var(--violet)", pupil: "var(--paper)" },
+  { x: 400, y: 770, ring: ["var(--magenta)", "var(--magenta)", "var(--magenta)", "var(--magenta)"], disc: "var(--magenta)", pupil: "var(--paper)" },
 ];
 
 type Spring = { x: number; v: number; to: number; k: number; c: number };
