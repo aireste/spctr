@@ -4,6 +4,13 @@ import { MarkBadge } from "@/components/bento/Mosaic";
 import { Mosaic } from "@/components/bento/Mosaic";
 import { ContactForm } from "@/components/bento/ContactForm";
 
+const FAQ: [string, string][] = [
+  ["Which one do I need?", "If you need more conversations with buyers, lead generation. If the work after the sale is eating your week, a custom build. Not sure? Tell us both and we'll say which one pays off first."],
+  ["How does pricing work?", "Lead generation is a flat fee per meeting you accept. No meeting, no charge. Custom builds get one flat quote after a 20 minute call."],
+  ["How fast can I start?", "Book a 20 minute call. For lead generation, first emails usually go out in about 2 to 3 weeks."],
+  ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
+];
+
 export default function Home() {
   return (
     <>
@@ -84,6 +91,11 @@ export default function Home() {
             <p className="eyebrow">Get started</p>
             <h2>Tell us what you want booked, or built.</h2>
             <p className="sub">We&apos;ll get back to you fast. If we&apos;re not a fit, we&apos;ll say so.</p>
+            <div className="faq">
+              {FAQ.map(([q, a]) => (
+                <details key={q}><summary>{q}</summary><p>{a}</p></details>
+              ))}
+            </div>
           </div>
           <ContactForm />
         </section>
