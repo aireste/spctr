@@ -714,8 +714,8 @@ nav .links a:hover{color:var(--ink)}
 
 /* offer-page mascots float on the page: no tile behind them */
 .offer-page .lg-art,.offer-page .cb-art{background:none;border-radius:0;overflow:visible}
-/* nav CTA: hot pink so the one action in the header catches the eye (red stays "not a fit") */
-nav .btn.nav-cta{background:var(--magenta);color:#fff}
-nav .btn.nav-cta:hover{background:var(--ink);color:#fff}
+/* nav CTA: ink at rest, hot pink on hover (red stays "not a fit") */
+nav .btn.nav-cta{background:var(--ink);color:#fff}
+nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
 .offer-page .relay .rl-trail{stroke:var(--ink);stroke-opacity:.35}
 .offer-page .relay .rl-dot{fill:var(--ink)}
