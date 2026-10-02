@@ -24,7 +24,7 @@ export default function CustomBuilds() {
   return (
     <>
       <MarkDefs />
-      <SiteNav page="Custom builds" />
+      <SiteNav page="Custom builds" startHref="#start" />
 
       <main className="wrap">
         <section className="lg-hero">
@@ -86,7 +86,7 @@ export default function CustomBuilds() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec" id="start">
           <p className="eyebrow">How it works</p>
           <h2>Three steps. No jargon.</h2>
           <ol className="steps">

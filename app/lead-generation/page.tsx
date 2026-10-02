@@ -22,7 +22,7 @@ export default function LeadGeneration() {
   return (
     <>
       <MarkDefs />
-      <SiteNav page="Lead generation" />
+      <SiteNav page="Lead generation" startHref="#contact" />
 
       <main className="wrap">
         <section className="lg-hero">
