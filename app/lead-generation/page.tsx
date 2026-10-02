@@ -75,6 +75,18 @@ export default function LeadGeneration() {
           <p className="note">An example. Yours will look like your buyers.</p>
         </section>
 
+        <section className="sec" id="how">
+          <p className="eyebrow">What we handle</p>
+          <h2>You take the meeting. We do everything before it.</h2>
+          <ol className="steps">
+            <li><span className="sn">1</span><b>Find them</b><p>We research your market and pick out the decision makers who actually need what you sell.</p></li>
+            <li><span className="sn">2</span><b>Write to them</b><p>Personal emails for each buyer, in your voice. You approve them before anything sends.</p></li>
+            <li><span className="sn">3</span><b>Follow up</b><p>We keep the conversation going and handle the replies until it&apos;s a yes or a no.</p></li>
+            <li><span className="sn">4</span><b>Book it</b><p>The meeting lands on your calendar with a brief, like the one above.</p></li>
+          </ol>
+          <p className="note">Small on purpose. One person runs your campaign start to finish, and cares how your business does long after the meeting.</p>
+        </section>
+
         <section className="sec" id="pricing">
           <p className="eyebrow">The deal</p>
           <h2>You pay per meeting. That&apos;s it.</h2>
