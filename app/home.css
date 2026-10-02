@@ -531,9 +531,9 @@ input:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgb(12 1
 @keyframes tilt{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
 @media (prefers-reduced-motion:reduce){.t1 .sweep,.t8 svg{animation:none}}
 
-/* corner Glint: just the eye + crosshair, no tile; a cream halo keeps it visible over dark cards */
+/* corner Glint: just the eye + crosshair, no tile, no halo; the pupil is a see-through hole */
 .glint-launch{width:76px;height:76px;background:transparent;box-shadow:none;border-radius:50%}
-.glint-launch .living-eye{width:100%;height:100%;filter:drop-shadow(0 0 1.5px var(--paper)) drop-shadow(0 0 1.5px var(--paper)) drop-shadow(0 8px 10px rgb(12 12 17 / .22))}
+.glint-launch .living-eye{width:100%;height:100%;filter:drop-shadow(0 8px 10px rgb(12 12 17 / .22))}
 @media (max-width:900px){.glint-launch{width:58px;height:58px;border-radius:50%}}
 
 /* lime tile = FocusLock (spring physics, components/bento/FocusLock.tsx) */

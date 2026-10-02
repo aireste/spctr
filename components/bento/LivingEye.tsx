@@ -22,9 +22,10 @@ type Props = {
   bg?: string;    // pupil color (matches the tile behind it)
   lively?: boolean;
   steadyRing?: boolean; // keep the crosshair still: no ring burst, hops or tilts (the eye does all the acting)
+  hollow?: boolean;     // pupil is a hole cut through the eyeball (whatever is behind shows through), not a filled dot
 };
 
-function LivingEyeImpl({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false, steadyRing = false }: Props) {
+function LivingEyeImpl({ className = "", ring, ink = "var(--ink)", bg = "var(--lime)", lively = false, steadyRing = false, hollow = false }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const uid = useId().replace(/:/g, "");
   const ringColor = ring ?? ink;
@@ -121,12 +122,17 @@ function LivingEyeImpl({ className = "", ring, ink = "var(--ink)", bg = "var(--l
   const quad = (id: string, x: number, y: number) =>
     `<clipPath id="q${id}${uid}"><rect x="${x}" y="${y}" width="260" height="260"/></clipPath>` +
     `<g class="eye-q"><g clip-path="url(#q${id}${uid})" mask="url(#${m})"><g style="--a:${ringColor};--b:${ringColor}">${markInner}</g></g></g>`;
+  // hollow: the pupil lives in a mask on the disc, so it moves (and blinks) as a cut-out
+  const pupil = (fill: string) => `<circle class="eye-pupil" cx="${DISC.x + PUPIL_REST.x}" cy="${DISC.y + PUPIL_REST.y}" r="${PUPIL_R}" fill="${fill}"/>`;
+  const pm = `pupil${uid}`;
   const html =
-    `<defs><mask id="${m}" maskUnits="userSpaceOnUse" x="200" y="200" width="600" height="600"><rect x="200" y="200" width="600" height="600" fill="#fff"/><circle cx="500" cy="500" r="168" fill="#000"/></mask></defs>` +
+    `<defs><mask id="${m}" maskUnits="userSpaceOnUse" x="200" y="200" width="600" height="600"><rect x="200" y="200" width="600" height="600" fill="#fff"/><circle cx="500" cy="500" r="168" fill="#000"/></mask>` +
+    (hollow ? `<mask id="${pm}" maskUnits="userSpaceOnUse" x="200" y="200" width="600" height="600"><rect x="200" y="200" width="600" height="600" fill="#fff"/>${pupil("#000")}</mask>` : "") +
+    `</defs>` +
     `<g class="eye-all">` +
     quad("TL", 240, 240) + quad("TR", 500, 240) + quad("BL", 240, 500) + quad("BR", 500, 500) +
-    `<g class="eye-lid"><circle cx="${DISC.x}" cy="${DISC.y}" r="${DISC.r}" fill="${ink}"/>` +
-    `<circle class="eye-pupil" cx="${DISC.x + PUPIL_REST.x}" cy="${DISC.y + PUPIL_REST.y}" r="${PUPIL_R}" fill="${bg}"/></g></g>`;
+    `<g class="eye-lid"><circle cx="${DISC.x}" cy="${DISC.y}" r="${DISC.r}" fill="${ink}"${hollow ? ` mask="url(#${pm})"` : ""}/>` +
+    (hollow ? "" : pupil(bg)) + `</g></g>`;
 
   return (
     <svg ref={svgRef} className={`living-eye ${className}`} viewBox="200 200 600 600" aria-hidden="true"
