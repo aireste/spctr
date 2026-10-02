@@ -124,7 +124,9 @@ footer{border-top:2px solid var(--ink)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:22px;font-size:14px;color:var(--ink-2)}
 
 @media (max-width:900px){
-  .links{display:none}
+  nav .wrap{flex-wrap:wrap;height:auto;padding-top:14px;padding-bottom:10px;row-gap:10px}
+  nav .links{order:3;width:100%;gap:22px;font-size:14px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}
+  nav .links::-webkit-scrollbar{display:none}
   .hero{grid-template-columns:1fr}
   .offers,.steps,.contact{grid-template-columns:1fr}
   .who{grid-template-columns:1fr 1fr}
@@ -594,13 +596,8 @@ form,.sent{background:var(--teal)}
 .proof-steps span{flex:none;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-family:var(--font-mono),monospace;font-size:15px;background:var(--violet);color:#fff}
 @media (max-width:900px){.proof{grid-template-columns:1fr}}
 
-/* subpage way home: "Home" in the nav on desktop, a small trail on phones (nav links are hidden there) */
+/* breadcrumb trail is retired: phones now get the full nav links as a second row */
 nav .crumbs{display:none}
-@media (max-width:900px){
-  nav .crumbs.wrap{height:auto;justify-content:flex-start}
-  nav .crumbs{display:flex;gap:8px;align-items:baseline;padding-top:10px;padding-bottom:4px;font-size:14px;color:var(--ink-2)}
-  .crumbs a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--teal);text-decoration-thickness:2px}
-}
 
 /* movable pupils are painted with their tile's background, so they read as the logo's cut-out */
 .t4{--tile-bg:var(--panel-2)}.t6{--tile-bg:var(--ink)}.t7{--tile-bg:var(--violet)}.t8{--tile-bg:var(--magenta)}

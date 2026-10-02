@@ -5,8 +5,7 @@ import { GlintHelper } from "./GlintHelper";
 
 /** Site nav, shared by every page. Links are absolute so they work from subpages.
  *  Pages without their own contact form pass ctaHref="/#contact".
- *  Subpages pass `page` (their name) for a "Home / page" trail on phones,
- *  where the nav links are hidden. */
+ *  On phones the links drop to a second row under the brand bar. */
 export function SiteNav({ ctaHref = "#contact", page }: { ctaHref?: string; page?: string }) {
   return (
     <>
