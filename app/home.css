@@ -630,3 +630,92 @@ nav .links a:hover{color:var(--ink)}
 .probs p{color:rgb(238 237 231 / .72)}
 /* small phones: let long headline words like "disconnected." fit the column */
 @media (max-width:420px){h1{font-size:min(50px,12.5vw)}}
+
+/* offer pages = chapters of the homepage, not the show: a compact hero with the
+   mascot as a small cameo, and fixed brand colors (same palette as home, no per-page color) */
+.offer-page .lg-hero{min-height:0;grid-template-columns:1fr auto;align-items:end;padding:clamp(40px,6vw,88px) 0 clamp(8px,2vw,24px)}
+.offer-page .lg-hero h1{font-size:clamp(44px,5vw,76px);max-width:16ch}
+.offer-page .lg-hero .lead{max-width:56ch}
+.offer-page .lg-art{width:clamp(140px,14vw,200px);background:var(--lime);border-radius:24px}
+.offer-page .cb-art{background:var(--violet)}
+.page-lg .gets .g1{background:var(--lime);color:var(--ink)}
+.page-lg .fit .yes{background:var(--violet);color:var(--paper)}
+.page-cb .fit .yes{background:var(--teal);color:var(--ink)}
+.offer-page .fit .yes li::before{color:inherit}
+.offer-page .pmain .btn{background:var(--lime);color:var(--ink)}
+.offer-page .pmain .btn:hover{background:var(--paper);color:var(--ink)}
+@media (max-width:900px){
+  .offer-page .lg-hero{grid-template-columns:1fr;padding-top:28px}
+  .offer-page .lg-art{grid-row:1;width:96px;border-radius:18px}
+}
+
+/* custom builds: before/after, the "disconnected" idea in one glance */
+.ba{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba > div{border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px;min-height:280px}
+.ba-before{background:var(--panel)}
+.ba-after{background:var(--violet);color:var(--paper)}
+.ba-k{font-family:var(--font-mono),monospace;font-size:13px;font-weight:600;opacity:.7}
+.ba-q{font-weight:800;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.02em;line-height:1.15}
+.ba-a{margin-top:auto;font-size:18px;line-height:1.5;border-radius:20px;padding:18px 20px}
+.ba-before .ba-a{background:var(--paper);color:var(--ink-2)}
+.ba-after .ba-a{background:var(--paper);color:var(--ink);font-weight:600}
+.builds{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.builds div{border-top:2px solid var(--ink);padding-top:14px}
+.builds b{font-weight:800;font-size:18px;letter-spacing:-.02em}
+.builds p{margin-top:6px;color:var(--ink-2);line-height:1.45}
+@media (max-width:900px){.ba,.builds{grid-template-columns:1fr}.ba > div{min-height:0}}
+
+/* supporting tiles: fixed pink / teal / cobalt / lime accents */
+.page-lg .gets > div:nth-child(3){background:var(--magenta);color:var(--paper)}
+.page-lg .gets > div:nth-child(5){background:var(--teal);color:var(--ink)}
+.page-lg .gets > div:nth-child(3) p,.page-lg .gets > div:nth-child(5) p{color:inherit;opacity:.82}
+.page-lg .why > div:nth-child(2){background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
+.page-lg .why > div:nth-child(2) p{color:inherit;opacity:.82}
+.page-cb .ba-after{background:var(--violet);color:var(--paper)}
+.page-cb .proof-steps li:nth-child(1) span{background:var(--magenta)}
+.page-cb .proof-steps li:nth-child(2) span{background:var(--teal);color:var(--ink)}
+.page-cb .builds div:nth-child(1){border-color:var(--magenta)}
+.page-cb .builds div:nth-child(2){border-color:var(--teal)}
+.page-cb .builds div:nth-child(3){border-color:var(--orange)}
+.page-cb .builds div:nth-child(4){border-color:var(--violet)}
+.page-cb .builds div{border-top-width:4px}
+.page-cb .pterms li:nth-child(1){background:var(--magenta);color:var(--paper)}
+.page-cb .pterms li:nth-child(3){background:var(--lime);color:var(--ink)}
+.page-cb .pterms li:nth-child(1) span,.page-cb .pterms li:nth-child(3) span{color:inherit;opacity:.82}
+
+/* ---------- lean offer pages (2026-10-01): 4 blocks, mascot back at full size ---------- */
+.offer-page .lg-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(28px,5vw,72px);padding:clamp(32px,5vw,72px) 0 0}
+.offer-page .lg-art{width:100%;max-width:520px;justify-self:end;border-radius:28px}
+.offer-page .lg-hero .lead{font-size:clamp(19px,1.6vw,23px);max-width:34ch;color:var(--ink)}
+@media (max-width:900px){
+  .offer-page .lg-hero{grid-template-columns:1fr;padding-top:24px}
+  .offer-page .lg-art{grid-row:auto;width:min(100%,300px);justify-self:start;border-radius:24px}
+}
+
+/* lead gen: the invite + brief they actually receive */
+.cal{margin-top:32px;display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}
+.cal > div{border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:10px}
+.cal-invite{background:var(--violet);color:var(--paper)}
+.cal-invite b{margin-top:auto;padding-top:28px;font-weight:900;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.035em;line-height:1.02}
+.cal-invite span:not(.ba-k){font-size:17px;opacity:.85}
+.cal-invite i{align-self:flex-start;margin-top:10px;font-style:normal;font-weight:700;font-size:14px;color:var(--lime)}
+.cal-brief{background:var(--panel)}
+.cal-brief dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;column-gap:24px}
+.cal-brief dt{font-weight:800;font-size:17px;padding:16px 0;border-top:2px solid var(--ink)}
+.cal-brief dd{margin:0;font-size:17px;line-height:1.5;color:var(--ink-2);padding:16px 0;border-top:2px solid var(--ink)}
+@media (max-width:900px){.cal{grid-template-columns:1fr}.cal-brief dl{grid-template-columns:1fr}.cal-brief dd{border-top:0;padding-top:0}}
+
+/* the deal: "not a fit" sits with the terms, outlined so it reads as the honest exception */
+.offer-page .pterms li.nofit{background:none;box-shadow:inset 0 0 0 2px var(--red,#ff0d1a)}
+.offer-page .pterms li.nofit b{color:var(--red,#ff0d1a)}
+/* contact: FAQ lives beside the form instead of its own section */
+.contact .faq{margin-top:32px}
+.contact .faq summary{font-size:18px}
+
+/* offer-page mascots float on the page: no tile behind them */
+.offer-page .lg-art,.offer-page .cb-art{background:none;border-radius:0;overflow:visible}
+/* nav CTA: hot pink so the one action in the header catches the eye (red stays "not a fit") */
+nav .btn.nav-cta{background:var(--magenta);color:#fff}
+nav .btn.nav-cta:hover{background:var(--ink);color:#fff}
+.offer-page .relay .rl-trail{stroke:var(--ink);stroke-opacity:.35}
+.offer-page .relay .rl-dot{fill:var(--ink)}

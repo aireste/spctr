@@ -12,7 +12,7 @@ const DISC = { x: 499, y: 491, r: 141 };
 const PUPIL_REST = { x: -37, y: -18 };     // natural pupil offset from disc center
 const PUPIL_R = 51;
 const LOOK = 62;                           // how far a pupil travels toward what it watches
-const S = 0.5;                             // mark scale in the 1000x1000 tile
+const S = 0.66;                            // mark scale in the 1000x1000 tile
 const TRIM = 250 * S;                      // keep lines/dot outside each mark
 const TRAVEL_MS = 1400, REST_MS = 1300;
 
@@ -20,9 +20,9 @@ const TRAVEL_MS = 1400, REST_MS = 1300;
 // tile's cobalt so it reads as the logo's cut-out, not a realistic eye.
 // No magenta: it vibrates against cobalt.
 const MARKS = [
-  { x: 270, y: 290, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--violet)" },
-  { x: 740, y: 400, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--violet)" },
-  { x: 410, y: 740, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--violet)" },
+  { x: 250, y: 260, ring: ["var(--orange)", "var(--orange)", "var(--orange)", "var(--orange)"], disc: "var(--orange)", pupil: "var(--violet)" },
+  { x: 760, y: 420, ring: ["var(--lime)", "var(--lime)", "var(--lime)", "var(--lime)"], disc: "var(--lime)", pupil: "var(--violet)" },
+  { x: 400, y: 770, ring: ["var(--teal)", "var(--teal)", "var(--teal)", "var(--teal)"], disc: "var(--teal)", pupil: "var(--violet)" },
 ];
 
 type Spring = { x: number; v: number; to: number; k: number; c: number };
