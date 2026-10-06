@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     title: "SPCTR · AI that brings in business",
     description: "Booked meetings, pay per meeting. Custom AI builds, one flat quote.",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
