@@ -7,6 +7,7 @@ type State = "idle" | "sending" | "sent" | "error";
 const INTERESTS = [
   { value: "lead-generation", label: "Lead generation" },
   { value: "custom-ai-build", label: "A custom AI build" },
+  { value: "crm-repair-plan", label: "CRM Repair Plan (early access)" },
   { value: "updates", label: "Updates on new offerings" },
 ];
 

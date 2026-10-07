@@ -58,11 +58,11 @@ export default function Home() {
           <div className="more">
             <MarkBadge />
             <div>
-              <div className="otop"><span className="num">03</span><span className="badge">Coming soon</span></div>
-              <b>More offerings on the way.</b>
-              <p>We&apos;re building new ways to put AI to work for you. Want to hear about them first?</p>
+              <div className="otop"><span className="num">03</span><span className="badge">Early access</span></div>
+              <b>CRM Repair Plan</b>
+              <p>How much of your HubSpot can your team actually use? We measure it, clean it up with your sign-off on every change, and keep it from drifting back.</p>
             </div>
-            <a className="btn ghost" href="#contact" data-interest="updates">Keep me posted</a>
+            <a className="btn ghost" href="#contact" data-interest="crm-repair-plan">Get early access</a>
           </div>
         </section>
 
