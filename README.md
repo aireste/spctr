@@ -6,7 +6,7 @@ Live site: **[spctr.run](https://spctr.run)**
 
 SPCTR helps businesses get real results from AI without needing to understand it. Two offers today:
 
-1. **Lead Generation Intelligence** (live now). Sales outreach, done for you. Clients get calendar invites with decision makers who already said yes, and pay a flat fee per booked meeting. No meeting, no charge.
+1. **Lead Generation Intelligence** (live now). Clients get calendar invites with decision makers who already said yes, and pay a flat fee per accepted meeting (one that fits the criteria agreed up front). No meeting, no charge. A disputed meeting is replaced with a new one.
 2. **Custom AI Builds** (quoted per project). Clients tell us what's eating their week. We connect the tools they already use, build the fix, hand it over, and make sure it works. One flat quote after a 20 minute call.
 
 More offerings are on the way. The site sells the outcome, never the plumbing: no jargon, no "how it works under the hood."
