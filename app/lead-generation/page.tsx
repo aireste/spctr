@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const FAQ: [string, string][] = [
   ["What does a meeting cost?", "It depends on what a new customer is worth to you. We set one flat price per meeting on the first call, and it doesn't change without your OK."],
-  ["What counts as an accepted meeting?", "A meeting with a decision maker who fits the criteria we agree on up front. If one doesn't fit the criteria we agreed on, tell us within 14 days of the meeting and we replace it at no additional cost."],
+  ["What counts as an accepted meeting?", "A meeting with a decision maker who fits the criteria we agree on up front. If one doesn't, tell us within 14 days of the meeting and we replace it at no additional cost."],
   ["How fast does it start?", "First emails go out in about 2 to 3 weeks. Most of that is setting up sending properly so your emails land in inboxes, not spam."],
   ["Can I cancel?", "Yes. It's month to month with 30 days' notice. Leave in the first 30 days and you cover the sending inboxes and domains at cost, no markup. After that, nothing. Meetings already booked are still kept and billed."],
   ["Who will I talk to?", "The person running your campaign. No account managers, no handoffs."],
