@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/bento/ContactForm";
 
 const FAQ: [string, string][] = [
   ["Which one do I need?", "If you need more conversations with buyers, lead generation. If the work after the sale is eating your week, a custom build. Not sure? Tell us both and we'll say which one pays off first."],
-  ["How does pricing work?", "Lead generation is a flat fee per meeting you accept. No meeting, no charge. Custom builds get one flat quote after a 20 minute call."],
+  ["How does pricing work?", "Lead generation is a flat fee per accepted meeting: a decision maker who fits the criteria we agree on up front. No meeting, no charge. Custom builds get one flat quote after a 20 minute call."],
   ["How fast can I start?", "Book a 20 minute call. For lead generation, first emails usually go out in about 2 to 3 weeks."],
   ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
 ];
@@ -21,8 +21,8 @@ export default function Home() {
           <div>
             <h1>AI that brings in <em>business.</em></h1>
             <p className="lead">
-              <b>SPCTR is an AI implementation studio.</b> Right now our engine finds buyers who need what you
-              sell and puts them on your calendar. You only pay when a meeting lands.
+              <b>SPCTR is an AI implementation studio.</b> Right now we find buyers who need what you
+              sell and put them on your calendar. You only pay when a meeting lands.
             </p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
@@ -39,9 +39,9 @@ export default function Home() {
             <article className="offer o1">
               <div className="otop"><span className="num">01</span><span className="badge live">Available now</span></div>
               <h3>Lead Generation<br />Intelligence</h3>
-              <p className="d">Sales outreach, done for you. You get a calendar invite with a decision maker who already said yes. No ramp time. No overhead.</p>
+              <p className="d">You get a calendar invite with a decision maker who already said yes. No hiring, no overhead.</p>
               <dl className="spec">
-                <dt>Price</dt><dd>Flat fee per booked meeting</dd>
+                <dt>Price</dt><dd>Flat fee per accepted meeting</dd>
                 <dt>Risk</dt><dd>No meeting, no charge</dd>
                 <dt>First sends</dt><dd>About 2 to 3 weeks</dd>
               </dl>

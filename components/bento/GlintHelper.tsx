@@ -15,7 +15,7 @@ const QA: { q: string; a: string; link?: { label: string; href: string } }[] = [
   },
   {
     q: "How does pricing work?",
-    a: "Lead generation is pay per meeting: a flat fee for each booked meeting with a qualified decision maker. No meeting, no charge. Custom builds get one flat quote after a 20 minute call.",
+    a: "Lead generation is pay per meeting: a flat fee for each accepted meeting, meaning a decision maker who fits the criteria we agree on up front. No meeting, no charge. Custom builds get one flat quote after a 20 minute call.",
     link: { label: "See pricing", href: "/lead-generation#pricing" },
   },
   {

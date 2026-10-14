@@ -8,13 +8,14 @@ import { ContactForm } from "@/components/bento/ContactForm";
 export const metadata: Metadata = {
   title: "Lead Generation · SPCTR",
   description:
-    "SPCTR puts meetings with buyers who need what you sell on your calendar. You only pay for the ones you accept.",
+    "SPCTR puts meetings with buyers who need what you sell on your calendar. You only pay for accepted meetings: ones that fit the criteria we agree on up front.",
 };
 
 const FAQ: [string, string][] = [
   ["What does a meeting cost?", "It depends on what a new customer is worth to you. We set one flat price per meeting on the first call, and it doesn't change without your OK."],
-  ["What counts as a meeting?", "A meeting you accept, with a decision maker who fits the criteria we agree on up front. If it doesn't fit, you don't pay for it."],
+  ["What counts as an accepted meeting?", "A meeting with a decision maker who fits the criteria we agree on up front. If one doesn't fit, flag it and we replace it with a new meeting."],
   ["How fast does it start?", "First emails go out in about 2 to 3 weeks. Most of that is setting up sending properly so your emails land in inboxes, not spam."],
+  ["Can I cancel?", "Yes. It's month to month with 30 days' notice. Leave in the first 30 days and you cover the sending inboxes and domains at cost, no markup. After that, nothing. Meetings already booked are still kept and billed."],
   ["Who will I talk to?", "The person running your campaign. No account managers, no handoffs."],
 ];
 
@@ -29,7 +30,7 @@ export default function LeadGeneration() {
           <div>
             <h1>Meetings with buyers who <em>need what you sell.</em></h1>
             <p className="lead">
-              We put them on your calendar. You only pay for the ones you accept.
+              We put them on your calendar. You only pay for accepted meetings: ones that fit the criteria we agree on up front.
             </p>
             <div className="cta">
               <a className="btn" href="#contact" data-interest="lead-generation">Book a 20 min call</a>
@@ -93,12 +94,12 @@ export default function LeadGeneration() {
           <div className="price">
             <div className="pmain">
               <h3>No meeting, no charge.</h3>
-              <p>One flat price per meeting you accept, set on the first call based on what a new customer is worth to you.</p>
+              <p>One flat price per accepted meeting, set on the first call based on what a new customer is worth to you.</p>
               <a className="btn" href="#contact" data-interest="lead-generation">Book a 20 min call</a>
             </div>
             <ul className="pterms">
               <li><b>No retainer, no setup fee</b><span>Nothing up front.</span></li>
-              <li><b>Month to month</b><span>Stay because it works, not because of a contract.</span></li>
+              <li><b>Month to month</b><span>Cancel with 30 days&apos; notice.</span></li>
               <li><b>You approve every message</b><span>Nothing goes out under your name without your OK.</span></li>
               <li className="nofit"><b>Not a fit if</b><span>You&apos;re still figuring out what you sell, or you need meetings by tomorrow.</span></li>
             </ul>

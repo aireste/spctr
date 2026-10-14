@@ -9,7 +9,7 @@ brand
 An AI implementation studio. SPCTR puts AI to work for small and mid-sized businesses and sells the result, not the technology. All client AI work lives under the SPCTR brand.
 
 **Offers**
-1. **Lead Generation Intelligence** (live now): booked meetings with qualified decision makers, flat fee per meeting, no meeting no charge.
+1. **Lead Generation Intelligence** (live now): booked meetings with qualified decision makers, flat fee per accepted meeting, no meeting no charge. A disputed meeting gets a replacement meeting, not a refund.
 2. **Custom AI Builds** (quoted per project): connect the tools a business already uses and build simple AI fixes for repeat work. One flat quote after a 20 minute call, handed over working.
 3. **More on the way**: shown only as "coming soon" with an early-interest button. Nothing is described as shipped until it is.
 
@@ -26,6 +26,7 @@ Turn visitors into booked 20 minute calls. Every page should answer: what do I g
 - Outcome first: sell the six-pack, not the workout.
 - Plain English. No jargon: no APIs, models, LLMs, agents, pipelines, or "under the hood" talk.
 - "We" by default. Approachable, confident, honest. Say when something is not a fit.
+- Billing words match the contract: an "accepted meeting" is a HOT or WARM tier meeting per the Qualification Rubric (on the site: "fits the criteria we agree on up front"). "Booked" only ever means "on the calendar", never what gets billed.
 - No invented results. Real proof only (our own live builds, described in plain terms; client case studies only with permission).
 
 ## Brand personality
