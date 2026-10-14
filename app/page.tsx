@@ -22,7 +22,7 @@ export default function Home() {
             <h1>AI that brings in <em>business.</em></h1>
             <p className="lead">
               <b>SPCTR is an AI implementation studio.</b> Right now we find buyers who need what you
-              sell and put them on your calendar. You only pay when a meeting lands.
+              sell and put them on your calendar. You only pay for accepted meetings.
             </p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
