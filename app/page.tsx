@@ -60,7 +60,7 @@ export default function Home() {
             <div>
               <div className="otop"><span className="num">03</span><span className="badge">Early access</span></div>
               <b>CRM Repair Plan</b>
-              <p>How much of your HubSpot can your team actually use? We measure it, clean it up with your sign-off on every change, and keep it from drifting back.</p>
+              <p>How much of your CRM can your team actually use? We measure it, clean it up with your sign-off on every change, and keep it from drifting back.</p>
             </div>
             <a className="btn ghost" href="#contact" data-interest="crm-repair-plan">Get early access</a>
           </div>
