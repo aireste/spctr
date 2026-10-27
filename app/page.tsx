@@ -11,19 +11,7 @@ const FAQ: [string, string][] = [
   ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
 ];
 
-// Hero copy options for review. Preview with ?hero=a to g (default e). Not final. Kept short on purpose.
-const HEROES: Record<string, { lead: [string, string]; sub: string }> = {
-  a: { lead: ["More customers.", "Less busywork."], sub: "SPCTR sets up AI that finds you customers and takes the repetitive work off your plate." },
-  b: { lead: ["More than just", "a chatbot."], sub: "SPCTR connects AI to your business so it finds you customers and handles the busywork." },
-  c: { lead: ["Local help getting", "more customers."], sub: "I'm Esteban, a Nashville local. I set up AI that does the busywork, and teach you to run it." },
-  e: { lead: ["Customers in.", "Busywork out."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you. Others we build and teach your team to run." },
-  f: { lead: ["We build it.", "You learn it."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you. Others we build and teach your team to run." },
-  g: { lead: ["We build it.", "You use it."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. We run it for you, or build it and teach your team." },
-  d: { lead: ["More than just", "a chatbot."], sub: "AI that finds you customers and takes the busywork off your plate. Built with you, taught to your team." },
-};
-
-export default function Home({ searchParams }: { searchParams?: { hero?: string } }) {
-  const h = HEROES[searchParams?.hero ?? "e"] ?? HEROES.e;
+export default function Home() {
   return (
     <>
       <SiteNav />
@@ -31,8 +19,11 @@ export default function Home({ searchParams }: { searchParams?: { hero?: string 
       <main className="wrap">
         <section className="hero">
           <div>
-            <h1 className="hero-h">{h.lead[0]} <em>{h.lead[1]}</em></h1>
-            <p className="lead">{h.sub}</p>
+            <h1 className="hero-h">Customers in. <em>Busywork out.</em></h1>
+            <p className="lead">
+              SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you.
+              Others we build and teach your team to run.
+            </p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
               <a className="btn ghost" href="#offerings">See what we do</a>
