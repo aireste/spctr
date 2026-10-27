@@ -27,7 +27,7 @@ export default function CustomBuilds() {
       <main className="wrap offer-page page-cb">
         <section className="lg-hero">
           <div>
-            <h1>AI that can actually <em>see your business.</em></h1>
+            <h1 className="two-line">We build it. <em>You use it.</em></h1>
             <p className="lead">
               Tell us the task eating your week. We connect AI to the tools you already use and hand it over working.
             </p>
