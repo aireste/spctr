@@ -11,19 +11,19 @@ const FAQ: [string, string][] = [
   ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
 ];
 
-// Hero copy options for review. Preview with ?hero=a to g (default f). Not final. Kept short on purpose.
+// Hero copy options for review. Preview with ?hero=a to g (default e). Not final. Kept short on purpose.
 const HEROES: Record<string, { lead: [string, string]; sub: string }> = {
   a: { lead: ["More customers.", "Less busywork."], sub: "SPCTR sets up AI that finds you customers and takes the repetitive work off your plate." },
   b: { lead: ["More than just", "a chatbot."], sub: "SPCTR connects AI to your business so it finds you customers and handles the busywork." },
   c: { lead: ["Local help getting", "more customers."], sub: "I'm Esteban, a Nashville local. I set up AI that does the busywork, and teach you to run it." },
-  e: { lead: ["Customers in.", "Busywork out."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. We build it with you and teach your team to use it." },
+  e: { lead: ["Customers in.", "Busywork out."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you. Others we build and teach your team to run." },
   f: { lead: ["We build it.", "You learn it."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you. Others we build and teach your team to run." },
   g: { lead: ["We build it.", "You use it."], sub: "SPCTR connects AI to your business to find you customers and handle the repetitive work. We run it for you, or build it and teach your team." },
   d: { lead: ["More than just", "a chatbot."], sub: "AI that finds you customers and takes the busywork off your plate. Built with you, taught to your team." },
 };
 
 export default function Home({ searchParams }: { searchParams?: { hero?: string } }) {
-  const h = HEROES[searchParams?.hero ?? "f"] ?? HEROES.f;
+  const h = HEROES[searchParams?.hero ?? "e"] ?? HEROES.e;
   return (
     <>
       <SiteNav />
