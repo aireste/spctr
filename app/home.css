@@ -752,13 +752,11 @@ nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
 @media (max-width:600px){.page-lg .steps{grid-template-columns:1fr}}
 
 /* Hero headline options: two short lines, second line always on its own line */
-.hero h1.hero-h{font-size:clamp(46px,5.2vw,80px)}
+.hero h1.hero-h{font-size:clamp(44px,5vw,76px)}
 .hero h1.hero-h em{display:block}
 @media (max-width:420px){.hero h1.hero-h{font-size:min(44px,11.5vw)}}
 
 .offer-page .lg-hero h1.two-line em{display:block}
-/* Short two-line headline: let it be big so the hero is not mostly empty space */
-.offer-page .lg-hero h1.two-line{font-size:clamp(52px,7.4vw,124px);max-width:none;line-height:.92;margin-top:0}
-.offer-page .lg-hero:has(h1.two-line){padding-top:clamp(12px,2vw,32px);padding-bottom:clamp(8px,1.5vw,24px)}
-.offer-page .lg-hero:has(h1.two-line) .lead{font-size:clamp(18px,1.55vw,24px);max-width:36ch;margin-top:20px}
-@media (max-width:900px){.offer-page .lg-hero h1.two-line{font-size:clamp(44px,11vw,72px)}}
+/* Short two-line headline: same size as every other page headline, tighter vertical spacing */
+.offer-page .lg-hero h1.two-line{max-width:none}
+.offer-page .lg-hero:has(h1.two-line){padding-top:clamp(20px,3vw,48px);padding-bottom:clamp(8px,1.5vw,24px)}
