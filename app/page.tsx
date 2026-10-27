@@ -19,10 +19,10 @@ export default function Home() {
       <main className="wrap">
         <section className="hero">
           <div>
-            <h1>AI that brings in <em>business.</em></h1>
+            <h1 className="hero-h">Customers in. <em>Busywork out.</em></h1>
             <p className="lead">
-              <b>SPCTR is an AI implementation studio.</b> Right now we find buyers who need what you
-              sell and put them on your calendar. You only pay for accepted meetings.
+              SPCTR connects AI to your business to find you customers and handle the repetitive work. Some things we run for you.
+              Others we build and teach your team to run.
             </p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
