@@ -11,7 +11,27 @@ const FAQ: [string, string][] = [
   ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
 ];
 
-export default function Home() {
+// Hero copy options for review. Preview with ?hero=a, ?hero=b or ?hero=c (default a). Not final.
+const HEROES: Record<string, { lead: string[]; rest: string; tail: string }> = {
+  a: {
+    lead: ["More customers.", "Less busywork."],
+    rest: "SPCTR connects your business to what AI can really do, far beyond a chatbot: tools that find you customers and take the repetitive work off your plate. We build it with you and teach you how to use it.",
+    tail: "Right now we find buyers who need what you sell and put them on your calendar. You only pay for accepted meetings.",
+  },
+  b: {
+    lead: ["AI is more than", "a chatbot."],
+    rest: "Most businesses use AI to chat. Connected to your tools and your customers, it can find you leads, handle the busywork and keep running while you work. We build it with you and show your team how to use it.",
+    tail: "Right now we find buyers who need what you sell and put them on your calendar. You only pay for accepted meetings.",
+  },
+  c: {
+    lead: ["Local help getting", "more customers."],
+    rest: "I'm Esteban, a Nashville local. I use AI to connect your business to the modern tools most companies haven't tried yet, build the useful parts, and teach you to run them so you don't fall behind.",
+    tail: "It starts with booked meetings: you only pay for the accepted ones.",
+  },
+};
+
+export default function Home({ searchParams }: { searchParams?: { hero?: string } }) {
+  const h = HEROES[searchParams?.hero ?? "a"] ?? HEROES.a;
   return (
     <>
       <SiteNav />
@@ -19,10 +39,9 @@ export default function Home() {
       <main className="wrap">
         <section className="hero">
           <div>
-            <h1>AI that brings in <em>business.</em></h1>
+            <h1>{h.lead[0]} <em>{h.lead[1]}</em></h1>
             <p className="lead">
-              <b>SPCTR is an AI implementation studio.</b> Right now we find buyers who need what you
-              sell and put them on your calendar. You only pay for accepted meetings.
+              <b>{h.rest}</b> {h.tail}
             </p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
