@@ -11,27 +11,16 @@ const FAQ: [string, string][] = [
   ["Who will I work with?", "The person doing the work. No account managers, no handoffs."],
 ];
 
-// Hero copy options for review. Preview with ?hero=a, ?hero=b or ?hero=c (default a). Not final.
-const HEROES: Record<string, { lead: string[]; rest: string; tail: string }> = {
-  a: {
-    lead: ["More customers.", "Less busywork."],
-    rest: "SPCTR connects your business to what AI can really do, far beyond a chatbot: tools that find you customers and take the repetitive work off your plate. We build it with you and teach you how to use it.",
-    tail: "Right now we find buyers who need what you sell and put them on your calendar. You only pay for accepted meetings.",
-  },
-  b: {
-    lead: ["AI is more than", "a chatbot."],
-    rest: "Most businesses use AI to chat. Connected to your tools and your customers, it can find you leads, handle the busywork and keep running while you work. We build it with you and show your team how to use it.",
-    tail: "Right now we find buyers who need what you sell and put them on your calendar. You only pay for accepted meetings.",
-  },
-  c: {
-    lead: ["Local help getting", "more customers."],
-    rest: "I'm Esteban, a Nashville local. I use AI to connect your business to the modern tools most companies haven't tried yet, build the useful parts, and teach you to run them so you don't fall behind.",
-    tail: "It starts with booked meetings: you only pay for the accepted ones.",
-  },
+// Hero copy options for review. Preview with ?hero=a, b, c or d (default b). Not final. Kept short on purpose.
+const HEROES: Record<string, { lead: [string, string]; sub: string }> = {
+  a: { lead: ["More customers.", "Less busywork."], sub: "SPCTR sets up AI that finds you customers and takes the repetitive work off your plate." },
+  b: { lead: ["More than just", "a chatbot."], sub: "SPCTR connects AI to your business so it finds you customers and handles the busywork." },
+  c: { lead: ["Local help getting", "more customers."], sub: "I'm Esteban, a Nashville local. I set up AI that does the busywork, and teach you to run it." },
+  d: { lead: ["More than just", "a chatbot."], sub: "AI that finds you customers and takes the busywork off your plate. Built with you, taught to your team." },
 };
 
 export default function Home({ searchParams }: { searchParams?: { hero?: string } }) {
-  const h = HEROES[searchParams?.hero ?? "a"] ?? HEROES.a;
+  const h = HEROES[searchParams?.hero ?? "b"] ?? HEROES.b;
   return (
     <>
       <SiteNav />
@@ -40,9 +29,7 @@ export default function Home({ searchParams }: { searchParams?: { hero?: string 
         <section className="hero">
           <div>
             <h1>{h.lead[0]} <em>{h.lead[1]}</em></h1>
-            <p className="lead">
-              <b>{h.rest}</b> {h.tail}
-            </p>
+            <p className="lead">{h.sub}</p>
             <div className="cta">
               <a className="btn" href="#contact">Book a 20 min call</a>
               <a className="btn ghost" href="#offerings">See what we do</a>
