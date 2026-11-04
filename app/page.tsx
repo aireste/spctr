@@ -50,8 +50,8 @@ export default function Home() {
             <article className="offer o2" id="builds">
               <div className="otop"><span className="num">02</span><span className="badge">Quoted per project</span></div>
               <h3>Custom AI<br />Builds</h3>
-              <p className="d"><b>You&apos;re using AI. It just can&apos;t see your business.</b> We hand it the keys to the tools you already run, so it does real work, not just chat.</p>
-              <div className="ex"><span>Leads answered in minutes</span><span>Reports that write themselves</span><span>Your tools talking to each other</span></div>
+              <p className="d"><b>You&apos;re using AI. It just can&apos;t see your business.</b> We connect it to your tools, at a price that fits your budget.</p>
+              <div className="ex"><span>A website that gets calls</span><span>Your tools connected to AI</span><span>A small app for your team</span></div>
               <div className="obtns"><a className="btn alt" href="#contact" data-interest="custom-ai-build">Tell us the problem</a><a className="btn ghost" href="/custom-builds">Know more</a></div>
             </article>
           </div>

@@ -675,8 +675,8 @@ nav .links a:hover{color:var(--ink)}
 .page-cb .builds div:nth-child(4){border-color:var(--violet)}
 .page-cb .builds div{border-top-width:4px}
 .page-cb .pterms li:nth-child(1){background:var(--magenta);color:var(--paper)}
-.page-cb .pterms li:nth-child(3){background:var(--lime);color:var(--ink)}
-.page-cb .pterms li:nth-child(1) span,.page-cb .pterms li:nth-child(3) span{color:inherit;opacity:.82}
+.page-cb .pterms li:nth-child(2){background:var(--lime);color:var(--ink)}
+.page-cb .pterms li:nth-child(1) span,.page-cb .pterms li:nth-child(2) span{color:inherit;opacity:.82}
 
 /* ---------- lean offer pages (2026-10-01): 4 blocks, mascot back at full size ---------- */
 .offer-page .lg-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(28px,5vw,72px);padding:clamp(32px,5vw,72px) 0 0}
@@ -760,3 +760,22 @@ nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
 /* Short two-line headline: same size as every other page headline, tighter vertical spacing */
 .offer-page .lg-hero h1.two-line{max-width:none}
 .offer-page .lg-hero:has(h1.two-line){padding-top:clamp(20px,3vw,48px);padding-bottom:clamp(8px,1.5vw,24px)}
+
+/* custom builds: three build types (website, AI connections, app) */
+.page-cb .builds{grid-template-columns:repeat(3,1fr)}
+.page-cb .builds div:nth-child(3){border-color:var(--orange)}
+@media (max-width:900px){.page-cb .builds{grid-template-columns:1fr}}
+.page-cb #what .sub{margin-top:14px;font-size:17px;line-height:1.5;color:var(--ink-2);max-width:56ch}
+
+/* contact + FAQ: the form keeps its own height (it used to stretch with the FAQ row) and the answers open smoothly */
+.contact{align-items:start}
+@media (min-width:901px){.contact form{position:sticky;top:88px}}
+:root{interpolate-size:allow-keywords}
+.faq details::details-content{block-size:0;opacity:0;overflow:clip;
+  transition:block-size .4s var(--ease),opacity .3s ease,content-visibility .4s allow-discrete}
+.faq details[open]::details-content{block-size:auto;opacity:1}
+.faq summary::after{display:inline-block;transition:transform .35s var(--ease)}
+.faq details[open] summary::after{content:"+";transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){
+  .faq details::details-content,.faq summary::after{transition:none}
+}
