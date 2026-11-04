@@ -61,7 +61,6 @@ export default function CustomBuilds() {
               <p>A simple tool built around how you actually work, instead of software you have to bend your team around.</p>
             </div>
           </div>
-          <p className="note">Not sure which one you need? Tell us the problem and we&apos;ll say what fits.</p>
         </section>
 
         <section className="sec" id="build">
