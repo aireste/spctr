@@ -766,3 +766,16 @@ nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
 .page-cb .builds div:nth-child(3){border-color:var(--orange)}
 @media (max-width:900px){.page-cb .builds{grid-template-columns:1fr}}
 .page-cb #what .sub{margin-top:14px;font-size:17px;line-height:1.5;color:var(--ink-2);max-width:56ch}
+
+/* contact + FAQ: the form keeps its own height (it used to stretch with the FAQ row) and the answers open smoothly */
+.contact{align-items:start}
+@media (min-width:901px){.contact form{position:sticky;top:88px}}
+:root{interpolate-size:allow-keywords}
+.faq details::details-content{block-size:0;opacity:0;overflow:clip;
+  transition:block-size .4s var(--ease),opacity .3s ease,content-visibility .4s allow-discrete}
+.faq details[open]::details-content{block-size:auto;opacity:1}
+.faq summary::after{display:inline-block;transition:transform .35s var(--ease)}
+.faq details[open] summary::after{content:"+";transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){
+  .faq details::details-content,.faq summary::after{transition:none}
+}
