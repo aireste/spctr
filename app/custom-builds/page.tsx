@@ -8,12 +8,13 @@ import { ContactForm } from "@/components/bento/ContactForm";
 export const metadata: Metadata = {
   title: "Custom AI Builds · SPCTR",
   description:
-    "Tell us what's eating your week. SPCTR connects the tools you already use and builds simple AI fixes, one flat quote, handed over working.",
+    "A small team that builds websites, apps and AI connections for your business. Solutions that fit your budget, one flat quote, handed over working.",
 };
 
 const FAQ: [string, string][] = [
   ["I don't really use AI yet. Is this for me?", "Yes. You don't need to know anything about AI first. We set it up inside the tools you already use and show your team how it works."],
   ["Will I have to switch the tools I use?", "Usually no. Most builds connect what you already have, so your team keeps working the way they do now."],
+  ["Why a small shop instead of a big vendor?", "You work directly with the people building it. Big vendors add layers and overhead, and you pay for them. We keep it lean so the solution fits your budget, and we hold the work to the same professional standard."],
   ["What does it cost?", "It depends on the size of the fix. After a 20 minute call you get one flat price, so you know the number before any work starts."],
   ["How long does a build take?", "Small fixes can be quick, bigger ones take longer. The timeline comes with your quote."],
 ];
@@ -29,7 +30,7 @@ export default function CustomBuilds() {
           <div>
             <h1 className="two-line">We build it. <em>You use it.</em></h1>
             <p className="lead">
-              Tell us the task eating your week. We connect AI to the tools you already use and hand it over working.
+              Tell us what&apos;s eating your week, or what you need built. A website, a simple app, or AI connected to the tools you already use. Handed over working.
             </p>
             <div className="cta">
               <a className="btn" href="#contact" data-interest="custom-ai-build">Tell us the problem</a>
@@ -38,6 +39,29 @@ export default function CustomBuilds() {
           <div className="lg-art cb-art" aria-hidden="true">
             <Relay />
           </div>
+        </section>
+
+        <section className="sec" id="what">
+          <p className="eyebrow">What we build</p>
+          <h2>Solutions that fit your budget.</h2>
+          <p className="sub">
+            We&apos;re a small shop, not a big vendor. You work directly with the people building it, and you get professional work without the big-company overhead.
+          </p>
+          <div className="builds">
+            <div>
+              <b>A website that gets calls</b>
+              <p>A clean, fast site built so customers can find your business and reach you.</p>
+            </div>
+            <div>
+              <b>Your tools, connected to AI</b>
+              <p>Your inbox, customer list, calendar and spreadsheets working together, so the routine work handles itself.</p>
+            </div>
+            <div>
+              <b>A small app for your team</b>
+              <p>A simple tool built around how you actually work, instead of software you have to bend your team around.</p>
+            </div>
+          </div>
+          <p className="note">Not sure which one you need? Tell us the problem and we&apos;ll say what fits.</p>
         </section>
 
         <section className="sec" id="build">
@@ -68,7 +92,6 @@ export default function CustomBuilds() {
               <a className="btn" href="#contact" data-interest="custom-ai-build">Tell us the problem</a>
             </div>
             <ul className="pterms">
-              <li><b>Half to start, half when it works</b><span>The second payment comes after you see it running.</span></li>
               <li><b>It&apos;s yours</b><span>Once it&apos;s paid for, you own what we built.</span></li>
               <li><b>30 days of fixes</b><span>If something breaks after handover, we fix it.</span></li>
               <li className="nofit"><b>Not a fit if</b><span>You want AI just because everyone else has it, or you need it by tomorrow.</span></li>
