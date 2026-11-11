@@ -66,6 +66,16 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="sec" id="how-its-run">
+          <p className="eyebrow">Who runs it</p>
+          <h2>One person builds it, runs it, and answers for it.</h2>
+          <div className="who three">
+            <div><b>Built by the person you talk to</b><span>No account managers, no handoffs. The one who learns your business is the one who builds the work.</span></div>
+            <div><b>You approve what goes out</b><span>Anything that goes out under your name, you see and OK first.</span></div>
+            <div><b>Watched, and fixed when it drifts</b><span>AI gets things wrong. The same person checks the work and fixes it, so you are never left with a black box.</span></div>
+          </div>
+        </section>
+
         <section className="sec" id="start">
           <p className="eyebrow">How to start</p>
           <h2>Three steps. That&apos;s it.</h2>
