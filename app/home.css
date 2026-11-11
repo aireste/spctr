@@ -779,3 +779,8 @@ nav .btn.nav-cta:hover{background:var(--magenta);color:#fff}
 @media (prefers-reduced-motion:reduce){
   .faq details::details-content,.faq summary::after{transition:none}
 }
+
+/* trust block: three plain facts under the 'who runs it' headline */
+.who.three{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.who.three{grid-template-columns:1fr}}
+#how-its-run h2{max-width:26ch;text-wrap:balance}
