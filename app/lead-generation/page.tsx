@@ -80,9 +80,9 @@ export default function LeadGeneration() {
           <p className="eyebrow">What we handle</p>
           <h2>You take the meeting. We do everything before it.</h2>
           <ol className="steps">
-            <li><span className="sn">1</span><b>Find them</b><p>We research your market and pick out the decision makers who actually need what you sell.</p></li>
-            <li><span className="sn">2</span><b>Write to them</b><p>Personal emails for each buyer, in your voice. You approve them before anything sends.</p></li>
-            <li><span className="sn">3</span><b>Follow up</b><p>We keep the conversation going and handle the replies until it&apos;s a yes or a no.</p></li>
+            <li><span className="sn">1</span><b>Find them</b><p>We use a purpose-built system to find the decision makers who best fit your ideal customer, then check that every email address is real before anything is sent.</p></li>
+            <li><span className="sn">2</span><b>Write to them</b><p>A personal email for each buyer, in your voice, opening with something true from their own website. You approve every one before it sends.</p></li>
+            <li><span className="sn">3</span><b>Follow up</b><p>We send from dedicated, warmed-up inboxes so you stay out of spam, keep the conversation going, and handle the replies until it&apos;s a yes or a no.</p></li>
             <li><span className="sn">4</span><b>Book it</b><p>The meeting lands on your calendar with a brief, like the one above.</p></li>
           </ol>
           <p className="note">Small on purpose. One person runs your campaign start to finish, and cares how your business does long after the meeting.</p>
@@ -98,7 +98,7 @@ export default function LeadGeneration() {
               <a className="btn" href="#contact" data-interest="lead-generation">Book a 20 min call</a>
             </div>
             <ul className="pterms">
-              <li><b>No retainer, no setup fee</b><span>Nothing up front.</span></li>
+              <li><b>No retainer, no setup fee</b><span>Just the sending domains, at cost.</span></li>
               <li><b>Month to month</b><span>Cancel with 30 days&apos; notice.</span></li>
               <li><b>You approve every message</b><span>Nothing goes out under your name without your OK.</span></li>
               <li className="nofit"><b>Not a fit if</b><span>You&apos;re still figuring out what you sell, or you need meetings by tomorrow.</span></li>
